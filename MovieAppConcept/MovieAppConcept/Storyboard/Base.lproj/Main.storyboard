@@ -19,16 +19,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_star-wars" translatesAutoresizingMaskIntoConstraints="NO" id="idq-YU-mWK">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azu-74-2hU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="446.66666666666669"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_back_to_the_future" translatesAutoresizingMaskIntoConstraints="NO" id="idq-YU-mWK">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="446.66666666666669"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="idq-YU-mWK" secondAttribute="bottom" id="JQr-s9-wLm"/>
+                                    <constraint firstAttribute="trailing" secondItem="idq-YU-mWK" secondAttribute="trailing" id="LGn-eN-H8B"/>
+                                    <constraint firstItem="idq-YU-mWK" firstAttribute="top" secondItem="azu-74-2hU" secondAttribute="top" id="hdE-Zg-ekx"/>
+                                    <constraint firstItem="idq-YU-mWK" firstAttribute="leading" secondItem="azu-74-2hU" secondAttribute="leading" id="j4V-Rg-5Vd"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="idq-YU-mWK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4tq-cL-jMr"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="idq-YU-mWK" secondAttribute="trailing" id="G5k-D1-yFm"/>
-                            <constraint firstItem="idq-YU-mWK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oVz-MX-p9h"/>
-                            <constraint firstItem="idq-YU-mWK" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.55" id="w5z-YN-29A"/>
+                            <constraint firstItem="azu-74-2hU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CUX-i1-zmj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="azu-74-2hU" secondAttribute="trailing" id="GTU-Xe-iFv"/>
+                            <constraint firstItem="azu-74-2hU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HrI-pS-Yhs"/>
+                            <constraint firstItem="azu-74-2hU" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.55" id="XNT-jn-Szb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -38,6 +49,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="img_star-wars" width="1930" height="2920"/>
+        <image name="img_back_to_the_future" width="1500" height="2304"/>
     </resources>
 </document>
