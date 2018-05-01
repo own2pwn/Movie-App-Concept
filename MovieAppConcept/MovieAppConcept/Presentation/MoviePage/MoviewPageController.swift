@@ -12,6 +12,8 @@ final class MoviewPageController: UIViewController {
 
     // MARK: - Outlets
     
+    @IBOutlet var topContainer: UIView!
+    
     @IBOutlet var movieImage: UIImageView!
     
     @IBOutlet var bookmarkButton: EPButton!
@@ -64,7 +66,7 @@ final class MoviewPageController: UIViewController {
         bookmarkButton.adjustsImageWhenHighlighted = false
         
         playButton.normalTintColor = #colorLiteral(red: 0.926155746, green: 0.9410773516, blue: 0.9455420375, alpha: 1)
-        playButton.highlightTintColor = #colorLiteral(red: 0.7422102094, green: 0.764362216, blue: 0.7821244597, alpha: 1) // #colorLiteral(red: 0.779969871, green: 0.8032483459, blue: 0.821914494, alpha: 1)
+        playButton.highlightTintColor = #colorLiteral(red: 0.7422102094, green: 0.764362216, blue: 0.7821244597, alpha: 1)
         playButton.isSelectable = false
         playButton.adjustsImageWhenHighlighted = false
         playButton.onPrimaryAction = playVideo
@@ -77,6 +79,7 @@ final class MoviewPageController: UIViewController {
     }
     
     private func playVideo() {
+        topContainer.bringSubview(toFront: videoContainer)
         EPMediaPlayer.shared.play("vid_back_to_the_future.mp4", in: videoContainer)
     }
 }

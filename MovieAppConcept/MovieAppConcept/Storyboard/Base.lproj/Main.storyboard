@@ -23,6 +23,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azu-74-2hU" userLabel="Top container">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="446.66666666666669"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iIW-7Y-Nay">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="446.66666666666669"/>
+                                    </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_back_to_the_future" translatesAutoresizingMaskIntoConstraints="NO" id="idq-YU-mWK">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="446.66666666666669"/>
                                     </imageView>
@@ -52,9 +55,6 @@
                                         <color key="tintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="ic_play"/>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iIW-7Y-Nay">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="446.66666666666669"/>
-                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Fmg-7W-V04" firstAttribute="top" secondItem="azu-74-2hU" secondAttribute="topMargin" id="0Jf-mk-YOq"/>
@@ -87,6 +87,7 @@
                         <outlet property="bookmarkButton" destination="Fmg-7W-V04" id="iio-Ua-Vn3"/>
                         <outlet property="movieImage" destination="idq-YU-mWK" id="vRA-EH-EzU"/>
                         <outlet property="playButton" destination="6kc-fQ-6jK" id="Tc7-vx-myf"/>
+                        <outlet property="topContainer" destination="azu-74-2hU" id="ZIL-NS-M8m"/>
                         <outlet property="videoContainer" destination="iIW-7Y-Nay" id="ksb-1l-gY6"/>
                     </connections>
                 </viewController>

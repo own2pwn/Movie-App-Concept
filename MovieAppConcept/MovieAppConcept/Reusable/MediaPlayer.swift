@@ -20,15 +20,23 @@ public final class EPMediaPlayer {
 
     public func play(_ fullName: String, in view: UIView) {
         let path = fullName.components(separatedBy: ".")
-        guard path.count == 2,
-            let mediaURL = Bundle.main.url(forResource: path[0], withExtension: path[1]) else { return }
+        guard let name = path.first,
+            let ext = path.last,
+            let mediaURL = Bundle.main.url(forResource: name, withExtension: ext) else { return }
 
         let player = AVPlayer(url: mediaURL)
-        let playerController = AVPlayerViewController()
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = view.bounds
+        playerLayer.videoGravity = .resizeAspectFill
 
-        playerController.player = player
-        playerController.view.frame = view.bounds
-        view.addSubview(playerController.view)
+        view.layer.addSublayer(playerLayer)
         player.play()
+
+//        let playerController = AVPlayerViewController()
+//
+//        playerController.player = player
+//        playerController.view.frame = view.bounds
+//        view.addSubview(playerController.view)
+//        player.play()
     }
 }
