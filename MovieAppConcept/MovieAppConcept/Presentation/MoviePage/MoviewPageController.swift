@@ -16,6 +16,8 @@ final class MoviewPageController: UIViewController {
     
     @IBOutlet var movieImage: UIImageView!
     
+    @IBOutlet var closeButton: EPButton!
+    
     @IBOutlet var bookmarkButton: EPButton!
     
     @IBOutlet var playButton: EPButton!
@@ -59,17 +61,22 @@ final class MoviewPageController: UIViewController {
     }
     
     private func setupButtons() {
-        bookmarkButton.normalTintColor = #colorLiteral(red: 0.926155746, green: 0.9410773516, blue: 0.9455420375, alpha: 1)
-        bookmarkButton.highlightTintColor = #colorLiteral(red: 0.7422102094, green: 0.764362216, blue: 0.7821244597, alpha: 1)
+        let btns = [bookmarkButton!, playButton!, closeButton!]
+        btns.forEach {
+            $0.normalTintColor = #colorLiteral(red: 0.926155746, green: 0.9410773516, blue: 0.9455420375, alpha: 1)
+            $0.highlightTintColor = #colorLiteral(red: 0.7422102094, green: 0.764362216, blue: 0.7821244597, alpha: 1)
+            $0.adjustsImageWhenHighlighted = false
+        }
+        
+        closeButton.isSelectable = false
+        closeButton.onPrimaryAction = stopVideo
+        
         bookmarkButton.normalImage = #imageLiteral(resourceName: "ic_heart_normal")
         bookmarkButton.selectedImage = #imageLiteral(resourceName: "ic_heart_selected")
-        bookmarkButton.adjustsImageWhenHighlighted = false
         
-        playButton.normalTintColor = #colorLiteral(red: 0.926155746, green: 0.9410773516, blue: 0.9455420375, alpha: 1)
-        playButton.highlightTintColor = #colorLiteral(red: 0.7422102094, green: 0.764362216, blue: 0.7821244597, alpha: 1)
         playButton.isSelectable = false
-        playButton.adjustsImageWhenHighlighted = false
         playButton.onPrimaryAction = playVideo
+        playButton.frame.size.width += 128
     }
     
     // MARK: - Actions
@@ -81,5 +88,24 @@ final class MoviewPageController: UIViewController {
     private func playVideo() {
         topContainer.bringSubview(toFront: videoContainer)
         EPMediaPlayer.shared.play("vid_back_to_the_future.mp4", in: videoContainer)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35, execute: animateVideoTransition)
+    }
+    
+    private func animateVideoTransition() {
+        UIView.animate(withDuration: 0.25) { [closeButton = closeButton!, topContainer = topContainer!] in
+            closeButton.alpha = 1
+            topContainer.bringSubview(toFront: closeButton)
+        }
+    }
+    
+    private func stopVideo() {
+        EPMediaPlayer.shared.stop()
+        
+        UIView.animate(withDuration: 0.25) { [closeButton = closeButton!, videoContainer = videoContainer!, topContainer = topContainer!] in
+            closeButton.alpha = 0
+            topContainer.sendSubview(toBack: closeButton)
+            topContainer.sendSubview(toBack: videoContainer)
+        }
     }
 }

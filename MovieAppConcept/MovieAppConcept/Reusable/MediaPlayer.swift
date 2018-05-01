@@ -16,6 +16,10 @@ public final class EPMediaPlayer {
 
     public static let shared = EPMediaPlayer()
 
+    private var player: AVPlayer?
+
+    private var playerLayer: AVPlayerLayer?
+
     // MARK: - Interface
 
     public func play(_ fullName: String, in view: UIView) {
@@ -24,19 +28,23 @@ public final class EPMediaPlayer {
             let ext = path.last,
             let mediaURL = Bundle.main.url(forResource: name, withExtension: ext) else { return }
 
-        let player = AVPlayer(url: mediaURL)
-        let playerLayer = AVPlayerLayer(player: player)
+        player = AVPlayer(url: mediaURL)
+        playerLayer = AVPlayerLayer(player: player)
+        guard let player = player, let playerLayer = playerLayer else { return }
+
         playerLayer.frame = view.bounds
         playerLayer.videoGravity = .resizeAspectFill
 
         view.layer.addSublayer(playerLayer)
         player.play()
+    }
 
-//        let playerController = AVPlayerViewController()
-//
-//        playerController.player = player
-//        playerController.view.frame = view.bounds
-//        view.addSubview(playerController.view)
-//        player.play()
+    public func stop() {
+        guard let player = player, let playerLayer = playerLayer else { return }
+
+        player.pause()
+        UIView.animate(withDuration: 0.25) {
+            playerLayer.opacity = 0
+        }
     }
 }

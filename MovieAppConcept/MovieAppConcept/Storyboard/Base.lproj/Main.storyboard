@@ -29,7 +29,18 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_back_to_the_future" translatesAutoresizingMaskIntoConstraints="NO" id="idq-YU-mWK">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="446.66666666666669"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMk-6j-ayS">
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xX-nU-FRb" customClass="EPButton" customModule="MovieAppConcept" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="52" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="5fu-rW-rCH"/>
+                                            <constraint firstAttribute="width" constant="24" id="LmW-tF-agK"/>
+                                            <constraint firstAttribute="height" constant="24" id="Qhc-5i-fjc"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="STT-WB-lO7"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="ic_close_24"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMk-6j-ayS" userLabel="Back Button">
                                         <rect key="frame" x="24" y="52" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="0xy-l0-t3e"/>
@@ -47,11 +58,7 @@
                                         <state key="normal" image="ic_heart_normal"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6kc-fQ-6jK" customClass="EPButton" customModule="MovieAppConcept" customModuleProvider="target">
-                                        <rect key="frame" x="163" y="199" width="48" height="48"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="2GZ-no-0S8"/>
-                                            <constraint firstAttribute="height" constant="48" id="lC0-lv-XRd"/>
-                                        </constraints>
+                                        <rect key="frame" x="23" y="108" width="328" height="266.66666666666669"/>
                                         <color key="tintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="ic_play"/>
                                     </button>
@@ -59,9 +66,12 @@
                                 <constraints>
                                     <constraint firstItem="Fmg-7W-V04" firstAttribute="top" secondItem="azu-74-2hU" secondAttribute="topMargin" id="0Jf-mk-YOq"/>
                                     <constraint firstItem="iIW-7Y-Nay" firstAttribute="leading" secondItem="azu-74-2hU" secondAttribute="leading" id="2SI-I8-6RY"/>
-                                    <constraint firstItem="6kc-fQ-6jK" firstAttribute="centerY" secondItem="azu-74-2hU" secondAttribute="centerY" id="I7c-xT-Zsr"/>
+                                    <constraint firstItem="1xX-nU-FRb" firstAttribute="leading" secondItem="azu-74-2hU" secondAttribute="leadingMargin" constant="16" id="9ac-4K-p2N"/>
+                                    <constraint firstItem="1xX-nU-FRb" firstAttribute="top" secondItem="azu-74-2hU" secondAttribute="topMargin" id="Gpx-89-QWN"/>
                                     <constraint firstAttribute="bottom" secondItem="idq-YU-mWK" secondAttribute="bottom" id="JQr-s9-wLm"/>
+                                    <constraint firstItem="6kc-fQ-6jK" firstAttribute="top" secondItem="1xX-nU-FRb" secondAttribute="bottom" constant="32" id="KHQ-t4-lIa"/>
                                     <constraint firstAttribute="trailing" secondItem="idq-YU-mWK" secondAttribute="trailing" id="LGn-eN-H8B"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="6kc-fQ-6jK" secondAttribute="bottom" constant="64" id="PCK-4e-bmg"/>
                                     <constraint firstAttribute="trailing" secondItem="iIW-7Y-Nay" secondAttribute="trailing" id="QKc-rj-l9o"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="Fmg-7W-V04" secondAttribute="trailing" constant="16" id="XIU-pM-KoL"/>
                                     <constraint firstItem="idq-YU-mWK" firstAttribute="top" secondItem="azu-74-2hU" secondAttribute="top" id="hdE-Zg-ekx"/>
@@ -71,6 +81,7 @@
                                     <constraint firstItem="6kc-fQ-6jK" firstAttribute="centerX" secondItem="azu-74-2hU" secondAttribute="centerX" id="pwA-dk-Hi5"/>
                                     <constraint firstItem="iIW-7Y-Nay" firstAttribute="top" secondItem="azu-74-2hU" secondAttribute="top" id="rM3-HA-p6h"/>
                                     <constraint firstAttribute="bottom" secondItem="iIW-7Y-Nay" secondAttribute="bottom" id="rp0-eY-OcB"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="6kc-fQ-6jK" secondAttribute="trailing" constant="16" id="yqJ-3t-fDB"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -85,6 +96,7 @@
                     </view>
                     <connections>
                         <outlet property="bookmarkButton" destination="Fmg-7W-V04" id="iio-Ua-Vn3"/>
+                        <outlet property="closeButton" destination="1xX-nU-FRb" id="3ov-Yg-YIT"/>
                         <outlet property="movieImage" destination="idq-YU-mWK" id="vRA-EH-EzU"/>
                         <outlet property="playButton" destination="6kc-fQ-6jK" id="Tc7-vx-myf"/>
                         <outlet property="topContainer" destination="azu-74-2hU" id="ZIL-NS-M8m"/>
@@ -96,8 +108,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_close_24" width="26" height="26"/>
         <image name="ic_heart_normal" width="36" height="34"/>
-        <image name="ic_play" width="40" height="40"/>
+        <image name="ic_play" width="48" height="48"/>
         <image name="icn_back" width="24" height="24"/>
         <image name="img_back_to_the_future" width="1500" height="2304"/>
     </resources>
