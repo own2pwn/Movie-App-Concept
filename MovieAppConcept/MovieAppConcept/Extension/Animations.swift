@@ -8,8 +8,6 @@
 
 import UIKit
 
-typealias VoidBlock = () -> Void
-
 extension UIView {
     static func animate(_ block: @escaping VoidBlock) {
         UIView.animate(withDuration: 0.3, animations: block)

@@ -12,11 +12,17 @@ open class EPButton: UIButton {
 
     // MARK: - Interface
 
+    // MARK: - Colors
+
     @IBInspectable
     open var normalColor: UIColor?
 
     @IBInspectable
-    open var normalTintColor: UIColor?
+    open var normalTintColor: UIColor? {
+        didSet {
+            tintColor = normalTintColor
+        }
+    }
 
     @IBInspectable
     open var normalTitleColor: UIColor?
@@ -29,6 +35,8 @@ open class EPButton: UIButton {
 
     @IBInspectable
     open var highlightTitleColor: UIColor?
+
+    // MARK: - Image
 
     @IBInspectable
     open var normalImage: UIImage? {
@@ -44,6 +52,8 @@ open class EPButton: UIButton {
         }
     }
 
+    // MARK: - Animation
+
     @IBInspectable
     open var baseAnimationDuration: TimeInterval = 0.25
 
@@ -53,8 +63,20 @@ open class EPButton: UIButton {
     @IBInspectable
     open var highlightEndedAnimationDuration: TimeInterval = 0.25
 
+    // MARK: - Properties
+
     @IBInspectable
     open var cornerRadius: CGFloat = 8
+
+    @IBInspectable
+    open var isHighlightable: Bool = true {
+        didSet {
+            adjustsImageWhenHighlighted = isHighlightable
+        }
+    }
+
+    @IBInspectable
+    open var isSelectable: Bool = true
 
     // MARK: - Methods
 
@@ -62,6 +84,10 @@ open class EPButton: UIButton {
         layer.cornerRadius = cornerRadius
         clipsToBounds = true
     }
+
+    // MARK: - Actions
+
+    var onPrimaryAction: VoidBlock?
 
     // MARK: - Overrides
 
@@ -80,6 +106,8 @@ open class EPButton: UIButton {
     // MARK: - Selected
 
     private func setSelected(_ selected: Bool) {
+        guard isSelectable else { return }
+
         let animation = selected ? onSelection : onDeselection
         UIView.animate(baseAnimationDuration, animation)
     }
@@ -97,6 +125,8 @@ open class EPButton: UIButton {
     // MARK: - Highlight
 
     private func setHighlighted(_ highlighted: Bool) {
+        guard isHighlightable else { return }
+
         let animation = highlighted ? onHighlightBegan : onHighlightEnded
         let duration = highlighted ? highlightAnimationDuration : highlightEndedAnimationDuration
 
@@ -134,5 +164,6 @@ open class EPButton: UIButton {
     @objc
     private func observeTouch(_ sender: EPButton) {
         isSelected.toggle()
+        onPrimaryAction?()
     }
 }

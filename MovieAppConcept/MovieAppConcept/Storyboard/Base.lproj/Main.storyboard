@@ -43,16 +43,34 @@
                                         <color key="tintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="ic_heart_normal"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6kc-fQ-6jK" customClass="EPButton" customModule="MovieAppConcept" customModuleProvider="target">
+                                        <rect key="frame" x="163" y="199" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="2GZ-no-0S8"/>
+                                            <constraint firstAttribute="height" constant="48" id="lC0-lv-XRd"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="ic_play"/>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iIW-7Y-Nay">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="446.66666666666669"/>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Fmg-7W-V04" firstAttribute="top" secondItem="azu-74-2hU" secondAttribute="topMargin" id="0Jf-mk-YOq"/>
+                                    <constraint firstItem="iIW-7Y-Nay" firstAttribute="leading" secondItem="azu-74-2hU" secondAttribute="leading" id="2SI-I8-6RY"/>
+                                    <constraint firstItem="6kc-fQ-6jK" firstAttribute="centerY" secondItem="azu-74-2hU" secondAttribute="centerY" id="I7c-xT-Zsr"/>
                                     <constraint firstAttribute="bottom" secondItem="idq-YU-mWK" secondAttribute="bottom" id="JQr-s9-wLm"/>
                                     <constraint firstAttribute="trailing" secondItem="idq-YU-mWK" secondAttribute="trailing" id="LGn-eN-H8B"/>
+                                    <constraint firstAttribute="trailing" secondItem="iIW-7Y-Nay" secondAttribute="trailing" id="QKc-rj-l9o"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="Fmg-7W-V04" secondAttribute="trailing" constant="16" id="XIU-pM-KoL"/>
                                     <constraint firstItem="idq-YU-mWK" firstAttribute="top" secondItem="azu-74-2hU" secondAttribute="top" id="hdE-Zg-ekx"/>
                                     <constraint firstItem="idq-YU-mWK" firstAttribute="leading" secondItem="azu-74-2hU" secondAttribute="leading" id="j4V-Rg-5Vd"/>
                                     <constraint firstItem="kMk-6j-ayS" firstAttribute="leading" secondItem="azu-74-2hU" secondAttribute="leadingMargin" constant="16" id="kcz-xg-Pxl"/>
                                     <constraint firstItem="kMk-6j-ayS" firstAttribute="top" secondItem="azu-74-2hU" secondAttribute="topMargin" id="nJt-XY-ltu"/>
+                                    <constraint firstItem="6kc-fQ-6jK" firstAttribute="centerX" secondItem="azu-74-2hU" secondAttribute="centerX" id="pwA-dk-Hi5"/>
+                                    <constraint firstItem="iIW-7Y-Nay" firstAttribute="top" secondItem="azu-74-2hU" secondAttribute="top" id="rM3-HA-p6h"/>
+                                    <constraint firstAttribute="bottom" secondItem="iIW-7Y-Nay" secondAttribute="bottom" id="rp0-eY-OcB"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -68,6 +86,8 @@
                     <connections>
                         <outlet property="bookmarkButton" destination="Fmg-7W-V04" id="iio-Ua-Vn3"/>
                         <outlet property="movieImage" destination="idq-YU-mWK" id="vRA-EH-EzU"/>
+                        <outlet property="playButton" destination="6kc-fQ-6jK" id="Tc7-vx-myf"/>
+                        <outlet property="videoContainer" destination="iIW-7Y-Nay" id="ksb-1l-gY6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -76,6 +96,7 @@
     </scenes>
     <resources>
         <image name="ic_heart_normal" width="36" height="34"/>
+        <image name="ic_play" width="40" height="40"/>
         <image name="icn_back" width="24" height="24"/>
         <image name="img_back_to_the_future" width="1500" height="2304"/>
     </resources>
