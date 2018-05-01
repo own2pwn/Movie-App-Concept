@@ -58,7 +58,7 @@
                                         <state key="normal" image="ic_heart_normal"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6kc-fQ-6jK" customClass="EPButton" customModule="MovieAppConcept" customModuleProvider="target">
-                                        <rect key="frame" x="23" y="108" width="328" height="266.66666666666669"/>
+                                        <rect key="frame" x="39" y="108" width="296" height="266.66666666666669"/>
                                         <color key="tintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="ic_play"/>
                                     </button>
@@ -81,7 +81,7 @@
                                     <constraint firstItem="6kc-fQ-6jK" firstAttribute="centerX" secondItem="azu-74-2hU" secondAttribute="centerX" id="pwA-dk-Hi5"/>
                                     <constraint firstItem="iIW-7Y-Nay" firstAttribute="top" secondItem="azu-74-2hU" secondAttribute="top" id="rM3-HA-p6h"/>
                                     <constraint firstAttribute="bottom" secondItem="iIW-7Y-Nay" secondAttribute="bottom" id="rp0-eY-OcB"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="6kc-fQ-6jK" secondAttribute="trailing" constant="16" id="yqJ-3t-fDB"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="6kc-fQ-6jK" secondAttribute="trailing" constant="32" id="yqJ-3t-fDB"/>
                                 </constraints>
                             </view>
                         </subviews>
