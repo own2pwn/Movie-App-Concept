@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B9364A6F20987E2800029E89 /* Bool+Toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9364A6E20987E2800029E89 /* Bool+Toggle.swift */; };
+		B9364A7120987ECB00029E89 /* EPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9364A7020987ECB00029E89 /* EPButton.swift */; };
+		B9364A7320987EED00029E89 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9364A7220987EED00029E89 /* Animations.swift */; };
 		B9C4061320986B2B00B5AABF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4061220986B2B00B5AABF /* AppDelegate.swift */; };
 		B9C4061520986B2B00B5AABF /* MoviewPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4061420986B2B00B5AABF /* MoviewPageController.swift */; };
 		B9C4061820986B2B00B5AABF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C4061620986B2B00B5AABF /* Main.storyboard */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B9364A6E20987E2800029E89 /* Bool+Toggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bool+Toggle.swift"; path = "../../../../../../../Mobile/iOS/Swift/EZTask-3.0/EZTask/EZTask/Extension/Foundation/Bool+Toggle.swift"; sourceTree = "<group>"; };
+		B9364A7020987ECB00029E89 /* EPButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPButton.swift; sourceTree = "<group>"; };
+		B9364A7220987EED00029E89 /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		B9C4060F20986B2B00B5AABF /* MovieAppConcept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieAppConcept.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C4061220986B2B00B5AABF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9C4061420986B2B00B5AABF /* MoviewPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviewPageController.swift; sourceTree = "<group>"; };
@@ -37,6 +43,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B9364A6C20987E0300029E89 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B9364A7220987EED00029E89 /* Animations.swift */,
+				B9364A7020987ECB00029E89 /* EPButton.swift */,
+				B9364A6E20987E2800029E89 /* Bool+Toggle.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		B9C4060620986B2B00B5AABF = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +72,7 @@
 		B9C4061120986B2B00B5AABF /* MovieAppConcept */ = {
 			isa = PBXGroup;
 			children = (
+				B9364A6C20987E0300029E89 /* Extension */,
 				B9C4062720986C1E00B5AABF /* Common */,
 				B9C4062620986B5C00B5AABF /* Art */,
 				B9C4062520986B4900B5AABF /* Storyboard */,
@@ -172,6 +189,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9C4061520986B2B00B5AABF /* MoviewPageController.swift in Sources */,
+				B9364A6F20987E2800029E89 /* Bool+Toggle.swift in Sources */,
+				B9364A7320987EED00029E89 /* Animations.swift in Sources */,
+				B9364A7120987ECB00029E89 /* EPButton.swift in Sources */,
 				B9C4061320986B2B00B5AABF /* AppDelegate.swift in Sources */,
 				B9C4062920986C2700B5AABF /* Constants.swift in Sources */,
 			);

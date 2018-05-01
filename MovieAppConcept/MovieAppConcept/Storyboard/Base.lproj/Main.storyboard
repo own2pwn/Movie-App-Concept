@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,12 +26,33 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_back_to_the_future" translatesAutoresizingMaskIntoConstraints="NO" id="idq-YU-mWK">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="446.66666666666669"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMk-6j-ayS">
+                                        <rect key="frame" x="24" y="52" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="0xy-l0-t3e"/>
+                                            <constraint firstAttribute="height" constant="24" id="AHH-hi-0Pb"/>
+                                        </constraints>
+                                        <state key="normal" image="icn_back"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fmg-7W-V04" customClass="EPButton" customModule="MovieAppConcept" customModuleProvider="target">
+                                        <rect key="frame" x="327" y="52" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="ZOp-C4-c86"/>
+                                            <constraint firstAttribute="width" constant="24" id="e5Z-zz-xWo"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="ic_heart_normal"/>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="Fmg-7W-V04" firstAttribute="top" secondItem="azu-74-2hU" secondAttribute="topMargin" id="0Jf-mk-YOq"/>
                                     <constraint firstAttribute="bottom" secondItem="idq-YU-mWK" secondAttribute="bottom" id="JQr-s9-wLm"/>
                                     <constraint firstAttribute="trailing" secondItem="idq-YU-mWK" secondAttribute="trailing" id="LGn-eN-H8B"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Fmg-7W-V04" secondAttribute="trailing" constant="16" id="XIU-pM-KoL"/>
                                     <constraint firstItem="idq-YU-mWK" firstAttribute="top" secondItem="azu-74-2hU" secondAttribute="top" id="hdE-Zg-ekx"/>
                                     <constraint firstItem="idq-YU-mWK" firstAttribute="leading" secondItem="azu-74-2hU" secondAttribute="leading" id="j4V-Rg-5Vd"/>
+                                    <constraint firstItem="kMk-6j-ayS" firstAttribute="leading" secondItem="azu-74-2hU" secondAttribute="leadingMargin" constant="16" id="kcz-xg-Pxl"/>
+                                    <constraint firstItem="kMk-6j-ayS" firstAttribute="top" secondItem="azu-74-2hU" secondAttribute="topMargin" id="nJt-XY-ltu"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -44,6 +66,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bookmarkButton" destination="Fmg-7W-V04" id="iio-Ua-Vn3"/>
                         <outlet property="movieImage" destination="idq-YU-mWK" id="vRA-EH-EzU"/>
                     </connections>
                 </viewController>
@@ -52,6 +75,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_heart_normal" width="36" height="34"/>
+        <image name="icn_back" width="24" height="24"/>
         <image name="img_back_to_the_future" width="1500" height="2304"/>
     </resources>
 </document>
