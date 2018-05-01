@@ -73,16 +73,11 @@ open class EPButton: UIButton {
 
     open override var isSelected: Bool {
         didSet {
-            setHighlightedImage(isSelected)
+            setSelected(isSelected)
         }
     }
 
     // MARK: - Selected
-
-    private func setHighlightedImage(_ selected: Bool) {
-        let image = selected ? selectedImage : normalImage
-        setImage(image, for: .highlighted)
-    }
 
     private func setSelected(_ selected: Bool) {
         let animation = selected ? onSelection : onDeselection
@@ -91,10 +86,12 @@ open class EPButton: UIButton {
 
     private func onSelection() {
         imageView?.image = selectedImage
+        setImage(selectedImage, for: .normal)
     }
 
     private func onDeselection() {
         imageView?.image = normalImage
+        setImage(normalImage, for: .normal)
     }
 
     // MARK: - Highlight
