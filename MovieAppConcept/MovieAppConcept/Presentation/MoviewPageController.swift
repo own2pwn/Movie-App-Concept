@@ -12,6 +12,8 @@ final class MoviewPageController: UIViewController {
 
     // MARK: - Outlets
     
+    @IBOutlet var movieImage: UIImageView!
+    
     // MARK: - Overrides
     
     override func viewDidLoad() {
@@ -29,11 +31,23 @@ final class MoviewPageController: UIViewController {
     }
     
     private func setup() {
-        let setup = [setColors]
+        let setup = [setColors, setupMovieImage]
         setup.forEach { $0() }
     }
     
     private func setColors() {
         view.backgroundColor = CUI.MoviePage.backgroundColor
+    }
+    
+    private func setupMovieImage() {
+        movieImage.layer.cornerRadius = 8
+        
+        // add fade layer
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = movieImage.frame
+        // gradient.frame.size.height = 64
+        gradientLayer.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        gradientLayer.opacity = 0.35
+        movieImage.layer.addSublayer(gradientLayer)
     }
 }
