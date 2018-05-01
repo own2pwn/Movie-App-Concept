@@ -103,11 +103,11 @@
 		B9C4061120986B2B00B5AABF /* MovieAppConcept */ = {
 			isa = PBXGroup;
 			children = (
-				B9A380E62098904100F8CBB1 /* Reusable */,
 				B9C4062620986B5C00B5AABF /* Art */,
 				B9C4062720986C1E00B5AABF /* Common */,
 				B9364A6C20987E0300029E89 /* Extension */,
 				B9C4062420986B4300B5AABF /* Presentation */,
+				B9A380E62098904100F8CBB1 /* Reusable */,
 				B9C4062520986B4900B5AABF /* Storyboard */,
 				B9C4061220986B2B00B5AABF /* AppDelegate.swift */,
 				B9C4061E20986B2B00B5AABF /* Info.plist */,
