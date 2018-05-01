@@ -20,6 +20,8 @@ final class MoviewPageController: UIViewController {
         setupScreen()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
     // MARK: - Methods
     
     private func setupScreen() {
@@ -32,5 +34,6 @@ final class MoviewPageController: UIViewController {
     }
     
     private func setColors() {
+        view.backgroundColor = CUI.MoviePage.backgroundColor
     }
 }
