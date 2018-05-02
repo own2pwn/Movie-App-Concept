@@ -43,11 +43,11 @@ final class BookingController: UIViewController {
     }
     
     private func setupHeading() {
-        heading.addHorizontalSeparator(at: .bot, margin: 16, color: #colorLiteral(red: 0.7617311433, green: 0.7719357531, blue: 0.78, alpha: 0.3))
+        heading.addHorizontalSeparator(at: .bot, margin: 16, color: #colorLiteral(red: 0.7617311433, green: 0.7720834954, blue: 0.78, alpha: 0.15))
     }
     
     private func setupLegend() {
-        legendContainer.addHorizontalSeparator(at: .bot, margin: 16, color: #colorLiteral(red: 0.7617311433, green: 0.7719357531, blue: 0.78, alpha: 0.3))
+        legendContainer.addHorizontalSeparator(at: .bot, margin: 16, color: #colorLiteral(red: 0.7617311433, green: 0.7719357531, blue: 0.78, alpha: 0.15))
         
         for seat in legendSeats {
             let roundMask = CAShapeLayer()
