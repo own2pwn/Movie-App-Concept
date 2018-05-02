@@ -39,7 +39,7 @@ final class BookingController: UIViewController {
     }
     
     private func setup() {
-        let setup = [setColors, setupHeading, setupLegend, renderScreen]
+        let setup = [setColors, setupHeading, setupLegend, renderScreen, renderSeats]
         setup.forEach { $0() }
     }
     
@@ -90,6 +90,102 @@ final class BookingController: UIViewController {
         screenContainer.layer.addSublayer(lineLayer)
         
         // TODO: add shadow
+    }
+    
+    private func calculateSeatSize() -> CGSize {
+        let seatSpacing: CGFloat = 8
+        let setSpacing: CGFloat = 4
+        let margin: CGFloat = 16
+        
+        let maxInLine: CGFloat = 12
+        var availableWidth = seatPickerContainer.frame.width - 2 * margin
+        let freeContainer = UIView(frame: CGRect(origin: CGPoint(x: margin, y: 16), size: CGSize(width: availableWidth, height: 128)))
+        availableWidth -= 2 * setSpacing
+        availableWidth -= seatSpacing * (maxInLine - 1)
+        
+        let itemWidth = availableWidth / maxInLine
+        let seatSize = CGSize(width: itemWidth, height: itemWidth * 0.7)
+        
+        freeContainer.backgroundColor = #colorLiteral(red: 0.6678946614, green: 0.9207183719, blue: 0.4710406065, alpha: 1)
+        seatPickerContainer.addSubview(freeContainer)
+        
+        let seatContainer = UIView(frame: CGRect(origin: .zero, size: CGSize(width: availableWidth, height: 128)))
+        seatContainer.backgroundColor = #colorLiteral(red: 0.2389388382, green: 0.5892125368, blue: 0.8818323016, alpha: 1)
+        freeContainer.addSubview(seatContainer)
+        
+        return seatSize
+    }
+    
+    private func makeSeat(size: CGSize, in place: CGPoint, _ color: UIColor) -> CAShapeLayer {
+        let seatFrame = CGRect(origin: place, size: size)
+        let seatPath = UIBezierPath(roundedRect: CGRect(origin: .zero, size: size), byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 4, height: 4))
+        
+        let seatLayer = CAShapeLayer()
+        seatLayer.path = seatPath.cgPath
+        seatLayer.frame = seatFrame
+        seatLayer.fillColor = color.cgColor
+        seatLayer.contentsScale = UIScreen.main.scale
+        
+        let textLayer = CATextLayer(layer: seatLayer)
+        textLayer.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        textLayer.fontSize = 12
+        //textLayer.string = "\(number)"
+        textLayer.foregroundColor = #colorLiteral(red: 0.926155746, green: 0.9410773516, blue: 0.9455420375, alpha: 1).cgColor
+        
+        textLayer.frame.size = textLayer.preferredFrameSize()
+        textLayer.contentsScale = UIScreen.main.scale
+        textLayer.frame.origin.x = (seatLayer.frame.width - textLayer.frame.size.width) / 2
+        textLayer.frame.origin.y = (seatLayer.frame.height - textLayer.frame.size.height) / 2
+        
+        seatLayer.addSublayer(textLayer)
+        
+        return seatLayer
+    }
+    
+    private func getSeats() -> [[SeatType]] {
+        let setSpacing: CGFloat = 4
+        let available = SeatType.available
+        let space = SeatType.spacing(setSpacing)
+        let none = SeatType.none
+        
+        var rows = [SeatType]()
+        let firstRow: [SeatType] = [none, none, available,
+                                    space, none,
+                                    available, available, available, available,
+                                    none, space,
+                                    available]
+        
+        rows += firstRow
+        
+        return [rows]
+    }
+    
+    private func renderSeatsLine(_ places: [SeatType], size: CGSize, starting at: CGPoint) {
+        let seatSpacing: CGFloat = 8
+        var origin = at
+        
+        for place in places {
+            if place.shouldRender {
+                let seat = makeSeat(size: size, in: origin, .blue)
+                seatPickerContainer.layer.addSublayer(seat)
+                
+                origin.x += place.spacing
+            }
+            
+            origin.x += seatSpacing + size.width
+        }
+    }
+    
+    private func renderSeats() {
+        let size = calculateSeatSize()
+        let seatSpacing: CGFloat = 8
+        var origin = CGPoint(x: 16, y: 16)
+        
+        let seats = getSeats()
+        for row in seats {
+            renderSeatsLine(row, size: size, starting: origin)
+            origin.y += seatSpacing + size.height
+        }
     }
 }
 
