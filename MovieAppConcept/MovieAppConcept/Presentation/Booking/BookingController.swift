@@ -14,7 +14,9 @@ final class BookingController: UIViewController {
     
     @IBOutlet var heading: UIView!
     
-    @IBOutlet var dummySeat: UIView!
+    @IBOutlet var legendContainer: UIView!
+    
+    @IBOutlet var legendSeats: [UIView]!
     
     // MARK: - Overrides
     
@@ -33,7 +35,7 @@ final class BookingController: UIViewController {
     }
     
     private func setup() {
-        let setup = [setColors, setupHeading]
+        let setup = [setColors, setupHeading, setupLegend]
         setup.forEach { $0() }
     }
     
@@ -41,21 +43,19 @@ final class BookingController: UIViewController {
     }
     
     private func setupHeading() {
-        heading.addHorizontalSeparator(at: .bot, margin: 16, color: #colorLiteral(red: 0.7617311433, green: 0.7719357531, blue: 0.78, alpha: 0.9))
+        heading.addHorizontalSeparator(at: .bot, margin: 16, color: #colorLiteral(red: 0.7617311433, green: 0.7719357531, blue: 0.78, alpha: 0.3))
+    }
+    
+    private func setupLegend() {
+        legendContainer.addHorizontalSeparator(at: .bot, margin: 16, color: #colorLiteral(red: 0.7617311433, green: 0.7719357531, blue: 0.78, alpha: 0.3))
         
-        let roundMask = CAShapeLayer()
-        roundMask.path = UIBezierPath(roundedRect: dummySeat.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 4, height: 4)).cgPath
-        roundMask.fillColor = dummySeat.backgroundColor?.cgColor
-        dummySeat.layer.mask = roundMask
-        
-//        let roundedSeatPath = UIBezierPath(roundedRect: dummySeat.frame, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 4, height: 4))
-//        let roundedMask = CAShapeLayer()
-//        roundedMask.path = roundedSeatPath.cgPath
-//        roundedMask.backgroundColor = UIColor.red.cgColor
-//        roundedMask.fillColor = UIColor.red.cgColor
-//        roundedMask.position = dummySeat.center
-//
-//        dummySeat.layer.addSublayer(roundedMask)
+        for seat in legendSeats {
+            let roundMask = CAShapeLayer()
+            roundMask.path = UIBezierPath(roundedRect: seat.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 4, height: 4)).cgPath
+            roundMask.fillColor = seat.backgroundColor?.cgColor
+            
+            seat.layer.mask = roundMask
+        }
     }
 }
 
