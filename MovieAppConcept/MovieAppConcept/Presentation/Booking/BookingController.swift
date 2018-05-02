@@ -18,6 +18,8 @@ final class BookingController: UIViewController {
     
     @IBOutlet var legendSeats: [UIView]!
     
+    @IBOutlet var screenContainer: UIView!
+    
     // MARK: - Overrides
     
     override func viewDidLoad() {
@@ -35,7 +37,7 @@ final class BookingController: UIViewController {
     }
     
     private func setup() {
-        let setup = [setColors, setupHeading, setupLegend]
+        let setup = [setColors, setupHeading, setupLegend, renderScreen]
         setup.forEach { $0() }
     }
     
@@ -56,6 +58,35 @@ final class BookingController: UIViewController {
             
             seat.layer.mask = roundMask
         }
+    }
+    
+    private func renderScreen() {
+        let path = UIBezierPath()
+        let lineLayer = CAShapeLayer()
+        
+        let baseY: CGFloat = 64
+        let controlY: CGFloat = baseY - 44
+        
+        let margin: CGFloat = 16
+        let rightInset: CGFloat = view.frame.width - margin
+        
+        let start = CGPoint(x: margin, y: baseY)
+        let end = CGPoint(x: rightInset, y: baseY)
+        let control = CGPoint(x: (end.x - start.x) / 2 + start.x, y: controlY)
+        
+        path.move(to: start)
+        path.addQuadCurve(to: end, controlPoint: control)
+        
+        lineLayer.fillColor = UIColor.clear.cgColor
+        lineLayer.strokeColor = #colorLiteral(red: 0.926155746, green: 0.9410773516, blue: 0.9455420375, alpha: 1).cgColor
+        lineLayer.lineWidth = 3
+        lineLayer.path = path.cgPath
+        lineLayer.contentsScale = UIScreen.main.scale
+        lineLayer.lineCap = kCALineCapRound
+        
+        // TODO: add shadow to lineLayer
+        
+        screenContainer.layer.addSublayer(lineLayer)
     }
 }
 
