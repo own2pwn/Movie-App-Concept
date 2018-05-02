@@ -232,15 +232,15 @@ final class BookingController: UIViewController {
     }
     
     private func renderSeats() {
-        let size = calculateSeatSize()
-        let seatSpacing: CGFloat = 8
-        var origin = CGPoint(x: 16, y: 16)
+        let itemSize = calculateSeatSize()
+        let itemSpacing: CGFloat = 8
+        let startPoint = CGPoint(x: 16, y: 16)
         
-        let seats = SeatProvider.shared.get()
-        for row in seats {
-            renderSeatsLine(row, size: size, starting: origin)
-            origin.y += seatSpacing + size.height
-        }
+        let items = SeatProvider.shared.get()
+        let render = SeatRenderEngine.shared
+        let config = SeatRenderEngineConfig(startPoint: startPoint, itemSize: itemSize, itemSpacing: itemSpacing)
+        
+        render.render(items, in: seatPickerContainer, config: config)
     }
 }
 
