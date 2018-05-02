@@ -253,8 +253,18 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTg-cR-teR">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЭКРАН" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gg2-LB-pzw">
+                                                <rect key="frame" x="160.66666666666666" y="64" width="55.333333333333343" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                                <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.3707177639" green="0.25714370609999998" blue="0.75468015669999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="Gg2-LB-pzw" firstAttribute="top" secondItem="TTg-cR-teR" secondAttribute="top" constant="64" id="Cx7-EQ-zZ7"/>
+                                            <constraint firstItem="Gg2-LB-pzw" firstAttribute="centerX" secondItem="TTg-cR-teR" secondAttribute="centerX" id="k73-wK-VDU"/>
                                             <constraint firstAttribute="height" constant="128" id="xvw-aU-aBA"/>
                                         </constraints>
                                     </view>

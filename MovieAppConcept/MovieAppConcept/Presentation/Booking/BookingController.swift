@@ -65,7 +65,7 @@ final class BookingController: UIViewController {
         let lineLayer = CAShapeLayer()
         
         let baseY: CGFloat = 64
-        let controlY: CGFloat = baseY - 44
+        let controlY: CGFloat = baseY - 46 // 44
         
         let margin: CGFloat = 16
         let rightInset: CGFloat = view.frame.width - margin
