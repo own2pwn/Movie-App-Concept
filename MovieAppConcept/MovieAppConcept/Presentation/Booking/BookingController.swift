@@ -43,19 +43,10 @@ final class BookingController: UIViewController {
     private func setupHeading() {
         heading.addHorizontalSeparator(at: .bot, margin: 16, color: #colorLiteral(red: 0.7617311433, green: 0.7719357531, blue: 0.78, alpha: 0.9))
         
-        let shadowLayer = CAShapeLayer()
-        
-        shadowLayer.path = UIBezierPath(roundedRect: dummySeat.bounds, cornerRadius: 4).cgPath
-        shadowLayer.fillColor = UIColor.clear.cgColor
-        
-        shadowLayer.shadowColor = UIColor.black.cgColor
-        shadowLayer.shadowPath = shadowLayer.path
-        shadowLayer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        shadowLayer.shadowOpacity = 0.2
-        shadowLayer.shadowRadius = 3
-        
-        //dummySeat.layer.insertSublayer(shadowLayer, at: 0)
-        dummySeat.layer.addSublayer(shadowLayer)
+        let roundMask = CAShapeLayer()
+        roundMask.path = UIBezierPath(roundedRect: dummySeat.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 4, height: 4)).cgPath
+        roundMask.fillColor = dummySeat.backgroundColor?.cgColor
+        dummySeat.layer.mask = roundMask
         
 //        let roundedSeatPath = UIBezierPath(roundedRect: dummySeat.frame, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 4, height: 4))
 //        let roundedMask = CAShapeLayer()
