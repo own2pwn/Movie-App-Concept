@@ -35,9 +35,9 @@ extension SeatType {
     var renderColor: UIColor {
         switch self {
         case .available:
-            return #colorLiteral(red: 0.2197602093, green: 0.3824803233, blue: 0.4539470673, alpha: 1)
+            return #colorLiteral(red: 0.9266347289, green: 0.9417237639, blue: 0.9455887675, alpha: 1)
         case .booked:
-            return #colorLiteral(red: 0.7422102094, green: 0.764362216, blue: 0.7821244597, alpha: 1)
+            return #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         default:
             return .clear
         }

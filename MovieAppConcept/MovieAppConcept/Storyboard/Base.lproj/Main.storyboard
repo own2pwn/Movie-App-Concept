@@ -168,7 +168,7 @@
                                                 <subviews>
                                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppo-bu-hw5">
                                                         <rect key="frame" x="48" y="0.0" width="24" height="17"/>
-                                                        <color key="backgroundColor" red="0.68888300660000001" green="0.71366006140000005" blue="0.73448425530000006" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.74509803921568629" green="0.76470588235294112" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="24" id="Bi5-Eg-aAz"/>
                                                             <constraint firstAttribute="height" secondItem="ppo-bu-hw5" secondAttribute="width" multiplier="0.7" id="dlf-NO-EzT"/>
@@ -214,7 +214,7 @@
                                                 <subviews>
                                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8c-a1-OSP">
                                                         <rect key="frame" x="47.999999999999972" y="0.0" width="24" height="17"/>
-                                                        <color key="backgroundColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" red="0.92941176470588238" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="24" id="AvE-ye-F0e"/>
                                                             <constraint firstAttribute="height" secondItem="F8c-a1-OSP" secondAttribute="width" multiplier="0.7" id="t1k-bk-l8E"/>
@@ -255,21 +255,20 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЭКРАН" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gg2-LB-pzw">
-                                                <rect key="frame" x="160" y="64" width="55.333333333333343" height="20.333333333333329"/>
+                                                <rect key="frame" x="160" y="56.000000000000007" width="55.333333333333343" height="20.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="Gg2-LB-pzw" firstAttribute="top" secondItem="TTg-cR-teR" secondAttribute="top" constant="64" id="Cx7-EQ-zZ7"/>
+                                            <constraint firstItem="Gg2-LB-pzw" firstAttribute="top" secondItem="TTg-cR-teR" secondAttribute="top" constant="56" id="Cx7-EQ-zZ7"/>
                                             <constraint firstItem="Gg2-LB-pzw" firstAttribute="centerX" secondItem="TTg-cR-teR" secondAttribute="centerX" id="k73-wK-VDU"/>
                                             <constraint firstAttribute="height" constant="96" id="xvw-aU-aBA"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="72d-2i-Xeu">
                                         <rect key="frame" x="0.0" y="96" width="375" height="354"/>
-                                        <color key="backgroundColor" red="0.3707177639" green="0.25714370609999998" blue="0.75468015669999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
                                 <constraints>

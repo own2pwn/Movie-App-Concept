@@ -107,11 +107,11 @@ final class BookingController: UIViewController {
         let seatSize = CGSize(width: itemWidth, height: itemWidth * 0.7)
         
         freeContainer.backgroundColor = #colorLiteral(red: 0.6678946614, green: 0.9207183719, blue: 0.4710406065, alpha: 1)
-        seatPickerContainer.addSubview(freeContainer)
+        // seatPickerContainer.addSubview(freeContainer)
         
         let seatContainer = UIView(frame: CGRect(origin: .zero, size: CGSize(width: availableWidth, height: 128)))
         seatContainer.backgroundColor = #colorLiteral(red: 0.2389388382, green: 0.5892125368, blue: 0.8818323016, alpha: 1)
-        freeContainer.addSubview(seatContainer)
+        // freeContainer.addSubview(seatContainer)
         
         return seatSize
     }
@@ -144,20 +144,28 @@ final class BookingController: UIViewController {
     
     private func getSeats() -> [[SeatType]] {
         let setSpacing: CGFloat = 4
-        let available = SeatType.available
-        let space = SeatType.spacing(setSpacing)
-        let none = SeatType.none
         
-        var rows = [SeatType]()
+        let booked = SeatType.booked
+        let available = SeatType.available
+        
+        let none = SeatType.none
+        let space = SeatType.spacing(setSpacing)
+        
         let firstRow: [SeatType] = [none, none, available,
                                     space, none,
                                     available, available, available, available,
                                     none, space,
                                     available]
         
-        rows += firstRow
+        let secondRow: [SeatType] = [available, available, available,
+                                     space, none,
+                                     available, booked, available, available,
+                                     none, space,
+                                     available, available, available]
         
-        return [rows]
+        let rows = [firstRow, secondRow]
+        
+        return rows
     }
     
     private func renderSeatsLine(_ places: [SeatType], size: CGSize, starting at: CGPoint) {
@@ -165,12 +173,13 @@ final class BookingController: UIViewController {
         var origin = at
         
         for place in places {
-            if place.shouldRender {
-                let seat = makeSeat(size: size, in: origin, .blue)
-                seatPickerContainer.layer.addSublayer(seat)
-                
-                origin.x += place.spacing
+            guard place.shouldRender else {
+                let spacing = place.spacing
+                origin.x += spacing > 0 ? spacing : seatSpacing + size.width
+                continue
             }
+            let seat = makeSeat(size: size, in: origin, place.renderColor)
+            seatPickerContainer.layer.addSublayer(seat)
             
             origin.x += seatSpacing + size.width
         }
