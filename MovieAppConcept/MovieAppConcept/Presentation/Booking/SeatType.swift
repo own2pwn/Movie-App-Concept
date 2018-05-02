@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum SeatType {
+public enum SeatType {
     case none, available, booked
     case spacing(CGFloat)
 }
@@ -37,7 +37,7 @@ extension SeatType {
         case .available:
             return #colorLiteral(red: 0.9266347289, green: 0.9417237639, blue: 0.9455887675, alpha: 1)
         case .booked:
-            return #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            return #colorLiteral(red: 0.2550071478, green: 0.275069654, blue: 0.3003672957, alpha: 1)
         default:
             return .clear
         }

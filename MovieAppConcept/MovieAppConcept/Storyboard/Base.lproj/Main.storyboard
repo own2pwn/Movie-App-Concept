@@ -168,7 +168,7 @@
                                                 <subviews>
                                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppo-bu-hw5">
                                                         <rect key="frame" x="48" y="0.0" width="24" height="17"/>
-                                                        <color key="backgroundColor" red="0.74509803921568629" green="0.76470588235294112" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" red="0.25882352941176467" green="0.27450980392156865" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="24" id="Bi5-Eg-aAz"/>
                                                             <constraint firstAttribute="height" secondItem="ppo-bu-hw5" secondAttribute="width" multiplier="0.7" id="dlf-NO-EzT"/>
@@ -242,11 +242,6 @@
                                     <constraint firstItem="Y3s-fC-AzP" firstAttribute="leading" secondItem="ZCj-EP-A8g" secondAttribute="leading" id="Nk0-BZ-vaS"/>
                                     <constraint firstAttribute="bottom" secondItem="Y3s-fC-AzP" secondAttribute="bottom" constant="16" id="gnJ-dt-7aZ"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="Y3s-fC-AzP"/>
-                                    </mask>
-                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhj-iw-H03" userLabel="Interaction container">
                                 <rect key="frame" x="0.0" y="200" width="375" height="450"/>
@@ -255,14 +250,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЭКРАН" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gg2-LB-pzw">
-                                                <rect key="frame" x="160" y="56.000000000000007" width="55.333333333333343" height="20.333333333333336"/>
+                                                <rect key="frame" x="160" y="60.000000000000007" width="55.333333333333343" height="20.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="Gg2-LB-pzw" firstAttribute="top" secondItem="TTg-cR-teR" secondAttribute="top" constant="56" id="Cx7-EQ-zZ7"/>
+                                            <constraint firstItem="Gg2-LB-pzw" firstAttribute="top" secondItem="TTg-cR-teR" secondAttribute="top" constant="60" id="Cx7-EQ-zZ7"/>
                                             <constraint firstItem="Gg2-LB-pzw" firstAttribute="centerX" secondItem="TTg-cR-teR" secondAttribute="centerX" id="k73-wK-VDU"/>
                                             <constraint firstAttribute="height" constant="96" id="xvw-aU-aBA"/>
                                         </constraints>

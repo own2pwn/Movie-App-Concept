@@ -21,6 +21,7 @@
 		B9C4061A20986B2B00B5AABF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9C4061920986B2B00B5AABF /* Assets.xcassets */; };
 		B9C4061D20986B2B00B5AABF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C4061B20986B2B00B5AABF /* LaunchScreen.storyboard */; };
 		B9C4062920986C2700B5AABF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4062820986C2700B5AABF /* Constants.swift */; };
+		B9EAAF83209A7C4600374520 /* SeatProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EAAF82209A7C4600374520 /* SeatProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		B9C4061C20986B2B00B5AABF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9C4061E20986B2B00B5AABF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9C4062820986C2700B5AABF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B9EAAF82209A7C4600374520 /* SeatProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		B9C4061120986B2B00B5AABF /* MovieAppConcept */ = {
 			isa = PBXGroup;
 			children = (
+				B9EAAF81209A7C3B00374520 /* Service */,
 				B9C4062620986B5C00B5AABF /* Art */,
 				B9C4062720986C1E00B5AABF /* Common */,
 				B9364A6C20987E0300029E89 /* Extension */,
@@ -161,6 +164,14 @@
 				B9C4062820986C2700B5AABF /* Constants.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		B9EAAF81209A7C3B00374520 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B9EAAF82209A7C4600374520 /* SeatProvider.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9EAAF83209A7C4600374520 /* SeatProvider.swift in Sources */,
 				B9C4061520986B2B00B5AABF /* MoviewPageController.swift in Sources */,
 				B9124F912099BD07005EEA70 /* BookingController.swift in Sources */,
 				B99D158E209A68F800E2BF03 /* SeatType.swift in Sources */,
