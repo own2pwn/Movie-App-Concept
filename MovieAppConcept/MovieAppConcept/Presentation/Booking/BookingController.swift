@@ -20,6 +20,8 @@ final class BookingController: UIViewController {
     
     @IBOutlet var screenContainer: UIView!
     
+    @IBOutlet var seatPickerContainer: UIView!
+    
     // MARK: - Overrides
     
     override func viewDidLoad() {
@@ -75,6 +77,7 @@ final class BookingController: UIViewController {
         let control = CGPoint(x: (end.x - start.x) / 2 + start.x, y: controlY)
         
         path.move(to: start)
+        // path.addArc(withCenter: CGPoint(x: control.x, y: baseY), radius: (end.x - start.x) / 2, startAngle: -.pi, endAngle: -.pi / 2, clockwise: true)
         path.addQuadCurve(to: end, controlPoint: control)
         
         lineLayer.fillColor = UIColor.clear.cgColor
@@ -84,9 +87,9 @@ final class BookingController: UIViewController {
         lineLayer.contentsScale = UIScreen.main.scale
         lineLayer.lineCap = kCALineCapRound
         
-        // TODO: add shadow to lineLayer
-        
         screenContainer.layer.addSublayer(lineLayer)
+        
+        // TODO: add shadow
     }
 }
 

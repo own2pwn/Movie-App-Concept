@@ -157,7 +157,7 @@
                                     <constraint firstItem="A8k-YB-Adf" firstAttribute="leading" secondItem="bcZ-yU-8MQ" secondAttribute="leading" constant="16" id="gnQ-eA-nOd"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCj-EP-A8g">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCj-EP-A8g">
                                 <rect key="frame" x="0.0" y="120" width="375" height="80"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Y3s-fC-AzP">
@@ -248,31 +248,38 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhj-iw-H03">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhj-iw-H03" userLabel="Interaction container">
                                 <rect key="frame" x="0.0" y="200" width="375" height="450"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTg-cR-teR">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTg-cR-teR">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЭКРАН" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gg2-LB-pzw">
-                                                <rect key="frame" x="160.66666666666666" y="64" width="55.333333333333343" height="20.333333333333329"/>
+                                                <rect key="frame" x="160" y="64" width="55.333333333333343" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.3707177639" green="0.25714370609999998" blue="0.75468015669999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="Gg2-LB-pzw" firstAttribute="top" secondItem="TTg-cR-teR" secondAttribute="top" constant="64" id="Cx7-EQ-zZ7"/>
                                             <constraint firstItem="Gg2-LB-pzw" firstAttribute="centerX" secondItem="TTg-cR-teR" secondAttribute="centerX" id="k73-wK-VDU"/>
-                                            <constraint firstAttribute="height" constant="128" id="xvw-aU-aBA"/>
+                                            <constraint firstAttribute="height" constant="96" id="xvw-aU-aBA"/>
                                         </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="72d-2i-Xeu">
+                                        <rect key="frame" x="0.0" y="96" width="375" height="354"/>
+                                        <color key="backgroundColor" red="0.3707177639" green="0.25714370609999998" blue="0.75468015669999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="72d-2i-Xeu" firstAttribute="leading" secondItem="fhj-iw-H03" secondAttribute="leading" id="IUj-vT-fer"/>
+                                    <constraint firstItem="72d-2i-Xeu" firstAttribute="top" secondItem="TTg-cR-teR" secondAttribute="bottom" id="MdY-vU-qxG"/>
+                                    <constraint firstAttribute="trailing" secondItem="72d-2i-Xeu" secondAttribute="trailing" id="NNa-lJ-hlr"/>
                                     <constraint firstItem="TTg-cR-teR" firstAttribute="leading" secondItem="fhj-iw-H03" secondAttribute="leading" id="OM2-0Y-heN"/>
                                     <constraint firstItem="TTg-cR-teR" firstAttribute="top" secondItem="fhj-iw-H03" secondAttribute="top" id="XQo-S8-Wzj"/>
                                     <constraint firstAttribute="trailing" secondItem="TTg-cR-teR" secondAttribute="trailing" id="gxV-FV-yxo"/>
+                                    <constraint firstAttribute="bottom" secondItem="72d-2i-Xeu" secondAttribute="bottom" id="ywX-c0-KUb"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -295,6 +302,7 @@
                         <outlet property="heading" destination="bcZ-yU-8MQ" id="6i4-Sv-Tva"/>
                         <outlet property="legendContainer" destination="ZCj-EP-A8g" id="Jwd-Hd-CNS"/>
                         <outlet property="screenContainer" destination="TTg-cR-teR" id="pmJ-Ld-CF8"/>
+                        <outlet property="seatPickerContainer" destination="72d-2i-Xeu" id="HQx-dx-5ou"/>
                         <outletCollection property="legendSeats" destination="ppo-bu-hw5" collectionClass="NSMutableArray" id="Rdh-Og-DvS"/>
                         <outletCollection property="legendSeats" destination="gwK-ce-d6G" collectionClass="NSMutableArray" id="kLi-TL-Lej"/>
                         <outletCollection property="legendSeats" destination="F8c-a1-OSP" collectionClass="NSMutableArray" id="yze-pr-tvb"/>
