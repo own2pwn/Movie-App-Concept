@@ -22,6 +22,7 @@
 		B9C4061D20986B2B00B5AABF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C4061B20986B2B00B5AABF /* LaunchScreen.storyboard */; };
 		B9C4062920986C2700B5AABF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4062820986C2700B5AABF /* Constants.swift */; };
 		B9EAAF83209A7C4600374520 /* SeatProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EAAF82209A7C4600374520 /* SeatProvider.swift */; };
+		B9EAAF85209A814300374520 /* SeatRenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EAAF84209A814300374520 /* SeatRenderEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		B9C4061E20986B2B00B5AABF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9C4062820986C2700B5AABF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B9EAAF82209A7C4600374520 /* SeatProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatProvider.swift; sourceTree = "<group>"; };
+		B9EAAF84209A814300374520 /* SeatRenderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatRenderEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				B9EAAF82209A7C4600374520 /* SeatProvider.swift */,
+				B9EAAF84209A814300374520 /* SeatRenderEngine.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9EAAF85209A814300374520 /* SeatRenderEngine.swift in Sources */,
 				B9EAAF83209A7C4600374520 /* SeatProvider.swift in Sources */,
 				B9C4061520986B2B00B5AABF /* MoviewPageController.swift in Sources */,
 				B9124F912099BD07005EEA70 /* BookingController.swift in Sources */,
