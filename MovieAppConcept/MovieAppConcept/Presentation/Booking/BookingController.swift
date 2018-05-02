@@ -8,6 +8,41 @@
 
 import UIKit
 
+public final class SeatPicker: UIView {
+
+    // MARK: - Members
+    
+    private let engine = SeatRenderEngine.shared
+    
+    public var itemSpacing: CGFloat = 8
+    
+    public var setSpacing: CGFloat = 4
+    
+    public var contentInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    
+    // MARK: - Interface
+    
+    public func add(_ items: SeatArray, starting at: CGPoint) {
+        let startPoint = at
+        let itemSize = calculateSeatSize()
+        let config = SeatRenderEngineConfig(startPoint: startPoint, itemSize: itemSize, itemSpacing: itemSpacing)
+        
+        engine.render(items, in: self, config: config)
+    }
+    
+    // MARK: - Internal
+    
+    private func calculateSeatSize() -> CGSize {
+        let maxInLine: CGFloat = 12
+        let availableWidth = frame.width - contentInsets.left - contentInsets.right - 2 * setSpacing - (maxInLine - 1) * itemSpacing
+        
+        let itemWidth = availableWidth / maxInLine
+        let seatSize = CGSize(width: itemWidth, height: itemWidth * 0.7)
+        
+        return seatSize
+    }
+}
+
 final class BookingController: UIViewController {
 
     // MARK: - Outlets
@@ -20,7 +55,7 @@ final class BookingController: UIViewController {
     
     @IBOutlet var screenContainer: UIView!
     
-    @IBOutlet var seatPickerContainer: UIView!
+    @IBOutlet var seatPickerContainer: SeatPicker!
     
     // MARK: - Overrides
     
@@ -93,15 +128,10 @@ final class BookingController: UIViewController {
     }
     
     private func renderSeats() {
-        let itemSize = calculateSeatSize()
-        let itemSpacing: CGFloat = 8
         let startPoint = CGPoint(x: 16, y: 16)
-        
         let items = SeatProvider.shared.get()
-        let render = SeatRenderEngine.shared
-        let config = SeatRenderEngineConfig(startPoint: startPoint, itemSize: itemSize, itemSpacing: itemSpacing)
         
-        render.render(items, in: seatPickerContainer, config: config)
+        seatPickerContainer.add(items, starting: startPoint)
     }
 }
 

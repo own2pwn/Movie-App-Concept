@@ -8,6 +8,8 @@
 
 import UIKit
 
+public typealias SeatArray = [[SeatType]]
+
 public enum SeatType {
     case none, available, booked
     case spacing(CGFloat)

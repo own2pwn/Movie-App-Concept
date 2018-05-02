@@ -16,7 +16,7 @@ public final class SeatProvider {
     
     // MARK: - Interface
     
-    public func get() -> [[SeatType]] {
+    public func get() -> SeatArray {
         let setSpacing: CGFloat = 4
         
         let booked = SeatType.booked

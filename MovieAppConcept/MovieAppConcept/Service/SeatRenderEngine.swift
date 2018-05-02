@@ -22,7 +22,7 @@ public final class SeatRenderEngine {
     
     // MARK: - Interface
     
-    public func render(_ seats: [[SeatType]], in container: UIView, config: SeatRenderEngineConfig) {
+    public func render(_ seats: SeatArray, in container: UIView, config: SeatRenderEngineConfig) {
         var linePosition = config.startPoint
         
         for row in seats {
