@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XBx-JD-H6f">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -105,6 +105,82 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Booking Controller-->
+        <scene sceneID="V1J-he-aOL">
+            <objects>
+                <viewController id="XBx-JD-H6f" customClass="BookingController" customModule="MovieAppConcept" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sVK-G4-B8f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcZ-yU-8MQ">
+                                <rect key="frame" x="0.0" y="44" width="375" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Черная пантера" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E8E-y0-wUs">
+                                        <rect key="frame" x="129.33333333333334" y="8" width="117.66666666666666" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Февраль 26 - 21:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuy-HU-PYe">
+                                        <rect key="frame" x="130" y="27.999999999999996" width="115.66666666666669" height="14.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                        <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="L01-A6-evl">
+                                        <rect key="frame" x="129" y="8" width="117.66666666666669" height="34.333333333333336"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Черная пантера" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CY8-rG-agk">
+                                                <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Февраль 26 - 21:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZm-xs-Sq0">
+                                                <rect key="frame" x="1" y="20" width="115.66666666666667" height="14.333333333333336"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                                <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="zZm-xs-Sq0" firstAttribute="centerX" secondItem="CY8-rG-agk" secondAttribute="centerX" id="5Fx-ci-i22"/>
+                                            <constraint firstItem="zZm-xs-Sq0" firstAttribute="top" secondItem="CY8-rG-agk" secondAttribute="bottom" constant="2" id="y4S-Ck-PDZ"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.3707177639" green="0.25714370609999998" blue="0.75468015669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="wuy-HU-PYe" firstAttribute="centerX" secondItem="E8E-y0-wUs" secondAttribute="centerX" id="3BA-4T-4yU"/>
+                                    <constraint firstItem="L01-A6-evl" firstAttribute="top" secondItem="bcZ-yU-8MQ" secondAttribute="top" constant="8" id="8yI-aL-13d"/>
+                                    <constraint firstAttribute="height" constant="128" id="Jsn-fa-1Tw"/>
+                                    <constraint firstItem="wuy-HU-PYe" firstAttribute="top" secondItem="E8E-y0-wUs" secondAttribute="bottom" constant="2" id="KSj-WT-kly"/>
+                                    <constraint firstItem="L01-A6-evl" firstAttribute="centerX" secondItem="bcZ-yU-8MQ" secondAttribute="centerX" id="QAC-0i-BZh"/>
+                                    <constraint firstItem="E8E-y0-wUs" firstAttribute="centerX" secondItem="bcZ-yU-8MQ" secondAttribute="centerX" id="U8w-Yy-cF6"/>
+                                    <constraint firstItem="E8E-y0-wUs" firstAttribute="top" secondItem="bcZ-yU-8MQ" secondAttribute="top" constant="8" id="tln-L3-pMx"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="E8E-y0-wUs"/>
+                                        <exclude reference="wuy-HU-PYe"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="bcZ-yU-8MQ" firstAttribute="top" secondItem="Ej9-n9-WLR" secondAttribute="top" id="JOP-cr-n0B"/>
+                            <constraint firstItem="Ej9-n9-WLR" firstAttribute="trailing" secondItem="bcZ-yU-8MQ" secondAttribute="trailing" id="jDQ-Q0-Dvc"/>
+                            <constraint firstItem="bcZ-yU-8MQ" firstAttribute="leading" secondItem="Ej9-n9-WLR" secondAttribute="leading" id="sdH-wH-Ftd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ej9-n9-WLR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Op6-Fb-zsA" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="937" y="122"/>
         </scene>
     </scenes>
     <resources>
