@@ -52,8 +52,8 @@ public final class SeatLayer: CAShapeLayer {
         fillAnimation.toValue = endColor.cgColor
         fillAnimation.duration = animationDuration
         fillAnimation.fillMode = kCAFillModeBoth // kCAFillModeForwards
-        fillAnimation.isRemovedOnCompletion = false
         
+        fillColor = endColor.cgColor
         add(fillAnimation, forKey: keyPath)
     }
     

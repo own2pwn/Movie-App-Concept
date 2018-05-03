@@ -14,11 +14,11 @@ public final class SeatPicker: UIView {
     
     private let engine = StageRenderEngine.shared
     
-    public var seatSpacing: CGFloat = 8
+    public var seatSpacing: CGFloat = 6
     
     public var blockSpacing: CGFloat = 4
     
-    public var lineSpacing: CGFloat = 4
+    public var lineSpacing: CGFloat = 12
     
     public var contentInsets: UIEdgeInsets = .zero
     

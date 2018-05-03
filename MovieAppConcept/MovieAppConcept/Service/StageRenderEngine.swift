@@ -28,7 +28,6 @@ public final class StageRenderEngine {
     
     public func render(_ stage: Stage, in cinema: UIView, config: StageRenderEngineConfig) {
         let cinemaLayer = cinema.layer
-        let lineHeight = config.itemSize.height
         var lineOrigin = config.startPoint
         
         for lineBlock in stage.lineBlocks {
@@ -43,7 +42,7 @@ public final class StageRenderEngine {
         var origin = at
         
         for line in block.items {
-            renderLine(line, starting: at, in: cinema, with: config)
+            renderLine(line, starting: origin, in: cinema, with: config)
             origin.y += lineSpacing + lineHeight
         }
         
@@ -76,6 +75,13 @@ public final class StageRenderEngine {
     private func renderSeat(of type: SeatType, size: CGSize, at point: CGPoint, in cinema: CALayer) {
         let seatLayer = makeSeatLayer(of: type, size: size, in: point)
         cinema.addSublayer(seatLayer)
+        
+        let kp = "opacity"
+        let opacityAnimation = CABasicAnimation(keyPath: kp)
+        opacityAnimation.fromValue = 0
+        opacityAnimation.toValue = 1
+        opacityAnimation.duration = 0.3
+        seatLayer.add(opacityAnimation, forKey: kp)
     }
     
     // MARK: - Internal

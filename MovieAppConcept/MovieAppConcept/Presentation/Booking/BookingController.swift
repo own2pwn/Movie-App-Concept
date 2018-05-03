@@ -30,6 +30,12 @@ final class BookingController: UIViewController {
         setupScreen()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        renderSeats()
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -41,7 +47,7 @@ final class BookingController: UIViewController {
     }
     
     private func setup() {
-        let setup = [setupHeading, setupLegend, renderScreen, renderSeats]
+        let setup = [setupHeading, setupLegend, renderScreen]
         setup.forEach { $0() }
     }
     

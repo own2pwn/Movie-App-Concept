@@ -71,7 +71,6 @@
 				B9496A78209B8519007AF11D /* Model */,
 				B951BD8E209B94CB009B452C /* View */,
 				B9124F902099BD07005EEA70 /* BookingController.swift */,
-				B9EAAF86209A85A100374520 /* SeatPicker.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -108,6 +107,7 @@
 		B951BD8E209B94CB009B452C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B9EAAF86209A85A100374520 /* SeatPicker.swift */,
 				B951BD8F209B94DF009B452C /* SeatLayer.swift */,
 			);
 			path = View;
