@@ -21,7 +21,7 @@ public final class SeatProvider {
         let l1b2 = Block(seats: [.empty, .regular, .regular, .regular, .regular, .empty])
         let l1b3 = Block(seats: [.regular])
         
-        let l1 = Line(blocks: [l1b1, l1b2, l1b3])
+        let l1 = Line(type: .regular([l1b1, l1b2, l1b3]))
         let s1 = Stage(lines: [l1])
         
         return s1

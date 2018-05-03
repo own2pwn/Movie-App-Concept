@@ -30,7 +30,9 @@ final class BookingController: UIViewController {
         setupScreen()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     // MARK: - Methods
     
@@ -39,11 +41,8 @@ final class BookingController: UIViewController {
     }
     
     private func setup() {
-        let setup = [setColors, setupHeading, setupLegend, renderScreen, renderSeats]
+        let setup = [setupHeading, setupLegend, renderScreen, renderSeats]
         setup.forEach { $0() }
-    }
-    
-    private func setColors() {
     }
     
     private func setupHeading() {
@@ -97,50 +96,5 @@ final class BookingController: UIViewController {
         let items = SeatProvider.shared.get()
         
         seatPickerContainer.add(items, starting: startPoint)
-    }
-}
-
-extension BookingController {
-    private func calculateSeatSize() -> CGSize {
-        let seatSpacing: CGFloat = 8
-        let setSpacing: CGFloat = 4
-        let margin: CGFloat = 16
-        
-        let maxInLine: CGFloat = 12
-        var availableWidth = seatPickerContainer.frame.width - 2 * margin
-        let freeContainer = UIView(frame: CGRect(origin: CGPoint(x: margin, y: 16), size: CGSize(width: availableWidth, height: 128)))
-        availableWidth -= 2 * setSpacing
-        availableWidth -= seatSpacing * (maxInLine - 1)
-        
-        let itemWidth = availableWidth / maxInLine
-        let seatSize = CGSize(width: itemWidth, height: itemWidth * 0.7)
-        
-        freeContainer.backgroundColor = #colorLiteral(red: 0.6678946614, green: 0.9207183719, blue: 0.4710406065, alpha: 1)
-        // seatPickerContainer.addSubview(freeContainer)
-        
-        let seatContainer = UIView(frame: CGRect(origin: .zero, size: CGSize(width: availableWidth, height: 128)))
-        seatContainer.backgroundColor = #colorLiteral(red: 0.2389388382, green: 0.5892125368, blue: 0.8818323016, alpha: 1)
-        // freeContainer.addSubview(seatContainer)
-        
-        return seatSize
-    }
-}
-
-public extension UIView {
-    public enum SeparatorPosition {
-        case top, bot
-    }
-    
-    public func addHorizontalSeparator(at position: SeparatorPosition, margin: CGFloat, color: UIColor) {
-        let separatorLayer = CALayer()
-        let mySize = bounds.size
-        
-        let yPosition: CGFloat = position == .top ? 0 : mySize.height
-        let origin = CGPoint(x: margin, y: yPosition)
-        
-        separatorLayer.frame = CGRect(origin: origin, size: CGSize(width: mySize.width - 2 * margin, height: 1))
-        separatorLayer.backgroundColor = color.cgColor
-        
-        layer.addSublayer(separatorLayer)
     }
 }

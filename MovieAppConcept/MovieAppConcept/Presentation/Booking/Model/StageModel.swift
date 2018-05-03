@@ -13,11 +13,16 @@ public struct Stage {
 }
 
 public struct Line {
-    let blocks: [Block]
+    let type: LineType
 }
 
 public struct Block {
     let seats: [SeatType]
+}
+
+public enum LineType {
+    case regular([Block])
+    case empty
 }
 
 public enum SeatType {
@@ -25,7 +30,22 @@ public enum SeatType {
     case empty
 }
 
-extension SeatType {
+protocol Renderable {
+    var shouldRender: Bool { get }
+}
+
+extension LineType: Renderable {
+    var shouldRender: Bool {
+        switch self {
+        case .regular:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+extension SeatType: Renderable {
     var shouldRender: Bool {
         return self == .regular ||
             self == .booked
