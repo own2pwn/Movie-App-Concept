@@ -9,7 +9,7 @@
 import UIKit
 
 public struct StageM {
-    let lineBlocks: [BlockM<Line>]
+    let lineBlocks: [BlockM<LineType>]
 }
 
 public struct BlockM<Element> {
@@ -42,12 +42,14 @@ public enum LineTypeM: Renderable {
 func kek() {
     let sb1 = BlockM<SeatType>(items: [.empty, .empty, .regular])
     let l1 = Line(seatBlocks: [sb1]) // (seatBlocks: [bb1])
-    let lb1 = BlockM<Line>(items: [l1])
+    let lb1 = BlockM<LineType>(items: [.regular([sb1])])
 
     let s1 = StageM(lineBlocks: [lb1])
 
     for lineBlock in s1.lineBlocks {
         for line in lineBlock.items {
+            defer { print("++ line spacing") }
+
             for seatBlock in line.seatBlocks {
                 for seat in seatBlock.items {
                     print("++ seat spacing")
@@ -55,8 +57,6 @@ func kek() {
 
                 print("++ seat Block spacing")
             }
-
-            print("++ line spacing")
         }
 
         print("++ line block spacing")
@@ -76,7 +76,7 @@ public struct Block {
 }
 
 public enum LineType {
-    case regular([Block])
+    case regular([BlockM<SeatType>])
     case empty
 }
 
@@ -96,6 +96,15 @@ extension LineType: Renderable {
             return true
         default:
             return false
+        }
+    }
+
+    var seatBlocks: [BlockM<SeatType>] {
+        switch self {
+        case .regular(let blocks):
+            return blocks
+        default:
+            return []
         }
     }
 }
