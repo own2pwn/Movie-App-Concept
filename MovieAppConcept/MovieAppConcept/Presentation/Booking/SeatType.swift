@@ -11,8 +11,8 @@ import UIKit
 public typealias SeatArray = [[SeatType]]
 
 public enum SeatType {
-    case none, available, booked
-    case spacing(CGFloat)
+    case none, emptyRow, available, booked
+    case setSpace(CGFloat), rowSpace(CGFloat)
 }
 
 extension SeatType {
@@ -27,7 +27,7 @@ extension SeatType {
 
     var spacing: CGFloat {
         switch self {
-        case .spacing(let v):
+        case .setSpace(let v), .rowSpace(let v):
             return v
         default:
             return 0
@@ -44,7 +44,7 @@ extension SeatType {
             return .clear
         }
     }
-    
+
     var isEnabled: Bool {
         switch self {
         case .available:

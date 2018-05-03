@@ -23,21 +23,40 @@ public final class SeatProvider {
         let available = SeatType.available
         
         let none = SeatType.none
-        let space = SeatType.spacing(setSpacing)
+        let setSpace = SeatType.setSpace(setSpacing)
+        let rowSpace = SeatType.rowSpace(setSpacing)
         
         let firstRow: [SeatType] = [none, none, available,
-                                    space, none,
+                                    setSpace, none,
                                     available, available, available, available,
-                                    none, space,
+                                    none, setSpace,
                                     available]
         
-        let secondRow: [SeatType] = [available, available, available,
-                                     space, none,
+        let secondRow: [SeatType] = [none, available, available,
+                                     setSpace, none,
                                      available, booked, available, available,
-                                     none, space,
-                                     available, available, available]
+                                     none, setSpace,
+                                     available, available, none]
         
-        let rows = [firstRow, secondRow]
+        let thirdRow: [SeatType] = [available, available, available,
+                                    setSpace, none,
+                                    available, booked, booked, available,
+                                    none, setSpace,
+                                    available, available, available]
+        
+        let fullAvailable: [SeatType] = [available, available, available,
+                                         setSpace, none,
+                                         available, available, available, available,
+                                         none, setSpace,
+                                         available, available, available]
+        
+        let secondRowN: [SeatType] = [available, available, available,
+                                      setSpace, none,
+                                      available, booked, available, available,
+                                      none, setSpace,
+                                      available, available, available]
+        
+        let rows = [firstRow, secondRow, thirdRow, fullAvailable, fullAvailable]
         
         return rows
     }
