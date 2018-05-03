@@ -36,60 +36,42 @@ public final class SeatLayer: CAShapeLayer {
         }
     }
     
-    public var selectionDuration: CFTimeInterval = 0.25
+    public var animationDuration: CFTimeInterval = 0.25
     
     // MARK: - Internal
     
     private func setSelected(_ selected: Bool) {
         guard isEnabled else { return }
         
-        let fillAnimation = CABasicAnimation(keyPath: "fillColor")
         let startColor = selected ? normalColor : selectedColor
         let endColor = selected ? selectedColor : normalColor
         
+        animateFill(startColor, endColor)
+        animateScale(duration: animationDuration, fromValue: 1, toValue: 1.2)
+    }
+    
+    private func animateFill(_ startColor: UIColor, _ endColor: UIColor) {
+        let keyPath = "fillColor"
+        let fillAnimation = CABasicAnimation(keyPath: keyPath)
+        
         fillAnimation.fromValue = startColor.cgColor
         fillAnimation.toValue = endColor.cgColor
-        fillAnimation.duration = selectionDuration
+        fillAnimation.duration = animationDuration
         fillAnimation.fillMode = kCAFillModeBoth // kCAFillModeForwards
         fillAnimation.isRemovedOnCompletion = false
         
-        add(fillAnimation, forKey: "fillColor")
-        
-//        CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-//        [scale setFromValue:[NSNumber numberWithFloat:0.0f]];
-//        [scale setToValue:[NSNumber numberWithFloat:1.0f]];
-//        [scale setDuration:1.0f];
-//        [scale setRemovedOnCompletion:NO];
-//        [scale setFillMode:kCAFillModeForwards];
-        
-//        CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform"];
-//        CATransform3D tr = CATransform3DIdentity;
-//        tr = CATransform3DTranslate(tr, self.bounds.size.width/2, self.bounds.size.height/2, 0);
-//        tr = CATransform3DScale(tr, 3, 3, 1);
-//        tr = CATransform3DTranslate(tr, -self.bounds.size.width/2, -self.bounds.size.height/2, 0);
-//        scale.toValue = [NSValue valueWithCATransform3D:tr];
-        
-        let scaleAnimation = CABasicAnimation(keyPath: "transform")
-        var tr = CATransform3DIdentity
-        tr = CATransform3DTranslate(tr, bounds.size.width / 2, bounds.size.height / 2, 0)
-        tr = CATransform3DScale(tr, 3, 3, 1)
-        tr = CATransform3DTranslate(tr, -bounds.size.width / 2, -bounds.size.height / 2, 0)
-        scaleAnimation.toValue = tr
-        
-        add(scaleAnimation, forKey: "transform")
+        add(fillAnimation, forKey: keyPath)
     }
     
-    func layerScaleAnimation(layer: CALayer, duration: CFTimeInterval, fromValue: CGFloat, toValue: CGFloat) {
-        let timing = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-        let scaleAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
+    func animateScale(duration: CFTimeInterval, fromValue: CGFloat, toValue: CGFloat) {
+        let keyPath = "transform.scale"
+        let scaleAnimation: CABasicAnimation = CABasicAnimation(keyPath: keyPath)
         
-        CATransaction.begin()
-        CATransaction.setAnimationTimingFunction(timing)
         scaleAnimation.duration = duration
         scaleAnimation.fromValue = fromValue
         scaleAnimation.toValue = toValue
-        layer.add(scaleAnimation, forKey: "scale")
-        CATransaction.commit()
+        
+        add(scaleAnimation, forKey: keyPath)
     }
     
     // MARK: - Init
