@@ -16,51 +16,14 @@ public final class SeatProvider {
     
     // MARK: - Interface
     
-    public func get() -> SeatArray {
-        let t = Test()
-        t.provider()
+    public func get() -> Stage {
+        let l1b1 = Block(seats: [.empty, .empty, .regular])
+        let l1b2 = Block(seats: [.empty, .regular, .regular, .regular, .regular, .empty])
+        let l1b3 = Block(seats: [.regular])
         
-        let setSpacing: CGFloat = 4
+        let l1 = Line(blocks: [l1b1, l1b2, l1b3])
+        let s1 = Stage(lines: [l1])
         
-        let booked = SeatType.booked
-        let available = SeatType.available
-        
-        let none = SeatType.none
-        let setSpace = SeatType.setSpace(setSpacing)
-        let rowSpace = SeatType.rowSpace(setSpacing)
-        
-        let firstRow: [SeatType] = [none, none, available,
-                                    setSpace, none,
-                                    available, available, available, available,
-                                    none, setSpace,
-                                    available]
-        
-        let secondRow: [SeatType] = [none, available, available,
-                                     setSpace, none,
-                                     available, booked, available, available,
-                                     none, setSpace,
-                                     available, available, none]
-        
-        let thirdRow: [SeatType] = [available, available, available,
-                                    setSpace, none,
-                                    available, booked, booked, available,
-                                    none, setSpace,
-                                    available, available, available]
-        
-        let fullAvailable: [SeatType] = [available, available, available,
-                                         setSpace, none,
-                                         available, available, available, available,
-                                         none, setSpace,
-                                         available, available, available]
-        
-        let secondRowN: [SeatType] = [available, available, available,
-                                      setSpace, none,
-                                      available, booked, available, available,
-                                      none, setSpace,
-                                      available, available, available]
-        
-        let rows = [firstRow, secondRow, thirdRow, fullAvailable, fullAvailable]
-        
-        return rows
+        return s1
     }
 }

@@ -8,10 +8,14 @@
 
 import UIKit
 
-public struct SeatRenderEngineConfig {
-    let startPoint: CGPoint
+public struct StageRenderEngineConfig {
     let itemSize: CGSize
     let itemSpacing: CGFloat
+    
+    let blockSpacing: CGFloat
+    let lineSpacing: CGFloat
+    
+    let startPoint: CGPoint
 }
 
 public final class SeatLayer: CAShapeLayer {
@@ -98,19 +102,20 @@ public final class SeatLayer: CAShapeLayer {
     }
 }
 
-public final class SeatRenderEngine {
+public final class StageRenderEngine {
 
     // MARK: - Members
     
-    public static let shared = SeatRenderEngine()
+    public static let shared = StageRenderEngine()
     
     // MARK: - Interface
     
-    public func render(_ seats: SeatArray, in container: UIView, config: SeatRenderEngineConfig) {
+    public func render(_ stage: Stage, in cinema: UIView, config: StageRenderEngineConfig) {
         var linePosition = config.startPoint
+        let cinemaLayer = cinema.layer
         
-        for row in seats {
-            renderLine(row, in: container, start: linePosition, config: config)
+        for line in stage.lines {
+            renderLine(line, in: cinemaLayer, start: linePosition, config: config)
             
             linePosition.y += config.itemSpacing + config.itemSize.height
         }
@@ -118,26 +123,38 @@ public final class SeatRenderEngine {
     
     // MARK: - Internal
     
-    private func renderLine(_ places: [SeatType], in container: UIView, start: CGPoint, config: SeatRenderEngineConfig) {
-        let itemSpacing = config.itemSpacing
-        let itemSize = config.itemSize
-        
+    private func renderLine(_ line: Line, in cinema: CALayer, start: CGPoint, config: StageRenderEngineConfig) {
+        let spacing = config.blockSpacing
         var origin = start
         
-        for place in places {
-            guard place.shouldRender else {
-                let spacing = place.spacing
-                origin.x += spacing > 0 ? spacing : itemSpacing + itemSize.width
-                continue
-            }
-            let seat = makeSeat(place, size: itemSize, in: origin)
-            container.layer.addSublayer(seat)
+        for block in line.blocks {
+            let lastPoint = renderBlock(block, in: cinema, starting: origin, config: config)
             
-            origin.x += itemSpacing + itemSize.width
+            origin.x = lastPoint.x + spacing
         }
     }
     
-    private func makeSeat(_ type: SeatType, size: CGSize, in place: CGPoint) -> CAShapeLayer {
+    private func renderBlock(_ block: Block, in cinema: CALayer, starting at: CGPoint, config: StageRenderEngineConfig) -> CGPoint {
+        let spacing = config.itemSpacing
+        let seatSize = config.itemSize
+        var origin = at
+        
+        for type in block.seats {
+            defer { origin.x += spacing + seatSize.width }
+            guard type.shouldRender else { continue }
+            
+            renderSeat(of: type, size: seatSize, at: origin, in: cinema)
+        }
+        
+        return origin
+    }
+    
+    private func renderSeat(of type: SeatType, size: CGSize, at point: CGPoint, in cinema: CALayer) {
+        let seatLayer = makeSeatLayer(of: type, size: size, in: point)
+        cinema.addSublayer(seatLayer)
+    }
+    
+    private func makeSeatLayer(of type: SeatType, size: CGSize, in place: CGPoint) -> CAShapeLayer {
         let seatFrame = CGRect(origin: place, size: size)
         let seatPath = UIBezierPath(roundedRect: CGRect(origin: .zero, size: size), byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 4, height: 4))
         

@@ -12,13 +12,15 @@ public final class SeatPicker: UIView {
 
     // MARK: - Members
     
-    private let engine = SeatRenderEngine.shared
+    private let engine = StageRenderEngine.shared
     
-    public var itemSpacing: CGFloat = 8
+    public var seatSpacing: CGFloat = 8
     
-    public var setSpacing: CGFloat = 4
+    public var blockSpacing: CGFloat = 4
     
-    public var contentInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    public var lineSpacing: CGFloat = 4
+    
+    public var contentInsets: UIEdgeInsets = .zero
     
     // MARK: - Behavior
     
@@ -38,19 +40,19 @@ public final class SeatPicker: UIView {
     
     // MARK: - Interface
     
-    public func add(_ items: SeatArray, starting at: CGPoint) {
+    public func add(_ stage: Stage, starting at: CGPoint) {
         let startPoint = at
         let itemSize = calculateSeatSize()
-        let config = SeatRenderEngineConfig(startPoint: startPoint, itemSize: itemSize, itemSpacing: itemSpacing)
+        let config = StageRenderEngineConfig(itemSize: itemSize, itemSpacing: seatSpacing, blockSpacing: blockSpacing, lineSpacing: lineSpacing, startPoint: startPoint)
         
-        engine.render(items, in: self, config: config)
+        engine.render(stage, in: self, config: config)
     }
     
     // MARK: - Internal
     
     private func calculateSeatSize() -> CGSize {
         let maxInLine: CGFloat = 12
-        let availableWidth = frame.width - contentInsets.left - contentInsets.right - 2 * setSpacing - (maxInLine - 1) * itemSpacing
+        let availableWidth = frame.width - contentInsets.left - contentInsets.right - 2 * blockSpacing - (maxInLine - 1) * seatSpacing
         
         let itemWidth = availableWidth / maxInLine
         let seatSize = CGSize(width: itemWidth, height: itemWidth * 0.7)
@@ -79,6 +81,7 @@ public final class SeatPicker: UIView {
     }
     
     private func internalInit() {
+        contentInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         isMultipleTouchEnabled = false
     }
 }
