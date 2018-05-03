@@ -62,8 +62,8 @@
 		B9124F8F2099BCFB005EEA70 /* Booking */ = {
 			isa = PBXGroup;
 			children = (
+				B9496A78209B8519007AF11D /* Model */,
 				B9124F902099BD07005EEA70 /* BookingController.swift */,
-				B99D158D209A68F800E2BF03 /* SeatType.swift */,
 				B9EAAF86209A85A100374520 /* SeatPicker.swift */,
 			);
 			path = Booking;
@@ -86,6 +86,14 @@
 				B9364A7720988F9700029E89 /* vid_back_to_the_future.mp4 */,
 			);
 			path = Media;
+			sourceTree = "<group>";
+		};
+		B9496A78209B8519007AF11D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B99D158D209A68F800E2BF03 /* SeatType.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B978F3D320988FF200139CDC /* MoviePage */ = {
