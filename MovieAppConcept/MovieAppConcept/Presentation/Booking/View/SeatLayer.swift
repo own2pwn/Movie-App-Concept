@@ -41,33 +41,7 @@ public final class SeatLayer: CAShapeLayer {
         let endColor = selected ? selectedColor : normalColor
         
         animateFill(startColor, endColor)
-        animateScale(duration: animationDuration, fromValue: 1, toValue: 1.2)
-    }
-    
-    private func animateFill(_ startColor: UIColor, _ endColor: UIColor) {
-        let keyPath = "fillColor"
-        let fillAnimation = CABasicAnimation(keyPath: keyPath)
-        
-        fillAnimation.fromValue = startColor.cgColor
-        fillAnimation.toValue = endColor.cgColor
-        fillAnimation.duration = animationDuration
-        fillAnimation.fillMode = kCAFillModeBoth // kCAFillModeForwards
-        
-        fillColor = endColor.cgColor
-        add(fillAnimation, forKey: keyPath)
-    }
-    
-    func animateScale(duration: CFTimeInterval, fromValue: CGFloat, toValue: CGFloat) {
-        let keyPath = "transform.scale"
-        let scaleAnimation: CABasicAnimation = CABasicAnimation(keyPath: keyPath)
-        
-        scaleAnimation.duration = duration
-        scaleAnimation.fromValue = fromValue
-        scaleAnimation.toValue = toValue
-        scaleAnimation.autoreverses = true
-        scaleAnimation.repeatCount = 1
-        
-        add(scaleAnimation, forKey: keyPath)
+        animateScale(fromValue: 1, toValue: 1.2)
     }
     
     // MARK: - Init
