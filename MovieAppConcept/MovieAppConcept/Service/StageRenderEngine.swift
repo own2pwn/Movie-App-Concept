@@ -27,14 +27,60 @@ public final class StageRenderEngine {
     // MARK: - Interface
     
     public func render(_ stage: Stage, in cinema: UIView, config: StageRenderEngineConfig) {
-        var linePosition = config.startPoint
         let cinemaLayer = cinema.layer
+        let lineSpacing = config.lineSpacing
+        var lineOrigin = config.startPoint
         
-        for line in stage.lines {
-            renderLine(line, in: cinemaLayer, start: linePosition, config: config)
+        for lineBlock in stage.lineBlocks {
+            // defer { lineOrigin.y += lin }
             
-            linePosition.y += config.itemSpacing + config.itemSize.height
+            renderLineBlock(lineBlock)
         }
+        
+//        for line in stage.lines {
+//            renderLine(line, in: cinemaLayer, start: linePosition, config: config)
+//
+//            linePosition.y += config.itemSpacing + config.itemSize.height
+//        }
+    }
+    
+    private func renderLineBlock(_ block: Block<Line>, starting at: CGPoint, in cinema: CALayer, with config: StageRenderEngineConfig) {
+        let lineSpacing = config.lineSpacing
+        let lineHeight = config.itemSize.height
+        var origin = at
+        
+        for line in block.items {
+            renderLine(line, starting: at, in: cinema, with: config)
+            origin.y += lineSpacing + lineHeight
+        }
+    }
+    
+    private func renderLine(_ line: Line, starting at: CGPoint, in cinema: CALayer, with config: StageRenderEngineConfig) {
+        let blockSpacing = config.blockSpacing
+        var origin = at
+        
+        for seatBlock in line.seatBlocks {
+            let newPosition = renderSeatBlock(seatBlock, starting: origin, in: cinema, with: config)
+            origin.x = blockSpacing + newPosition.x
+        }
+    }
+    
+    private func renderSeatBlock(_ block: Block<SeatType>, starting at: CGPoint, in cinema: CALayer, with config: StageRenderEngineConfig) -> CGPoint {
+        let seatSize = config.itemSize
+        let seatSpacing = config.itemSpacing
+        var origin = at
+        
+        for seatType in block.items {
+            renderSeat(of: seatType, size: seatSize, at: origin, in: cinema)
+            origin.x += seatSpacing + seatSize.width
+        }
+        
+        return origin
+    }
+    
+    private func renderSeat(of type: SeatType, size: CGSize, at point: CGPoint, in cinema: CALayer) {
+        let seatLayer = makeSeatLayer(of: type, size: size, in: point)
+        cinema.addSublayer(seatLayer)
     }
     
     // MARK: - Internal
@@ -43,7 +89,7 @@ public final class StageRenderEngine {
         let spacing = config.blockSpacing
         var origin = start
         
-        guard type.shouldRender else 
+        guard type.shouldRender else
         
         for block in line.blocks {
             let lastPoint = renderBlock(block, in: cinema, starting: origin, config: config)

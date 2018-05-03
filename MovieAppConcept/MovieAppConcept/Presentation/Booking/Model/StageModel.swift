@@ -8,43 +8,29 @@
 
 import UIKit
 
-public struct StageM {
-    let lineBlocks: [BlockM<LineType>]
+public struct Stage {
+    let lineBlocks: [Block<Line>]
 }
 
-public struct BlockM<Element> {
+public struct Line {
+    let seatBlocks: [Block<SeatType>]
+}
+
+extension Line {
+    public static func empty() -> Line {
+        return Line(seatBlocks: [])
+    }
+}
+
+public struct Block<Element> {
     let items: [Element]
 }
 
-public enum LineTypeM: Renderable {
-    case regular([BlockM<SeatType>])
-    case empty
-
-    var shouldRender: Bool {
-        switch self {
-        case .regular:
-            return true
-        default:
-            return false
-        }
-    }
-
-    var seatBlocks: [BlockM<SeatType>] {
-        switch self {
-        case .regular(let items):
-            return items
-        default:
-            return []
-        }
-    }
-}
-
 func kek() {
-    let sb1 = BlockM<SeatType>(items: [.empty, .empty, .regular])
-    let l1 = Line(seatBlocks: [sb1]) // (seatBlocks: [bb1])
-    let lb1 = BlockM<LineType>(items: [.regular([sb1])])
-
-    let s1 = StageM(lineBlocks: [lb1])
+    let sb1 = Block<SeatType>(items: [.empty, .empty, .regular])
+    let l1 = Line(seatBlocks: [sb1])
+    let lb1 = Block<Line>(items: [l1])
+    let s1 = Stage(lineBlocks: [lb1])
 
     for lineBlock in s1.lineBlocks {
         for line in lineBlock.items {
@@ -63,20 +49,8 @@ func kek() {
     }
 }
 
-public struct Stage {
-    let lines: [Line]
-}
-
-public struct Line {
-    let seatBlocks: [BlockM<SeatType>]
-}
-
-public struct Block {
-    let seats: [SeatType]
-}
-
 public enum LineType {
-    case regular([BlockM<SeatType>])
+    case regular([Block<SeatType>])
     case empty
 }
 
@@ -99,7 +73,7 @@ extension LineType: Renderable {
         }
     }
 
-    var seatBlocks: [BlockM<SeatType>] {
+    var seatBlocks: [Block<SeatType>] {
         switch self {
         case .regular(let blocks):
             return blocks
