@@ -54,6 +54,42 @@ public final class SeatLayer: CAShapeLayer {
         fillAnimation.isRemovedOnCompletion = false
         
         add(fillAnimation, forKey: "fillColor")
+        
+//        CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+//        [scale setFromValue:[NSNumber numberWithFloat:0.0f]];
+//        [scale setToValue:[NSNumber numberWithFloat:1.0f]];
+//        [scale setDuration:1.0f];
+//        [scale setRemovedOnCompletion:NO];
+//        [scale setFillMode:kCAFillModeForwards];
+        
+//        CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform"];
+//        CATransform3D tr = CATransform3DIdentity;
+//        tr = CATransform3DTranslate(tr, self.bounds.size.width/2, self.bounds.size.height/2, 0);
+//        tr = CATransform3DScale(tr, 3, 3, 1);
+//        tr = CATransform3DTranslate(tr, -self.bounds.size.width/2, -self.bounds.size.height/2, 0);
+//        scale.toValue = [NSValue valueWithCATransform3D:tr];
+        
+        let scaleAnimation = CABasicAnimation(keyPath: "transform")
+        var tr = CATransform3DIdentity
+        tr = CATransform3DTranslate(tr, bounds.size.width / 2, bounds.size.height / 2, 0)
+        tr = CATransform3DScale(tr, 3, 3, 1)
+        tr = CATransform3DTranslate(tr, -bounds.size.width / 2, -bounds.size.height / 2, 0)
+        scaleAnimation.toValue = tr
+        
+        add(scaleAnimation, forKey: "transform")
+    }
+    
+    func layerScaleAnimation(layer: CALayer, duration: CFTimeInterval, fromValue: CGFloat, toValue: CGFloat) {
+        let timing = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        let scaleAnimation: CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
+        
+        CATransaction.begin()
+        CATransaction.setAnimationTimingFunction(timing)
+        scaleAnimation.duration = duration
+        scaleAnimation.fromValue = fromValue
+        scaleAnimation.toValue = toValue
+        layer.add(scaleAnimation, forKey: "scale")
+        CATransaction.commit()
     }
     
     // MARK: - Init
