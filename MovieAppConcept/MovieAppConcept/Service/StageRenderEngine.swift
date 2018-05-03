@@ -28,23 +28,16 @@ public final class StageRenderEngine {
     
     public func render(_ stage: Stage, in cinema: UIView, config: StageRenderEngineConfig) {
         let cinemaLayer = cinema.layer
-        let lineSpacing = config.lineSpacing
+        let lineHeight = config.itemSize.height
         var lineOrigin = config.startPoint
         
         for lineBlock in stage.lineBlocks {
-            // defer { lineOrigin.y += lin }
-            
-            renderLineBlock(lineBlock)
+            let newPosition = renderLineBlock(lineBlock, starting: lineOrigin, in: cinemaLayer, with: config)
+            lineOrigin.y = newPosition.y
         }
-        
-//        for line in stage.lines {
-//            renderLine(line, in: cinemaLayer, start: linePosition, config: config)
-//
-//            linePosition.y += config.itemSpacing + config.itemSize.height
-//        }
     }
     
-    private func renderLineBlock(_ block: Block<Line>, starting at: CGPoint, in cinema: CALayer, with config: StageRenderEngineConfig) {
+    private func renderLineBlock(_ block: Block<Line>, starting at: CGPoint, in cinema: CALayer, with config: StageRenderEngineConfig) -> CGPoint {
         let lineSpacing = config.lineSpacing
         let lineHeight = config.itemSize.height
         var origin = at
@@ -53,6 +46,8 @@ public final class StageRenderEngine {
             renderLine(line, starting: at, in: cinema, with: config)
             origin.y += lineSpacing + lineHeight
         }
+        
+        return origin
     }
     
     private func renderLine(_ line: Line, starting at: CGPoint, in cinema: CALayer, with config: StageRenderEngineConfig) {
@@ -84,50 +79,6 @@ public final class StageRenderEngine {
     }
     
     // MARK: - Internal
-    
-    private func renderLine(of type: LineType, in cinema: CALayer, start: CGPoint, config: StageRenderEngineConfig) -> CGPoint {
-        let spacing = config.blockSpacing
-        var origin = start
-        
-        guard type.shouldRender else
-        
-        for block in line.blocks {
-            let lastPoint = renderBlock(block, in: cinema, starting: origin, config: config)
-            
-            origin.x = lastPoint.x + spacing
-        }
-    }
-    
-    private func renderLine(_ line: Line, in cinema: CALayer, start: CGPoint, config: StageRenderEngineConfig) {
-        let spacing = config.blockSpacing
-        var origin = start
-        
-        for block in line.seatBlocks {
-            let lastPoint = renderBlock(block, in: cinema, starting: origin, config: config)
-            
-            origin.x = lastPoint.x + spacing
-        }
-    }
-    
-    private func renderBlock(_ block: Block, in cinema: CALayer, starting at: CGPoint, config: StageRenderEngineConfig) -> CGPoint {
-        let spacing = config.itemSpacing
-        let seatSize = config.itemSize
-        var origin = at
-        
-        for type in block.seats {
-            defer { origin.x += spacing + seatSize.width }
-            guard type.shouldRender else { continue }
-            
-            renderSeat(of: type, size: seatSize, at: origin, in: cinema)
-        }
-        
-        return origin
-    }
-    
-    private func renderSeat(of type: SeatType, size: CGSize, at point: CGPoint, in cinema: CALayer) {
-        let seatLayer = makeSeatLayer(of: type, size: size, in: point)
-        cinema.addSublayer(seatLayer)
-    }
     
     private func makeSeatLayer(of type: SeatType, size: CGSize, in place: CGPoint) -> CAShapeLayer {
         let seatFrame = CGRect(origin: place, size: size)

@@ -17,12 +17,13 @@ public final class SeatProvider {
     // MARK: - Interface
     
     public func get() -> Stage {
-        let l1b1 = Block(seats: [.empty, .empty, .regular])
-        let l1b2 = Block(seats: [.empty, .regular, .regular, .regular, .regular, .empty])
-        let l1b3 = Block(seats: [.regular])
+        let l1b1 = Block<SeatType>(items: [.empty, .empty, .regular])
+        let l1b2 = Block<SeatType>(items: [.empty, .regular, .regular, .regular, .regular, .empty])
+        let l1b3 = Block<SeatType>(items: [.regular])
         
-        let l1 = Line(type: .regular([l1b1, l1b2, l1b3]))
-        let s1 = Stage(lines: [l1])
+        let l1 = Line(seatBlocks: [l1b1, l1b2, l1b3])
+        let lb1 = Block<Line>(items: [l1])
+        let s1 = Stage(lineBlocks: [lb1])
         
         return s1
     }
