@@ -26,35 +26,12 @@ public struct Block<Element> {
     let items: [Element]
 }
 
-func kek() {
-    let sb1 = Block<SeatType>(items: [.empty, .empty, .regular])
-    let l1 = Line(seatBlocks: [sb1])
-    let lb1 = Block<Line>(items: [l1])
-    let s1 = Stage(lineBlocks: [lb1])
-
-    for lineBlock in s1.lineBlocks {
-        for line in lineBlock.items {
-            defer { print("++ line spacing") }
-
-            for seatBlock in line.seatBlocks {
-                for seat in seatBlock.items {
-                    print("++ seat spacing")
-                }
-
-                print("++ seat Block spacing")
-            }
-        }
-
-        print("++ line block spacing")
-    }
-}
-
 public enum LineType {
     case regular([Block<SeatType>])
     case empty
 }
 
-public enum SeatType {
+public enum SeatType: String {
     case regular, booked
     case empty
 }

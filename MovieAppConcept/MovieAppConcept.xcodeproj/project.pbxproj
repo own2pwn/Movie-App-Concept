@@ -16,6 +16,7 @@
 		B951BD90209B94DF009B452C /* SeatLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BD8F209B94DF009B452C /* SeatLayer.swift */; };
 		B951BD92209B954D009B452C /* UIView+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BD91209B954D009B452C /* UIView+Separator.swift */; };
 		B99D158E209A68F800E2BF03 /* StageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99D158D209A68F800E2BF03 /* StageModel.swift */; };
+		B9A2D7AC209BC8F600214060 /* Model.json in Resources */ = {isa = PBXBuildFile; fileRef = B9A2D7AB209BC8F600214060 /* Model.json */; };
 		B9A380E82098904B00F8CBB1 /* MediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A380E72098904B00F8CBB1 /* MediaPlayer.swift */; };
 		B9C4061320986B2B00B5AABF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4061220986B2B00B5AABF /* AppDelegate.swift */; };
 		B9C4061520986B2B00B5AABF /* MoviewPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4061420986B2B00B5AABF /* MoviewPageController.swift */; };
@@ -38,6 +39,7 @@
 		B951BD8F209B94DF009B452C /* SeatLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatLayer.swift; sourceTree = "<group>"; };
 		B951BD91209B954D009B452C /* UIView+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Separator.swift"; sourceTree = "<group>"; };
 		B99D158D209A68F800E2BF03 /* StageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageModel.swift; sourceTree = "<group>"; };
+		B9A2D7AB209BC8F600214060 /* Model.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Model.json; sourceTree = "<group>"; };
 		B9A380E72098904B00F8CBB1 /* MediaPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayer.swift; sourceTree = "<group>"; };
 		B9C4060F20986B2B00B5AABF /* MovieAppConcept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieAppConcept.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C4061220986B2B00B5AABF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				B99D158D209A68F800E2BF03 /* StageModel.swift */,
+				B9A2D7AB209BC8F600214060 /* Model.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9364A7820988F9700029E89 /* vid_back_to_the_future.mp4 in Resources */,
+				B9A2D7AC209BC8F600214060 /* Model.json in Resources */,
 				B9C4061D20986B2B00B5AABF /* LaunchScreen.storyboard in Resources */,
 				B9C4061A20986B2B00B5AABF /* Assets.xcassets in Resources */,
 				B9C4061820986B2B00B5AABF /* Main.storyboard in Resources */,
