@@ -56,7 +56,7 @@ public final class StageRenderEngine {
         let spacing = config.blockSpacing
         var origin = start
         
-        for block in line.blocks {
+        for block in line.seatBlocks {
             let lastPoint = renderBlock(block, in: cinema, starting: origin, config: config)
             
             origin.x = lastPoint.x + spacing
