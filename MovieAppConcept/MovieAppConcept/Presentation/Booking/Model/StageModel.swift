@@ -8,6 +8,55 @@
 
 import UIKit
 
+public struct StageM {
+    let lines: [BlockM<LineTypeM>]
+}
+
+public struct BlockM<Element> {
+    let items: [Element]
+}
+
+public enum LineTypeM: Renderable {
+    case regular([BlockM<SeatType>])
+    case empty
+
+    var shouldRender: Bool {
+        switch self {
+        case .regular:
+            return true
+        default:
+            return false
+        }
+    }
+
+    var seatBlocks: [BlockM<SeatType>] {
+        switch self {
+        case .regular(let items):
+            return items
+        default:
+            return []
+        }
+    }
+}
+
+func kek() {
+    let b1 = BlockM<SeatType>(items: [.empty, .empty, .regular])
+    let l1 = BlockM<LineTypeM>(items: [.regular([b1])])
+    let s1 = StageM(lines: [l1])
+
+    for lineBlock in s1.lines {
+        for lineType in lineBlock.items {
+            guard lineType.shouldRender else { continue }
+
+            let seatBlocks = lineType.seatBlocks
+            for block in seatBlocks {
+                for seatType in block.items {
+                }
+            }
+        }
+    }
+}
+
 public struct Stage {
     let lines: [Line]
 }
