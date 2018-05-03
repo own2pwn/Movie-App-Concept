@@ -23,6 +23,7 @@
 		B9C4062920986C2700B5AABF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4062820986C2700B5AABF /* Constants.swift */; };
 		B9EAAF83209A7C4600374520 /* SeatProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EAAF82209A7C4600374520 /* SeatProvider.swift */; };
 		B9EAAF85209A814300374520 /* SeatRenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EAAF84209A814300374520 /* SeatRenderEngine.swift */; };
+		B9EAAF87209A85A100374520 /* SeatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EAAF86209A85A100374520 /* SeatPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		B9C4062820986C2700B5AABF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B9EAAF82209A7C4600374520 /* SeatProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatProvider.swift; sourceTree = "<group>"; };
 		B9EAAF84209A814300374520 /* SeatRenderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatRenderEngine.swift; sourceTree = "<group>"; };
+		B9EAAF86209A85A100374520 /* SeatPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				B9124F902099BD07005EEA70 /* BookingController.swift */,
 				B99D158D209A68F800E2BF03 /* SeatType.swift */,
+				B9EAAF86209A85A100374520 /* SeatPicker.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				B9364A7320987EED00029E89 /* Animations.swift in Sources */,
 				B9364A7120987ECB00029E89 /* EPButton.swift in Sources */,
 				B9C4061320986B2B00B5AABF /* AppDelegate.swift in Sources */,
+				B9EAAF87209A85A100374520 /* SeatPicker.swift in Sources */,
 				B9C4062920986C2700B5AABF /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

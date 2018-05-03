@@ -44,4 +44,13 @@ extension SeatType {
             return .clear
         }
     }
+    
+    var isEnabled: Bool {
+        switch self {
+        case .available:
+            return true
+        default:
+            return false
+        }
+    }
 }
