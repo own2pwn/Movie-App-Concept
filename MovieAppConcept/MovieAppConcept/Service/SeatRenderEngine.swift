@@ -70,6 +70,8 @@ public final class SeatLayer: CAShapeLayer {
         scaleAnimation.duration = duration
         scaleAnimation.fromValue = fromValue
         scaleAnimation.toValue = toValue
+        scaleAnimation.autoreverses = true
+        scaleAnimation.repeatCount = 1
         
         add(scaleAnimation, forKey: keyPath)
     }
