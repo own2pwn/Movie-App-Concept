@@ -22,33 +22,18 @@ public final class SeatPicker: UIView {
     
     // MARK: - Behavior
     
-    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        defer { super.touchesBegan(touches, with: event) }
-        
-        if let location = touches.first?.location(in: self) {
-            if let layers = layer.sublayers {
-                for sl in layers {
-                    guard let seat = sl.hitTest(location) as? SeatLayer else { continue }
-                    seat.isSelected = !seat.isSelected
-                }
-            }
-        }
-    }
-    
     public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         defer { super.touchesMoved(touches, with: event) }
         
-        print("[2]")
+        // TODO: do light selection animation
+        // i.e. we can just let it reverse after all
     }
     
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         defer { super.touchesEnded(touches, with: event) }
         
-        if let location = touches.first?.location(in: self) {
-            if let sb = layer.hitTest(location) {
-                print("[3] - \(sb)")
-            }
-        }
+        guard let location = touches.first?.location(in: self) else { return }
+        animateLayer(at: location)
     }
     
     // MARK: - Interface
@@ -63,6 +48,26 @@ public final class SeatPicker: UIView {
     
     // MARK: - Internal
     
+    private func calculateSeatSize() -> CGSize {
+        let maxInLine: CGFloat = 12
+        let availableWidth = frame.width - contentInsets.left - contentInsets.right - 2 * setSpacing - (maxInLine - 1) * itemSpacing
+        
+        let itemWidth = availableWidth / maxInLine
+        let seatSize = CGSize(width: itemWidth, height: itemWidth * 0.7)
+        
+        return seatSize
+    }
+    
+    private func animateLayer(at location: CGPoint) {
+        guard let layers = layer.sublayers else { return }
+        for sl in layers {
+            guard let seat = sl.hitTest(location) as? SeatLayer else { continue }
+            seat.isSelected.toggle()
+        }
+    }
+    
+    // MARK: - Init
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         internalInit()
@@ -75,15 +80,5 @@ public final class SeatPicker: UIView {
     
     private func internalInit() {
         isMultipleTouchEnabled = false
-    }
-    
-    private func calculateSeatSize() -> CGSize {
-        let maxInLine: CGFloat = 12
-        let availableWidth = frame.width - contentInsets.left - contentInsets.right - 2 * setSpacing - (maxInLine - 1) * itemSpacing
-        
-        let itemWidth = availableWidth / maxInLine
-        let seatSize = CGSize(width: itemWidth, height: itemWidth * 0.7)
-        
-        return seatSize
     }
 }
