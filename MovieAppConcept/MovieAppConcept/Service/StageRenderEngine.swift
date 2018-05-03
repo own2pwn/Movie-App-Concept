@@ -41,7 +41,13 @@ public final class StageRenderEngine {
         let lineHeight = config.itemSize.height
         var origin = at
         
-        for line in block.items {
+        let lines = block.items
+        guard !lines.isEmpty else {
+            origin.y += lineSpacing + lineHeight
+            return origin
+        }
+        
+        for line in lines {
             renderLine(line, starting: origin, in: cinema, with: config)
             origin.y += lineSpacing + lineHeight
         }

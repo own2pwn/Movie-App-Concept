@@ -42,16 +42,23 @@ public final class SeatProvider {
             lines.append(newLine)
         }
         
-        // let l1b1 = Block<SeatType>(items: [.empty, .empty, .regular])
-        // let l1b2 = Block<SeatType>(items: [.empty, .regular, .regular, .regular, .regular, .empty])
-        // let l1b3 = Block<SeatType>(items: [.regular])
-        //
-        // let l1 = Line(seatBlocks: [l1b1, l1b2, l1b3])
-        // let lb1 = Block<Line>(items: [l1])
-        // let s1 = Stage(lineBlocks: [lb1])
+        let emptyLineBlock = Block<Line>(items: [])
         
-        let lb1 = Block<Line>(items: lines)
-        let s1 = Stage(lineBlocks: [lb1])
+        let b1 = Array(lines[0..<5])
+        let lb1 = Block<Line>(items: b1)
+        
+        let b2 = Array(lines[5..<8])
+        let lb2 = Block<Line>(items: b2)
+        
+        let b3 = Array(lines[8..<12])
+        let lb3 = Block<Line>(items: b3)
+        
+        let s1 = Stage(lineBlocks: [lb1, emptyLineBlock, lb2, emptyLineBlock, lb3])
+        
+        let lineBlockB1 = Block<Line>(items: [Line(seatBlocks: [Block<SeatType>(items: [.regular, .regular])])])
+        let lineBlockB2 = Block<Line>(items: [Line(seatBlocks: [Block<SeatType>(items: [.regular, .regular])])])
+        
+        let s2 = Stage(lineBlocks: [lineBlockB1, emptyLineBlock, emptyLineBlock, lineBlockB2])
         
         return s1
     }
