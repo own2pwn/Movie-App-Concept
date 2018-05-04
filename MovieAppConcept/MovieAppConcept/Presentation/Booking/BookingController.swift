@@ -107,8 +107,15 @@ final class BookingController: UIViewController {
     private func setupBuyButton() {
         buyButton.cornerRadius = 14
         buyButton.isSelectable = false
-        buyButton.isHighlightable = false
-        buyButton.highlightTitleColor = .red
+        
+        buyButton.highlightTitleColor = buyButton.currentTitleColor
+        buyButton.normalTitleColor = buyButton.currentTitleColor
+        buyButton.normalColor = buyButton.backgroundColor
+        buyButton.highlightColor = #colorLiteral(red: 0.1919409633, green: 0.4961107969, blue: 0.745100379, alpha: 1)
+        
+        buyButton.onHighlight = { $0.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94) }
+        buyButton.onUnhighlight = { $0.transform = .identity }
+        
         buyButton.makeFlat()
     }
 }

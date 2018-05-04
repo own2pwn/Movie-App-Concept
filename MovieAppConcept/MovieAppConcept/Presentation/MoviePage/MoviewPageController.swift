@@ -85,7 +85,7 @@ final class MoviewPageController: UIViewController {
         sender.isSelected.toggle()
     }
     
-    private func playVideo() {
+    private func playVideo(_ sender: EPButton) {
         topContainer.bringSubview(toFront: videoContainer)
         EPMediaPlayer.shared.play("vid_back_to_the_future.mp4", in: videoContainer)
         
@@ -99,7 +99,7 @@ final class MoviewPageController: UIViewController {
         }
     }
     
-    private func stopVideo() {
+    private func stopVideo(_ sender: EPButton) {
         EPMediaPlayer.shared.stop()
         
         UIView.animate(withDuration: 0.25) { [closeButton = closeButton!, videoContainer = videoContainer!, topContainer = topContainer!] in

@@ -281,13 +281,12 @@
                                     <constraint firstAttribute="bottom" secondItem="72d-2i-Xeu" secondAttribute="bottom" id="ywX-c0-KUb"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0E5-ab-y48" customClass="EPButton" customModule="MovieAppConcept" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0E5-ab-y48" customClass="EPButton" customModule="MovieAppConcept" customModuleProvider="target">
                                 <rect key="frame" x="56.333333333333343" y="698" width="262.33333333333326" height="48"/>
                                 <color key="backgroundColor" red="0.19376453760000001" green="0.50850099329999998" blue="0.85232251879999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Q55-xh-x3G"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="КУПИТЬ БИЛЕТЫ   ₽ 1600">
                                     <color key="titleColor" red="0.92941176469999998" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>

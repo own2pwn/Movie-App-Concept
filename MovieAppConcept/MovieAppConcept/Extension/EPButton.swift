@@ -8,6 +8,8 @@
 
 import UIKit
 
+public typealias EPButtonBlock = (EPButton) -> Void
+
 open class EPButton: UIButton {
 
     // MARK: - Interface
@@ -88,7 +90,11 @@ open class EPButton: UIButton {
 
     // MARK: - Actions
 
-    var onPrimaryAction: VoidBlock?
+    var onPrimaryAction: EPButtonBlock?
+
+    var onHighlight: EPButtonBlock?
+
+    var onUnhighlight: EPButtonBlock?
 
     // MARK: - Overrides
 
@@ -138,12 +144,14 @@ open class EPButton: UIButton {
         backgroundColor = highlightColor
         tintColor = highlightTintColor
         setTitleColor(highlightTitleColor, for: .normal)
+        onHighlight?(self)
     }
 
     private func onHighlightEnded() {
         backgroundColor = normalColor
         tintColor = normalTintColor
         setTitleColor(normalTitleColor, for: .normal)
+        onUnhighlight?(self)
     }
 
     // MARK: - Internal
@@ -168,6 +176,6 @@ open class EPButton: UIButton {
         guard isSelectable else { return }
 
         isSelected.toggle()
-        onPrimaryAction?()
+        onPrimaryAction?(self)
     }
 }
