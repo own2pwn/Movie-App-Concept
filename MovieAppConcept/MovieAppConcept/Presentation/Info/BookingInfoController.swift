@@ -63,6 +63,7 @@ final class BookingInfoController: UIViewController {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(onPanMove(_:)))
         pan.maximumNumberOfTouches = 1
         
+        let baseMargin: CGFloat = 8
         let baseCardSize = dummyCard.frame.size
         let baseOrigin = cardContainer.frame.size.center - baseCardSize.center
         
@@ -75,7 +76,11 @@ final class BookingInfoController: UIViewController {
         secondCard.makeFlat()
         secondCard.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
         
+        let transofrmHeightLoss = secondCard.bounds.height - secondCard.frame.height
+        secondCard.frame.origin.y += transofrmHeightLoss / 2 + baseMargin
+        
         cardContainer.insertSubview(firstCard, at: 0)
+        cardContainer.insertSubview(secondCard, at: 0)
         
 //        let firstCard = UIView(frame: dummyCard.frame)
 //        firstCard.backgroundColor = dummyCard.backgroundColor
