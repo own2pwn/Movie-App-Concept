@@ -30,6 +30,29 @@ public extension CGPoint {
     }
 }
 
+public extension CGAffineTransform {
+    public static func -(_ lhs: CGAffineTransform, _ rhs: CGAffineTransform) -> CGAffineTransform {
+        return CGAffineTransform(a: lhs.a - rhs.a, b: lhs.b - rhs.b, c: lhs.c - rhs.c,
+                                 d: lhs.d - rhs.d, tx: lhs.tx - rhs.tx, ty: lhs.ty - rhs.ty)
+    }
+    
+    public static func +(_ lhs: CGAffineTransform, _ rhs: CGAffineTransform) -> CGAffineTransform {
+        return CGAffineTransform(a: lhs.a + rhs.a, b: lhs.b + rhs.b, c: lhs.c + rhs.c,
+                                 d: lhs.d + rhs.d, tx: lhs.tx + rhs.tx, ty: lhs.ty + rhs.ty)
+    }
+    
+    public static func *(_ lhs: CGAffineTransform, _ rhs: CGFloat) -> CGAffineTransform {
+        return CGAffineTransform(a: lhs.a * rhs, b: lhs.b * rhs, c: lhs.c * rhs,
+                                 d: lhs.d * rhs, tx: lhs.tx * rhs, ty: lhs.ty * rhs)
+    }
+    
+    public func rightBound(to value: CGAffineTransform) -> CGAffineTransform {
+        return CGAffineTransform(a: a.rightBound(to: value.a), b: b.rightBound(to: value.b),
+                                 c: c.rightBound(to: value.c), d: d.rightBound(to: value.d),
+                                 tx: tx.rightBound(to: value.tx), ty: ty.rightBound(to: value.ty))
+    }
+}
+
 final class BookingInfoController: UIViewController {
 
     // MARK: - Outlets
@@ -44,6 +67,10 @@ final class BookingInfoController: UIViewController {
         super.viewDidLoad()
         
         setupScreen()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     // MARK: - Methods
@@ -69,12 +96,12 @@ final class BookingInfoController: UIViewController {
         let baseOrigin = cardContainer.frame.size.center - baseCardSize.center
         
         firstCard = UIView(frame: CGRect(origin: baseOrigin, size: baseCardSize))
-        firstCard.backgroundColor = #colorLiteral(red: 0.6678946614, green: 0.9207183719, blue: 0.4710406065, alpha: 1)
+        firstCard.backgroundColor = #colorLiteral(red: 0.2389388382, green: 0.5892125368, blue: 0.8818323016, alpha: 1)
         firstCard.makeFlat()
         firstCard.addGestureRecognizer(pan)
         
         secondCard = UIView(frame: CGRect(origin: baseOrigin, size: baseCardSize))
-        secondCard.backgroundColor = #colorLiteral(red: 0.2389388382, green: 0.5892125368, blue: 0.8818323016, alpha: 1)
+        secondCard.backgroundColor = #colorLiteral(red: 0.6678946614, green: 0.9207183719, blue: 0.4710406065, alpha: 1)
         secondCard.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
         secondCard.alpha = 0.8
         secondCard.makeFlat()
@@ -97,21 +124,44 @@ final class BookingInfoController: UIViewController {
         card.center.x += moveDistance.x
         
         let xDistance = card.center.x - cardContainer.center.x
+        let absDistance = abs(xDistance)
         
         let transformLoss = 1 - secondCard.transform.a
-        let normalizedDistance = abs(xDistance) / secondCard.frame.width - transformLoss / 2
+        var normalizedDistance = absDistance
+        normalizedDistance /= secondCard.frame.width - transformLoss / 2
+        normalizedDistance.rightBounded(to: 1)
+        
         let xPercent = normalizedDistance * 100
-        log.debug("moved by: \(xPercent.rounded())")
+        // log.debug("moved by: \(xPercent.rounded())")
         // log.debug(xDistance)
         
-        let baseAlpha: CGFloat = 0.8
-        let alphaLeft = 1 - baseAlpha
-        secondCard.alpha = baseAlpha + alphaLeft * normalizedDistance
-        log.debug("a: \(secondCard.alpha)")
+        let updates = [updateAlpha, updateTransform, updateOrigin]
+        updates.forEach { $0(normalizedDistance) }
         
         if r.state == .ended || r.state == .cancelled {
             onPanMoveEnd(r, card)
         }
+    }
+    
+    private func updateOrigin(for distance: CGFloat) {
+        let baseY: CGFloat = 53.042
+        let leftY = 24 - secondCard.frame.origin.y
+        let newY = baseY + leftY * distance
+        secondCard.frame.origin.y = newY
+    }
+    
+    private func updateTransform(for distance: CGFloat) {
+        let baseTransform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
+        let leftTransform = CGAffineTransform.identity - secondCard.transform
+        let newTransform = baseTransform + leftTransform * distance
+        secondCard.transform = newTransform
+    }
+    
+    private func updateAlpha(for distance: CGFloat) {
+        let baseAlpha: CGFloat = 0.8
+        let alphaLeft = 1 - baseAlpha
+        let newAlpha = baseAlpha + alphaLeft * distance
+        secondCard.alpha = newAlpha
     }
     
     private func onPanMoveEnd(_ r: UIPanGestureRecognizer, _ card: UIView) {
@@ -121,6 +171,8 @@ final class BookingInfoController: UIViewController {
     private func resetCards() {
         firstCard.center.x = cardContainer.center.x
         secondCard.alpha = 0.8
+        secondCard.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
+        secondCard.frame.origin.y = 53.042
     }
     
     @objc
