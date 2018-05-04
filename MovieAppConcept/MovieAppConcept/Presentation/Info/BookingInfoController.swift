@@ -112,6 +112,14 @@ final class BookingInfoController: UIViewController {
         let secondCardDelta = distance(for: secondCard, in: cardContainer)
         // cardContainer.center - secondCard.center
         
+        let cardContainerCenter = cardContainer.frame.rectCenter
+        let c2CenterDist = distance(for: secondCard, in: cardContainer)
+        
+        let val = (c2CenterDist.y - cardContainerCenter.y) * normalizedDistance
+        secondCard.frame.origin.y = cardContainerCenter.y + val
+        
+        // let spaceLeftY =
+        
         log.debug("d[1]: \(firstCardDelta)")
         log.debug("d[2]: \(secondCardDelta)")
         log.debug("p: \(xPercent.rounded())")
@@ -131,6 +139,10 @@ final class BookingInfoController: UIViewController {
 }
 
 public extension CGRect {
+    public var rectCenter: CGPoint {
+        return CGPoint(x: width / 2, y: height / 2)
+    }
+    
     public var center: CGPoint {
         return CGPoint(x: midX, y: midY)
     }
