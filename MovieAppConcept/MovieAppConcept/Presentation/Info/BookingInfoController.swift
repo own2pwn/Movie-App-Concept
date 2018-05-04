@@ -76,8 +76,8 @@ final class BookingInfoController: UIViewController {
         secondCard.makeFlat()
         secondCard.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
         
-        let transofrmHeightLoss = secondCard.bounds.height - secondCard.frame.height
-        secondCard.frame.origin.y += transofrmHeightLoss / 2 + baseMargin
+        let transofrmLoss = secondCard.bounds - secondCard.frame
+        secondCard.frame.origin.y += transofrmLoss.height / 2 + baseMargin
         
         cardContainer.insertSubview(firstCard, at: 0)
         cardContainer.insertSubview(secondCard, at: 0)
@@ -161,12 +161,23 @@ public extension CGSize {
     public var center: CGPoint {
         return CGPoint(x: width / 2, y: height / 2)
     }
+    
+    public static func -(_ lhs: CGSize, _ rhs: CGSize) -> CGSize {
+        return CGSize(width: lhs.width - rhs.width, height: lhs.height - rhs.height)
+    }
 }
 
 public extension CGRect {
 //    public var center: CGPoint {
 //        return CGPoint(x: width / 2, y: height / 2)
 //    }
+    
+    public static func -(_ lhs: CGRect, _ rhs: CGRect) -> CGRect {
+        let newOrigin = lhs.origin - rhs.origin
+        let newSize = lhs.size - rhs.size
+        
+        return CGRect(origin: newOrigin, size: newSize)
+    }
     
     public var center: CGPoint {
         return CGPoint(x: midX, y: midY)
