@@ -72,8 +72,9 @@ final class BookingInfoController: UIViewController {
         secondCard.backgroundColor = #colorLiteral(red: 0.2389388382, green: 0.5892125368, blue: 0.8818323016, alpha: 1)
         secondCard.makeFlat()
         secondCard.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
-        secondCard.center.x = firstCard.center.x
-        secondCard.frame.origin.y += 20
+        
+        secondCard.frame.origin.x = (cardContainer.frame.width - secondCard.frame.width) / 2
+        secondCard.frame.origin.y += 24
         
         cardContainer.addSubview(secondCard)
         cardContainer.addSubview(firstCard)
@@ -88,6 +89,13 @@ final class BookingInfoController: UIViewController {
         let swipeDelta = r.translation(in: card)
         
         if r.state == .ended || r.state == .cancelled {
+            let xDistance = card.center.x - cardContainer.center.x
+            if xDistance < 300 {
+                UIView.animate(withDuration: 0.25, animations: {
+                    card.center.x = self.cardContainer.center.x
+                })
+            }
+            
             return
         }
         
@@ -99,8 +107,10 @@ final class BookingInfoController: UIViewController {
         
         // secondCard.center.y -= 20 * normalizedDistance
         
-        let firstCardDelta = distance(between: card.frame, and: cardContainer.frame) // cardContainer.center - card.center
-        let secondCardDelta = cardContainer.center - secondCard.center
+        let firstCardDelta = distance(for: card, in: cardContainer)
+        // cardContainer.center - card.center
+        let secondCardDelta = distance(for: secondCard, in: cardContainer)
+        // cardContainer.center - secondCard.center
         
         log.debug("d[1]: \(firstCardDelta)")
         log.debug("d[2]: \(secondCardDelta)")
@@ -110,11 +120,13 @@ final class BookingInfoController: UIViewController {
     }
     
     // distance to center for: v, in: c
-    private func distance(between v1: CGRect, and v2: CGRect) -> CGPoint {
-        let dx = v2.minX - v1.minX
-        let dy = v2.minY - v1.minY
+    
+    /// Calculates distance of view's center to it's container center.
+    private func distance(for subview: UIView, in container: UIView) -> CGPoint {
+        let containerFrame = container.frame
+        let containerCenter = CGPoint(x: containerFrame.width / 2, y: containerFrame.height / 2)
         
-        return CGPoint(x: dx, y: dy)
+        return subview.frame.center - containerCenter
     }
 }
 
