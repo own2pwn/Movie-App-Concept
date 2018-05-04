@@ -15,6 +15,17 @@ public extension UIView {
     }
 }
 
+public extension CGPoint {
+    public static func +(_ lhs: CGPoint, _ rhs: CGPoint) -> CGPoint {
+        return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
+    }
+    
+    public static func +=(_ lhs: inout CGPoint, _ rhs: CGPoint) {
+        lhs.x += rhs.x
+        lhs.y += rhs.y
+    }
+}
+
 final class BookingInfoController: UIViewController {
 
     // MARK: - Outlets
@@ -58,18 +69,17 @@ final class BookingInfoController: UIViewController {
     private func onPanMove(_ r: UIPanGestureRecognizer) {
         guard let card = r.view else { return }
         let velocity = r.velocity(in: card)
-        // defer { r.setTranslation(.zero, in: card) }
+        defer { r.setTranslation(.zero, in: card) }
         
-        let swipeDelta = r.translation(in: card).x
-        let containerFrame = cardContainer.bounds
-        let containerCenter = CGPoint(x: containerFrame.width / 2, y: containerFrame.height / 2)
-        let xDistance = containerCenter.x - card.center.x
+        let swipeDelta = r.translation(in: card)
+        let xDistance = swipeDelta.x
         
         if r.state == .ended || r.state == .cancelled {
-            r.setTranslation(.zero, in: card)
             return
         }
         
-        log.debug("x: \(xDistance) | d: \(swipeDelta)")
+        card.center += swipeDelta
+        
+        // log.debug("x: \(xDistance) | d: \(swipeDelta)")
     }
 }
