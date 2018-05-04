@@ -63,21 +63,35 @@ final class BookingInfoController: UIViewController {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(onPanMove(_:)))
         pan.maximumNumberOfTouches = 1
         
-        let firstCard = UIView(frame: dummyCard.frame)
-        firstCard.backgroundColor = dummyCard.backgroundColor
-        firstCard.makeFlat()
-        firstCard.addGestureRecognizer(pan)
+        let baseCardSize = dummyCard.frame.size
+        let baseOrigin = cardContainer.frame.size.center - baseCardSize.center
         
-        secondCard = UIView(frame: firstCard.frame)
+        let firstCard = UIView(frame: CGRect(origin: baseOrigin, size: baseCardSize))
+        firstCard.backgroundColor = #colorLiteral(red: 0.6678946614, green: 0.9207183719, blue: 0.4710406065, alpha: 1)
+        firstCard.makeFlat()
+        
+        let secondCard = UIView(frame: CGRect(origin: baseOrigin, size: baseCardSize))
         secondCard.backgroundColor = #colorLiteral(red: 0.2389388382, green: 0.5892125368, blue: 0.8818323016, alpha: 1)
         secondCard.makeFlat()
         secondCard.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
         
-        secondCard.frame.origin.x = (cardContainer.frame.width - secondCard.frame.width) / 2
-        secondCard.frame.origin.y += 24
+        cardContainer.insertSubview(firstCard, at: 0)
         
-        cardContainer.addSubview(secondCard)
-        cardContainer.addSubview(firstCard)
+//        let firstCard = UIView(frame: dummyCard.frame)
+//        firstCard.backgroundColor = dummyCard.backgroundColor
+//        firstCard.makeFlat()
+//        firstCard.addGestureRecognizer(pan)
+//
+//        secondCard = UIView(frame: firstCard.frame)
+//        secondCard.backgroundColor = #colorLiteral(red: 0.2389388382, green: 0.5892125368, blue: 0.8818323016, alpha: 1)
+//        secondCard.makeFlat()
+//        secondCard.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
+//
+//        secondCard.frame.origin.x = (cardContainer.frame.width - secondCard.frame.width) / 2
+//        secondCard.frame.origin.y += 24
+//
+//        cardContainer.addSubview(secondCard)
+//        cardContainer.addSubview(firstCard)
     }
     
     @objc
@@ -112,7 +126,7 @@ final class BookingInfoController: UIViewController {
         let secondCardDelta = distance(for: secondCard, in: cardContainer)
         // cardContainer.center - secondCard.center
         
-        let cardContainerCenter = cardContainer.frame.rectCenter
+        let cardContainerCenter = cardContainer.frame.size.center
         let c2CenterDist = distance(for: secondCard, in: cardContainer)
         
         let val = (c2CenterDist.y - cardContainerCenter.y) * normalizedDistance
@@ -138,10 +152,16 @@ final class BookingInfoController: UIViewController {
     }
 }
 
-public extension CGRect {
-    public var rectCenter: CGPoint {
+public extension CGSize {
+    public var center: CGPoint {
         return CGPoint(x: width / 2, y: height / 2)
     }
+}
+
+public extension CGRect {
+//    public var center: CGPoint {
+//        return CGPoint(x: width / 2, y: height / 2)
+//    }
     
     public var center: CGPoint {
         return CGPoint(x: midX, y: midY)
