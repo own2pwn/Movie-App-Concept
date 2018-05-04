@@ -78,7 +78,11 @@ open class EPButton: UIButton {
     }
 
     @IBInspectable
+    open var isCheckable: Bool = true
+
+    @IBInspectable
     open var isSelectable: Bool = true
+
     // TODO: rename to isCheckable or smth
 
     // MARK: - Methods
@@ -104,18 +108,19 @@ open class EPButton: UIButton {
         }
     }
 
-    open override var isSelected: Bool {
+    open var isChecked: Bool = false {
         didSet {
-            setSelected(isSelected)
+            guard isCheckable else { return }
+            setChecked(isChecked)
         }
     }
 
     // MARK: - Selected
 
-    private func setSelected(_ selected: Bool) {
-        guard isSelectable else { return }
+    private func setChecked(_ checked: Bool) {
+        guard isCheckable else { return }
 
-        let animation = selected ? onSelection : onDeselection
+        let animation = checked ? onSelection : onDeselection
         UIView.animate(baseAnimationDuration, animation)
     }
 
@@ -172,10 +177,9 @@ open class EPButton: UIButton {
 
     @objc
     private func observeTouch(_ sender: EPButton) {
-        // TODO: revisit!
-        guard isSelectable else { return }
+        defer { onPrimaryAction?(self) }
 
+        guard isSelected else { return }
         isSelected.toggle()
-        onPrimaryAction?(self)
     }
 }

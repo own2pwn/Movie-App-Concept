@@ -6,6 +6,7 @@
 //  Copyright © 2018 Evgeniy. All rights reserved.
 //
 
+import PassKit
 import UIKit
 
 final class BookingController: UIViewController {
@@ -39,6 +40,8 @@ final class BookingController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    // MARK: - Members
     
     // MARK: - Methods
     
@@ -102,11 +105,12 @@ final class BookingController: UIViewController {
         let items = SeatProvider.shared.get()
         
         seatPickerContainer.add(items, starting: startPoint)
+        seatPickerContainer.delegate = self
     }
     
     private func setupBuyButton() {
         buyButton.cornerRadius = 14
-        buyButton.isSelectable = false
+        buyButton.isCheckable = false
         
         buyButton.highlightTitleColor = #colorLiteral(red: 0.9290803671, green: 0.9371851087, blue: 0.9403076768, alpha: 1)
         buyButton.normalTitleColor = buyButton.currentTitleColor
@@ -117,5 +121,52 @@ final class BookingController: UIViewController {
         buyButton.onUnhighlight = { $0.transform = .identity }
         
         buyButton.makeFlat()
+        buyButton.onPrimaryAction = buyTickets
+        buyButton.alpha = 0
+        
+        buyButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        buyButton.titleLabel?.minimumScaleFactor = 0.75
+    }
+}
+
+extension BookingController: SeatPickerDelegate {
+    private func buyTickets(_ sender: EPButton) {
+        let payer = ApplePayer()
+        let tickets = seatPickerContainer.get()
+        
+        payer.presentOverlay(for: tickets.count, ticketPrice: 400, movie: "Back To The Future")
+    }
+    
+    func seatPicker(_ picker: SeatPicker, selectedSeatsDidChange seats: Set<SeatLayer>) {
+        let count = seats.count
+        
+        updateBuyButtonLabel(for: count)
+        if count > 0 {
+            UIView.animate(withDuration: 0.25, animations: animateBuyButtonAppereance, completion: onBuyButtonAppeared)
+        } else {
+            UIView.animate(withDuration: 0.25, animations: animateBuyButtonDisappear)
+        }
+    }
+    
+    private func updateBuyButtonLabel(for tickets: Int) {
+        guard tickets > 0 else { return }
+        
+        let price = 400 * tickets
+        buyButton.setTitle("КУПИТЬ БИЛЕТЫ   ₽ \(price)", for: .normal)
+    }
+    
+    private func animateBuyButtonAppereance() {
+        guard buyButton.alpha != 1 else { return }
+        
+        buyButton.alpha = 1
+        buyButton.transform = CGAffineTransform.identity.scaledBy(x: 1.1, y: 1.1)
+    }
+    
+    private func animateBuyButtonDisappear() {
+        buyButton.alpha = 0
+    }
+    
+    private func onBuyButtonAppeared(_ success: Bool) {
+        UIView.animate { self.buyButton.transform = .identity }
     }
 }

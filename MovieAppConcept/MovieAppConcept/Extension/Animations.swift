@@ -8,12 +8,12 @@
 
 import UIKit
 
-extension UIView {
-    static func animate(_ block: @escaping VoidBlock) {
+public extension UIView {
+    public static func animate(_ block: @escaping VoidBlock) {
         UIView.animate(withDuration: 0.3, animations: block)
     }
 
-    static func animate(_ duration: TimeInterval, _ block: @escaping VoidBlock) {
+    public static func animate(_ duration: TimeInterval, _ block: @escaping VoidBlock) {
         UIView.animate(withDuration: duration, animations: block)
     }
 }

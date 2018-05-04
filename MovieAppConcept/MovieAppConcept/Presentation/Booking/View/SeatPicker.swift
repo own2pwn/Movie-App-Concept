@@ -8,6 +8,10 @@
 
 import UIKit
 
+public protocol SeatPickerDelegate: class {
+    func seatPicker(_ picker: SeatPicker, selectedSeatsDidChange seats: Set<SeatLayer>)
+}
+
 public final class SeatPicker: UIView {
 
     // MARK: - Members
@@ -21,6 +25,10 @@ public final class SeatPicker: UIView {
     public var lineSpacing: CGFloat = 10
     
     public var contentInsets: UIEdgeInsets = .zero
+    
+    public var delegate: SeatPickerDelegate?
+    
+    private var selectedSeats = Set<SeatLayer>()
     
     // MARK: - Behavior
     
@@ -48,6 +56,10 @@ public final class SeatPicker: UIView {
         engine.render(stage, in: self, config: config)
     }
     
+    public func get() -> Set<SeatLayer> {
+        return selectedSeats
+    }
+    
     // MARK: - Internal
     
     private func calculateSeatSize() -> CGSize {
@@ -65,6 +77,13 @@ public final class SeatPicker: UIView {
         for sl in layers {
             guard let seat = sl.hitTest(location) as? SeatLayer else { continue }
             seat.isSelected.toggle()
+            
+            if selectedSeats.remove(seat) == nil {
+                selectedSeats.insert(seat)
+            }
+            delegate?.seatPicker(self, selectedSeatsDidChange: selectedSeats)
+            
+            break
         }
     }
     

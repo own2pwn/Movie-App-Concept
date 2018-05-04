@@ -19,6 +19,7 @@
 		B9A2D7AC209BC8F600214060 /* Model.json in Resources */ = {isa = PBXBuildFile; fileRef = B9A2D7AB209BC8F600214060 /* Model.json */; };
 		B9A2D7AE209BD43400214060 /* CAShapeLayer+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2D7AD209BD43400214060 /* CAShapeLayer+Animation.swift */; };
 		B9A380E82098904B00F8CBB1 /* MediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A380E72098904B00F8CBB1 /* MediaPlayer.swift */; };
+		B9C0343F209C922300859018 /* ApplePayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0343E209C922300859018 /* ApplePayer.swift */; };
 		B9C4061320986B2B00B5AABF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4061220986B2B00B5AABF /* AppDelegate.swift */; };
 		B9C4061520986B2B00B5AABF /* MoviewPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4061420986B2B00B5AABF /* MoviewPageController.swift */; };
 		B9C4061820986B2B00B5AABF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C4061620986B2B00B5AABF /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		B9A2D7AB209BC8F600214060 /* Model.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Model.json; sourceTree = "<group>"; };
 		B9A2D7AD209BD43400214060 /* CAShapeLayer+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAShapeLayer+Animation.swift"; sourceTree = "<group>"; };
 		B9A380E72098904B00F8CBB1 /* MediaPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayer.swift; sourceTree = "<group>"; };
+		B9C0343E209C922300859018 /* ApplePayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayer.swift; sourceTree = "<group>"; };
 		B9C4060F20986B2B00B5AABF /* MovieAppConcept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieAppConcept.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C4061220986B2B00B5AABF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9C4061420986B2B00B5AABF /* MoviewPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviewPageController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				B9496A78209B8519007AF11D /* Model */,
 				B951BD8E209B94CB009B452C /* View */,
 				B9124F902099BD07005EEA70 /* BookingController.swift */,
+				B9C0343E209C922300859018 /* ApplePayer.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				B9EAAF85209A814300374520 /* StageRenderEngine.swift in Sources */,
 				B9EAAF83209A7C4600374520 /* SeatProvider.swift in Sources */,
 				B951BD90209B94DF009B452C /* SeatLayer.swift in Sources */,
+				B9C0343F209C922300859018 /* ApplePayer.swift in Sources */,
 				B9C4061520986B2B00B5AABF /* MoviewPageController.swift in Sources */,
 				B9A2D7AE209BD43400214060 /* CAShapeLayer+Animation.swift in Sources */,
 				B9124F912099BD07005EEA70 /* BookingController.swift in Sources */,
