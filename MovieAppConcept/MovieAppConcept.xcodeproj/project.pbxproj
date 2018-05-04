@@ -20,6 +20,10 @@
 		B9A2D7AE209BD43400214060 /* CAShapeLayer+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2D7AD209BD43400214060 /* CAShapeLayer+Animation.swift */; };
 		B9A380E82098904B00F8CBB1 /* MediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A380E72098904B00F8CBB1 /* MediaPlayer.swift */; };
 		B9C0343F209C922300859018 /* ApplePayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0343E209C922300859018 /* ApplePayer.swift */; };
+		B9C03442209CA1DC00859018 /* BookingInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C03441209CA1DC00859018 /* BookingInfoController.swift */; };
+		B9C03456209CA47F00859018 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9C0344D209CA47700859018 /* SwiftyBeaver.framework */; };
+		B9C03457209CA47F00859018 /* SwiftyBeaver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9C0344D209CA47700859018 /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B9C0345C209CA49600859018 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0345B209CA49600859018 /* Logger.swift */; };
 		B9C4061320986B2B00B5AABF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4061220986B2B00B5AABF /* AppDelegate.swift */; };
 		B9C4061520986B2B00B5AABF /* MoviewPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4061420986B2B00B5AABF /* MoviewPageController.swift */; };
 		B9C4061820986B2B00B5AABF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C4061620986B2B00B5AABF /* Main.storyboard */; };
@@ -30,6 +34,65 @@
 		B9EAAF85209A814300374520 /* StageRenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EAAF84209A814300374520 /* StageRenderEngine.swift */; };
 		B9EAAF87209A85A100374520 /* SeatPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EAAF86209A85A100374520 /* SeatPicker.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B9C0344C209CA47700859018 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9C03444209CA47700859018 /* SwiftyBeaver.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9EDCE3E41C09D211002FA4A7;
+			remoteInfo = "SwiftyBeaver (iOS)";
+		};
+		B9C0344E209CA47700859018 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9C03444209CA47700859018 /* SwiftyBeaver.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9EDCE3EE1C09D211002FA4A7;
+			remoteInfo = SwiftyBeaverTests;
+		};
+		B9C03450209CA47700859018 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9C03444209CA47700859018 /* SwiftyBeaver.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ACE597841C1882DF0031451F;
+			remoteInfo = "SwiftyBeaver (watchOS)";
+		};
+		B9C03452209CA47700859018 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9C03444209CA47700859018 /* SwiftyBeaver.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ACE597951C18830D0031451F;
+			remoteInfo = "SwiftyBeaver (tvOS)";
+		};
+		B9C03454209CA47700859018 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9C03444209CA47700859018 /* SwiftyBeaver.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ACE597A61C18832E0031451F;
+			remoteInfo = "SwiftyBeaver (macOS)";
+		};
+		B9C03458209CA47F00859018 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9C03444209CA47700859018 /* SwiftyBeaver.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9EDCE3E31C09D211002FA4A7;
+			remoteInfo = "SwiftyBeaver (iOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B9C0345A209CA48000859018 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B9C03457209CA47F00859018 /* SwiftyBeaver.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B9124F902099BD07005EEA70 /* BookingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingController.swift; sourceTree = "<group>"; };
@@ -45,6 +108,9 @@
 		B9A2D7AD209BD43400214060 /* CAShapeLayer+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAShapeLayer+Animation.swift"; sourceTree = "<group>"; };
 		B9A380E72098904B00F8CBB1 /* MediaPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayer.swift; sourceTree = "<group>"; };
 		B9C0343E209C922300859018 /* ApplePayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayer.swift; sourceTree = "<group>"; };
+		B9C03441209CA1DC00859018 /* BookingInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingInfoController.swift; sourceTree = "<group>"; };
+		B9C03444209CA47700859018 /* SwiftyBeaver.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyBeaver.xcodeproj; path = ../../../../../../../Mobile/iOS/Swift/Lib/SwiftyBeaver/SwiftyBeaver.xcodeproj; sourceTree = "<group>"; };
+		B9C0345B209CA49600859018 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B9C4060F20986B2B00B5AABF /* MovieAppConcept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieAppConcept.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C4061220986B2B00B5AABF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9C4061420986B2B00B5AABF /* MoviewPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviewPageController.swift; sourceTree = "<group>"; };
@@ -63,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9C03456209CA47F00859018 /* SwiftyBeaver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,9 +197,38 @@
 		B9A380E62098904100F8CBB1 /* Reusable */ = {
 			isa = PBXGroup;
 			children = (
+				B9C0345B209CA49600859018 /* Logger.swift */,
 				B9A380E72098904B00F8CBB1 /* MediaPlayer.swift */,
 			);
 			path = Reusable;
+			sourceTree = "<group>";
+		};
+		B9C03440209CA1CC00859018 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				B9C03441209CA1DC00859018 /* BookingInfoController.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		B9C03443209CA46900859018 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				B9C03444209CA47700859018 /* SwiftyBeaver.xcodeproj */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		B9C03445209CA47700859018 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B9C0344D209CA47700859018 /* SwiftyBeaver.framework */,
+				B9C0344F209CA47700859018 /* SwiftyBeaverTests.xctest */,
+				B9C03451209CA47700859018 /* SwiftyBeaver.framework */,
+				B9C03453209CA47700859018 /* SwiftyBeaver.framework */,
+				B9C03455209CA47700859018 /* SwiftyBeaver.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		B9C4060620986B2B00B5AABF = {
@@ -154,6 +250,7 @@
 		B9C4061120986B2B00B5AABF /* MovieAppConcept */ = {
 			isa = PBXGroup;
 			children = (
+				B9C03443209CA46900859018 /* lib */,
 				B9C4062620986B5C00B5AABF /* Art */,
 				B9C4062720986C1E00B5AABF /* Common */,
 				B9364A6C20987E0300029E89 /* Extension */,
@@ -171,6 +268,7 @@
 		B9C4062420986B4300B5AABF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B9C03440209CA1CC00859018 /* Info */,
 				B9124F8F2099BCFB005EEA70 /* Booking */,
 				B978F3D320988FF200139CDC /* MoviePage */,
 			);
@@ -221,10 +319,12 @@
 				B9C4060B20986B2B00B5AABF /* Sources */,
 				B9C4060C20986B2B00B5AABF /* Frameworks */,
 				B9C4060D20986B2B00B5AABF /* Resources */,
+				B9C0345A209CA48000859018 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B9C03459209CA47F00859018 /* PBXTargetDependency */,
 			);
 			name = MovieAppConcept;
 			productName = MovieAppConcept;
@@ -258,12 +358,56 @@
 			mainGroup = B9C4060620986B2B00B5AABF;
 			productRefGroup = B9C4061020986B2B00B5AABF /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B9C03445209CA47700859018 /* Products */;
+					ProjectRef = B9C03444209CA47700859018 /* SwiftyBeaver.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B9C4060E20986B2B00B5AABF /* MovieAppConcept */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B9C0344D209CA47700859018 /* SwiftyBeaver.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyBeaver.framework;
+			remoteRef = B9C0344C209CA47700859018 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B9C0344F209CA47700859018 /* SwiftyBeaverTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftyBeaverTests.xctest;
+			remoteRef = B9C0344E209CA47700859018 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B9C03451209CA47700859018 /* SwiftyBeaver.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyBeaver.framework;
+			remoteRef = B9C03450209CA47700859018 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B9C03453209CA47700859018 /* SwiftyBeaver.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyBeaver.framework;
+			remoteRef = B9C03452209CA47700859018 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B9C03455209CA47700859018 /* SwiftyBeaver.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyBeaver.framework;
+			remoteRef = B9C03454209CA47700859018 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B9C4060D20986B2B00B5AABF /* Resources */ = {
@@ -285,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9C0345C209CA49600859018 /* Logger.swift in Sources */,
 				B9EAAF85209A814300374520 /* StageRenderEngine.swift in Sources */,
 				B9EAAF83209A7C4600374520 /* SeatProvider.swift in Sources */,
 				B951BD90209B94DF009B452C /* SeatLayer.swift in Sources */,
@@ -292,6 +437,7 @@
 				B9C4061520986B2B00B5AABF /* MoviewPageController.swift in Sources */,
 				B9A2D7AE209BD43400214060 /* CAShapeLayer+Animation.swift in Sources */,
 				B9124F912099BD07005EEA70 /* BookingController.swift in Sources */,
+				B9C03442209CA1DC00859018 /* BookingInfoController.swift in Sources */,
 				B99D158E209A68F800E2BF03 /* StageModel.swift in Sources */,
 				B951BD92209B954D009B452C /* UIView+Separator.swift in Sources */,
 				B9A380E82098904B00F8CBB1 /* MediaPlayer.swift in Sources */,
@@ -306,6 +452,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B9C03459209CA47F00859018 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftyBeaver (iOS)";
+			targetProxy = B9C03458209CA47F00859018 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B9C4061620986B2B00B5AABF /* Main.storyboard */ = {
@@ -439,6 +593,7 @@
 		B9C4062220986B2B00B5AABF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZCK8L539L4;
@@ -454,6 +609,7 @@
 		B9C4062320986B2B00B5AABF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZCK8L539L4;
