@@ -77,6 +77,7 @@ open class EPButton: UIButton {
 
     @IBInspectable
     open var isSelectable: Bool = true
+    // TODO: rename to isCheckable or smth
 
     // MARK: - Methods
 
@@ -163,6 +164,9 @@ open class EPButton: UIButton {
 
     @objc
     private func observeTouch(_ sender: EPButton) {
+        // TODO: revisit!
+        guard isSelectable else { return }
+
         isSelected.toggle()
         onPrimaryAction?()
     }
