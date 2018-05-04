@@ -57,6 +57,7 @@ final class BookingInfoController: UIViewController {
         setup.forEach { $0() }
     }
     
+    var firstCard: UIView!
     var secondCard: UIView!
     
     private func setupCardContainer() {
@@ -67,15 +68,16 @@ final class BookingInfoController: UIViewController {
         let baseCardSize = dummyCard.frame.size
         let baseOrigin = cardContainer.frame.size.center - baseCardSize.center
         
-        let firstCard = UIView(frame: CGRect(origin: baseOrigin, size: baseCardSize))
+        firstCard = UIView(frame: CGRect(origin: baseOrigin, size: baseCardSize))
         firstCard.backgroundColor = #colorLiteral(red: 0.6678946614, green: 0.9207183719, blue: 0.4710406065, alpha: 1)
         firstCard.makeFlat()
         firstCard.addGestureRecognizer(pan)
         
-        let secondCard = UIView(frame: CGRect(origin: baseOrigin, size: baseCardSize))
+        secondCard = UIView(frame: CGRect(origin: baseOrigin, size: baseCardSize))
         secondCard.backgroundColor = #colorLiteral(red: 0.2389388382, green: 0.5892125368, blue: 0.8818323016, alpha: 1)
-        secondCard.makeFlat()
         secondCard.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
+        secondCard.alpha = 0.8
+        secondCard.makeFlat()
         
         let transofrmLoss = secondCard.bounds - secondCard.frame
         secondCard.frame.origin.y += transofrmLoss.height / 2 + baseMargin
@@ -87,22 +89,38 @@ final class BookingInfoController: UIViewController {
     @objc
     private func onPanMoveN(_ r: UIPanGestureRecognizer) {
         guard let card = r.view else { return }
+        defer { r.setTranslation(.zero, in: card) }
         
         // 1. move card along with finger
         let moveDistance = r.translation(in: cardContainer)
-        log.debug("moved by: \(moveDistance)")
+        // card.center.x = cardContainer.frame.size.center.x + moveDistance.x
+        card.center.x += moveDistance.x
+        
+        let xDistance = card.center.x - cardContainer.center.x
+        
+        let transformLoss = 1 - secondCard.transform.a
+        let normalizedDistance = abs(xDistance) / secondCard.frame.width - transformLoss / 2
+        let xPercent = normalizedDistance * 100
+        log.debug("moved by: \(xPercent.rounded())")
+        // log.debug(xDistance)
+        
+        let baseAlpha: CGFloat = 0.8
+        let alphaLeft = 1 - baseAlpha
+        secondCard.alpha = baseAlpha + alphaLeft * normalizedDistance
+        log.debug("a: \(secondCard.alpha)")
         
         if r.state == .ended || r.state == .cancelled {
-            r.setTranslation(.zero, in: card)
+            onPanMoveEnd(r, card)
         }
-        
-        if r.state == .began {
-            let touchLocation = r.location(in: cardContainer)
-            let frame = CGRect(origin: touchLocation, size: CGSize(width: 16, height: 16))
-            let mark = UIView(frame: frame)
-            mark.backgroundColor = .red
-            cardContainer.addSubview(mark)
-        }
+    }
+    
+    private func onPanMoveEnd(_ r: UIPanGestureRecognizer, _ card: UIView) {
+        UIView.animate(resetCards)
+    }
+    
+    private func resetCards() {
+        firstCard.center.x = cardContainer.center.x
+        secondCard.alpha = 0.8
     }
     
     @objc

@@ -24,6 +24,7 @@
 		B9C03456209CA47F00859018 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9C0344D209CA47700859018 /* SwiftyBeaver.framework */; };
 		B9C03457209CA47F00859018 /* SwiftyBeaver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9C0344D209CA47700859018 /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B9C0345C209CA49600859018 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0345B209CA49600859018 /* Logger.swift */; };
+		B9C03460209CCBF500859018 /* CGFloat+Bound.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0345F209CCBF400859018 /* CGFloat+Bound.swift */; };
 		B9C4061320986B2B00B5AABF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4061220986B2B00B5AABF /* AppDelegate.swift */; };
 		B9C4061520986B2B00B5AABF /* MoviewPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C4061420986B2B00B5AABF /* MoviewPageController.swift */; };
 		B9C4061820986B2B00B5AABF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C4061620986B2B00B5AABF /* Main.storyboard */; };
@@ -111,6 +112,7 @@
 		B9C03441209CA1DC00859018 /* BookingInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingInfoController.swift; sourceTree = "<group>"; };
 		B9C03444209CA47700859018 /* SwiftyBeaver.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyBeaver.xcodeproj; path = ../../../../../../../Mobile/iOS/Swift/Lib/SwiftyBeaver/SwiftyBeaver.xcodeproj; sourceTree = "<group>"; };
 		B9C0345B209CA49600859018 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		B9C0345F209CCBF400859018 /* CGFloat+Bound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Bound.swift"; sourceTree = "<group>"; };
 		B9C4060F20986B2B00B5AABF /* MovieAppConcept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieAppConcept.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C4061220986B2B00B5AABF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9C4061420986B2B00B5AABF /* MoviewPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviewPageController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		B9364A6C20987E0300029E89 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				B9C0345F209CCBF400859018 /* CGFloat+Bound.swift */,
 				B9364A7220987EED00029E89 /* Animations.swift */,
 				B9364A6E20987E2800029E89 /* Bool+Toggle.swift */,
 				B9A2D7AD209BD43400214060 /* CAShapeLayer+Animation.swift */,
@@ -442,6 +445,7 @@
 				B951BD92209B954D009B452C /* UIView+Separator.swift in Sources */,
 				B9A380E82098904B00F8CBB1 /* MediaPlayer.swift in Sources */,
 				B9364A7520988EBB00029E89 /* EPType.swift in Sources */,
+				B9C03460209CCBF500859018 /* CGFloat+Bound.swift in Sources */,
 				B9364A6F20987E2800029E89 /* Bool+Toggle.swift in Sources */,
 				B9364A7320987EED00029E89 /* Animations.swift in Sources */,
 				B9364A7120987ECB00029E89 /* EPButton.swift in Sources */,
