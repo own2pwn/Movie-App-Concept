@@ -115,13 +115,6 @@ open class EPButton: UIButton {
         }
     }
 
-    open override var isSelected: Bool {
-        didSet {
-            guard isSelectable else { return }
-            onPrimaryAction?(self)
-        }
-    }
-
     // MARK: - Selected
 
     private func setChecked(_ checked: Bool) {
@@ -184,6 +177,9 @@ open class EPButton: UIButton {
 
     @objc
     private func observeTouch(_ sender: EPButton) {
+        defer { onPrimaryAction?(self) }
+
+        guard isSelected else { return }
         isSelected.toggle()
     }
 }

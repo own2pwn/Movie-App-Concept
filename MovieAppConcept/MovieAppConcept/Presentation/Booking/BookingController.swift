@@ -9,9 +9,6 @@
 import PassKit
 import UIKit
 
-public final class ApplePayer {
-}
-
 final class BookingController: UIViewController {
 
     // MARK: - Outlets
@@ -43,6 +40,8 @@ final class BookingController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    // MARK: - Members
     
     // MARK: - Methods
     
@@ -106,6 +105,7 @@ final class BookingController: UIViewController {
         let items = SeatProvider.shared.get()
         
         seatPickerContainer.add(items, starting: startPoint)
+        seatPickerContainer.delegate = self
     }
     
     private func setupBuyButton() {
@@ -121,53 +121,52 @@ final class BookingController: UIViewController {
         buyButton.onUnhighlight = { $0.transform = .identity }
         
         buyButton.makeFlat()
-        buyButton.onPrimaryAction = showPaymentDialogOverlay
-        // addApplePayPaymentButtonToView()
+        buyButton.onPrimaryAction = buyTickets
+        buyButton.alpha = 0
+        
+        buyButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        buyButton.titleLabel?.minimumScaleFactor = 0.75
     }
 }
 
-extension BookingController: PKPaymentAuthorizationViewControllerDelegate, PKPaymentAuthorizationControllerDelegate {
-    private func addApplePayPaymentButtonToView() {
-        let paymentButton = PKPaymentButton(paymentButtonType: .buy, paymentButtonStyle: .white)
-        // paymentButton.frame.origin = buyButton.frame.origin
-        // paymentButton.frame.size.width = buyButton.frame.size.width
-        paymentButton.frame = buyButton.frame
-        buyButton.isHidden = true
+extension BookingController: SeatPickerDelegate {
+    private func buyTickets(_ sender: EPButton) {
+        let payer = ApplePayer()
+        let tickets = seatPickerContainer.get()
         
-        // paymentButton.translatesAutoresizingMaskIntoConstraints = false
-        // paymentButton.addTarget(self, action: #selector(showPaymentDialogOverlay(_:)), for: .touchUpInside)
-        view.addSubview(paymentButton)
+        payer.presentOverlay(for: tickets.count, ticketPrice: 400, movie: "Back To The Future")
     }
     
-    @objc
-    private func showPaymentDialogOverlay(_ sender: EPButton) {
-        guard PKPaymentAuthorizationController.canMakePayments() else { return }
+    func seatPicker(_ picker: SeatPicker, selectedSeatsDidChange seats: Set<SeatLayer>) {
+        let count = seats.count
         
-        let paymentNetworks: [PKPaymentNetwork] = [.amex, .masterCard, .visa]
-        let ticket = PKPaymentSummaryItem(label: "Ticket", amount: 1_800, type: .final)
-        
-        let request = PKPaymentRequest()
-        request.merchantIdentifier = "own2pwn.pp.cinema"
-        request.countryCode = "RU"
-        request.currencyCode = "RUB"
-        request.supportedNetworks = paymentNetworks
-        request.merchantCapabilities = .capability3DS
-        request.paymentSummaryItems = [ticket]
-        
-        // guard let paymentOverlay = PKPaymentAuthorizationViewController(paymentRequest: request) else { return }
-        let paymentOverlay = PKPaymentAuthorizationController(paymentRequest: request)
-        paymentOverlay.delegate = self
-        paymentOverlay.present(completion: nil)
-        
-        // present(paymentOverlay, animated: true, completion: nil)
+        updateBuyButtonLabel(for: count)
+        if count > 0 {
+            UIView.animate(withDuration: 0.25, animations: animateBuyButtonAppereance, completion: onBuyButtonAppeared)
+        } else {
+            UIView.animate(withDuration: 0.25, animations: animateBuyButtonDisappear)
+        }
     }
     
-    func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
-        let result = PKPaymentAuthorizationResult(status: .success, errors: nil)
-        completion(result)
+    private func updateBuyButtonLabel(for tickets: Int) {
+        guard tickets > 0 else { return }
+        
+        let price = 400 * tickets
+        buyButton.setTitle("КУПИТЬ БИЛЕТЫ   ₽ \(price)", for: .normal)
     }
     
-    func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
-        controller.dismiss(completion: nil)
+    private func animateBuyButtonAppereance() {
+        guard buyButton.alpha != 1 else { return }
+        
+        buyButton.alpha = 1
+        buyButton.transform = CGAffineTransform.identity.scaledBy(x: 1.1, y: 1.1)
+    }
+    
+    private func animateBuyButtonDisappear() {
+        buyButton.alpha = 0
+    }
+    
+    private func onBuyButtonAppeared(_ success: Bool) {
+        UIView.animate { self.buyButton.transform = .identity }
     }
 }

@@ -287,7 +287,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Q55-xh-x3G"/>
                                 </constraints>
-                                <state key="normal" title="КУПИТЬ БИЛЕТЫ   ₽ 1600">
+                                <state key="normal" title="КУПИТЬ БИЛЕТЫ   ₽ 1 600">
                                     <color key="titleColor" red="0.92941176469999998" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                             </button>
