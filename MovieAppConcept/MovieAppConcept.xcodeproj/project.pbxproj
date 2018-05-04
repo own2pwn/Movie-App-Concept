@@ -82,10 +82,10 @@
 			children = (
 				B9364A7220987EED00029E89 /* Animations.swift */,
 				B9364A6E20987E2800029E89 /* Bool+Toggle.swift */,
+				B9A2D7AD209BD43400214060 /* CAShapeLayer+Animation.swift */,
 				B9364A7020987ECB00029E89 /* EPButton.swift */,
 				B9364A7420988EBB00029E89 /* EPType.swift */,
 				B951BD91209B954D009B452C /* UIView+Separator.swift */,
-				B9A2D7AD209BD43400214060 /* CAShapeLayer+Animation.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -101,8 +101,8 @@
 		B9496A78209B8519007AF11D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B99D158D209A68F800E2BF03 /* StageModel.swift */,
 				B9A2D7AB209BC8F600214060 /* Model.json */,
+				B99D158D209A68F800E2BF03 /* StageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,8 +110,8 @@
 		B951BD8E209B94CB009B452C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B9EAAF86209A85A100374520 /* SeatPicker.swift */,
 				B951BD8F209B94DF009B452C /* SeatLayer.swift */,
+				B9EAAF86209A85A100374520 /* SeatPicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
