@@ -68,13 +68,13 @@ final class MoviewPageController: UIViewController {
             $0.adjustsImageWhenHighlighted = false
         }
         
-        closeButton.isSelectable = false
+        closeButton.isCheckable = false
         closeButton.onPrimaryAction = stopVideo
         
         bookmarkButton.normalImage = #imageLiteral(resourceName: "ic_heart_normal")
         bookmarkButton.selectedImage = #imageLiteral(resourceName: "ic_heart_selected")
         
-        playButton.isSelectable = false
+        playButton.isCheckable = false
         playButton.onPrimaryAction = playVideo
         playButton.frame.size.width += 128
     }

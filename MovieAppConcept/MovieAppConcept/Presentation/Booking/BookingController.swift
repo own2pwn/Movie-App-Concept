@@ -6,7 +6,11 @@
 //  Copyright © 2018 Evgeniy. All rights reserved.
 //
 
+import PassKit
 import UIKit
+
+public final class ApplePayer {
+}
 
 final class BookingController: UIViewController {
 
@@ -106,7 +110,7 @@ final class BookingController: UIViewController {
     
     private func setupBuyButton() {
         buyButton.cornerRadius = 14
-        buyButton.isSelectable = false
+        buyButton.isCheckable = false
         
         buyButton.highlightTitleColor = #colorLiteral(red: 0.9290803671, green: 0.9371851087, blue: 0.9403076768, alpha: 1)
         buyButton.normalTitleColor = buyButton.currentTitleColor
@@ -117,5 +121,53 @@ final class BookingController: UIViewController {
         buyButton.onUnhighlight = { $0.transform = .identity }
         
         buyButton.makeFlat()
+        buyButton.onPrimaryAction = showPaymentDialogOverlay
+        // addApplePayPaymentButtonToView()
+    }
+}
+
+extension BookingController: PKPaymentAuthorizationViewControllerDelegate, PKPaymentAuthorizationControllerDelegate {
+    private func addApplePayPaymentButtonToView() {
+        let paymentButton = PKPaymentButton(paymentButtonType: .buy, paymentButtonStyle: .white)
+        // paymentButton.frame.origin = buyButton.frame.origin
+        // paymentButton.frame.size.width = buyButton.frame.size.width
+        paymentButton.frame = buyButton.frame
+        buyButton.isHidden = true
+        
+        // paymentButton.translatesAutoresizingMaskIntoConstraints = false
+        // paymentButton.addTarget(self, action: #selector(showPaymentDialogOverlay(_:)), for: .touchUpInside)
+        view.addSubview(paymentButton)
+    }
+    
+    @objc
+    private func showPaymentDialogOverlay(_ sender: EPButton) {
+        guard PKPaymentAuthorizationController.canMakePayments() else { return }
+        
+        let paymentNetworks: [PKPaymentNetwork] = [.amex, .masterCard, .visa]
+        let ticket = PKPaymentSummaryItem(label: "Ticket", amount: 1_800, type: .final)
+        
+        let request = PKPaymentRequest()
+        request.merchantIdentifier = "own2pwn.pp.cinema"
+        request.countryCode = "RU"
+        request.currencyCode = "RUB"
+        request.supportedNetworks = paymentNetworks
+        request.merchantCapabilities = .capability3DS
+        request.paymentSummaryItems = [ticket]
+        
+        // guard let paymentOverlay = PKPaymentAuthorizationViewController(paymentRequest: request) else { return }
+        let paymentOverlay = PKPaymentAuthorizationController(paymentRequest: request)
+        paymentOverlay.delegate = self
+        paymentOverlay.present(completion: nil)
+        
+        // present(paymentOverlay, animated: true, completion: nil)
+    }
+    
+    func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+        let result = PKPaymentAuthorizationResult(status: .success, errors: nil)
+        completion(result)
+    }
+    
+    func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
+        controller.dismiss(completion: nil)
     }
 }
