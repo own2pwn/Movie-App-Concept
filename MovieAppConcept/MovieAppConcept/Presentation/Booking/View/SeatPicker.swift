@@ -18,7 +18,7 @@ public final class SeatPicker: UIView {
     
     public var blockSpacing: CGFloat = 4
     
-    public var lineSpacing: CGFloat = 12
+    public var lineSpacing: CGFloat = 10
     
     public var contentInsets: UIEdgeInsets = .zero
     

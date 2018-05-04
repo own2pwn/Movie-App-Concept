@@ -22,6 +22,8 @@ final class BookingController: UIViewController {
     
     @IBOutlet var seatPickerContainer: SeatPicker!
     
+    @IBOutlet var buyButton: EPButton!
+    
     // MARK: - Overrides
     
     override func viewDidLoad() {
@@ -32,8 +34,6 @@ final class BookingController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        renderSeats()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -47,7 +47,7 @@ final class BookingController: UIViewController {
     }
     
     private func setup() {
-        let setup = [setupHeading, setupLegend, renderScreen]
+        let setup = [setupHeading, setupLegend, renderScreen, renderSeats, setupBuyButton]
         setup.forEach { $0() }
     }
     
@@ -102,5 +102,10 @@ final class BookingController: UIViewController {
         let items = SeatProvider.shared.get()
         
         seatPickerContainer.add(items, starting: startPoint)
+    }
+    
+    private func setupBuyButton() {
+        buyButton.cornerRadius = 14
+        buyButton.makeFlat()
     }
 }
