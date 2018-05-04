@@ -60,7 +60,7 @@ final class BookingInfoController: UIViewController {
     var secondCard: UIView!
     
     private func setupCardContainer() {
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(onPanMove(_:)))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(onPanMoveN(_:)))
         pan.maximumNumberOfTouches = 1
         
         let baseMargin: CGFloat = 8
@@ -70,6 +70,7 @@ final class BookingInfoController: UIViewController {
         let firstCard = UIView(frame: CGRect(origin: baseOrigin, size: baseCardSize))
         firstCard.backgroundColor = #colorLiteral(red: 0.6678946614, green: 0.9207183719, blue: 0.4710406065, alpha: 1)
         firstCard.makeFlat()
+        firstCard.addGestureRecognizer(pan)
         
         let secondCard = UIView(frame: CGRect(origin: baseOrigin, size: baseCardSize))
         secondCard.backgroundColor = #colorLiteral(red: 0.2389388382, green: 0.5892125368, blue: 0.8818323016, alpha: 1)
@@ -81,22 +82,27 @@ final class BookingInfoController: UIViewController {
         
         cardContainer.insertSubview(firstCard, at: 0)
         cardContainer.insertSubview(secondCard, at: 0)
+    }
+    
+    @objc
+    private func onPanMoveN(_ r: UIPanGestureRecognizer) {
+        guard let card = r.view else { return }
         
-//        let firstCard = UIView(frame: dummyCard.frame)
-//        firstCard.backgroundColor = dummyCard.backgroundColor
-//        firstCard.makeFlat()
-//        firstCard.addGestureRecognizer(pan)
-//
-//        secondCard = UIView(frame: firstCard.frame)
-//        secondCard.backgroundColor = #colorLiteral(red: 0.2389388382, green: 0.5892125368, blue: 0.8818323016, alpha: 1)
-//        secondCard.makeFlat()
-//        secondCard.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
-//
-//        secondCard.frame.origin.x = (cardContainer.frame.width - secondCard.frame.width) / 2
-//        secondCard.frame.origin.y += 24
-//
-//        cardContainer.addSubview(secondCard)
-//        cardContainer.addSubview(firstCard)
+        // 1. move card along with finger
+        let moveDistance = r.translation(in: cardContainer)
+        log.debug("moved by: \(moveDistance)")
+        
+        if r.state == .ended || r.state == .cancelled {
+            r.setTranslation(.zero, in: card)
+        }
+        
+        if r.state == .began {
+            let touchLocation = r.location(in: cardContainer)
+            let frame = CGRect(origin: touchLocation, size: CGSize(width: 16, height: 16))
+            let mark = UIView(frame: frame)
+            mark.backgroundColor = .red
+            cardContainer.addSubview(mark)
+        }
     }
     
     @objc
