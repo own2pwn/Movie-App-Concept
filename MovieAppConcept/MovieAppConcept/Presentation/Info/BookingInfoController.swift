@@ -116,7 +116,7 @@ final class BookingInfoController: UIViewController {
     @objc
     private func onPanMoveN(_ r: UIPanGestureRecognizer) {
         guard let card = r.view else { return }
-        defer { r.setTranslation(.zero, in: card) }
+        defer { r.setTranslation(.zero, in: cardContainer) }
         
         // 1. move card along with finger
         let moveDistance = r.translation(in: cardContainer)
@@ -125,6 +125,33 @@ final class BookingInfoController: UIViewController {
         
         let xDistance = card.center.x - cardContainer.center.x
         let absDistance = abs(xDistance)
+        
+        var shouldCancel = true
+        
+        if absDistance >= 200 {
+            r.isEnabled = false
+            shouldCancel = false
+            
+            UIView.animate { [cardContainer = cardContainer!, secondCard = secondCard!] in
+                card.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
+                card.alpha = 0.8
+                
+                secondCard.transform = .identity
+                secondCard.alpha = 1
+                
+                secondCard.center = cardContainer.frame.size.center
+                
+                card.center.x = cardContainer.center.x
+                card.frame.origin.y = 54
+                
+                cardContainer.sendSubview(toBack: card)
+                card.removeGestureRecognizer(r)
+                secondCard.addGestureRecognizer(r)
+                r.isEnabled = true
+            }
+            
+            return
+        }
         
         let transformLoss = 1 - secondCard.transform.a
         var normalizedDistance = absDistance
@@ -135,10 +162,21 @@ final class BookingInfoController: UIViewController {
         // log.debug("moved by: \(xPercent.rounded())")
         // log.debug(xDistance)
         
+        let baseTransform = CGAffineTransform.identity
+        let leftTransform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94) - card.transform
+        let newTransform = baseTransform + leftTransform * normalizedDistance
+        card.transform = newTransform
+        
+        let baseAlpha: CGFloat = 1
+        let alphaLeft = 0.8 - baseAlpha
+        let newAlpha = baseAlpha + alphaLeft * normalizedDistance
+        card.alpha = newAlpha
+        
         let updates = [updateAlpha, updateTransform, updateOrigin]
         updates.forEach { $0(normalizedDistance) }
         
         if r.state == .ended || r.state == .cancelled {
+            guard shouldCancel else { return }
             onPanMoveEnd(r, card)
         }
     }
@@ -147,7 +185,7 @@ final class BookingInfoController: UIViewController {
         let baseY: CGFloat = 53.042
         let leftY = 24 - secondCard.frame.origin.y
         let newY = baseY + leftY * distance
-        secondCard.frame.origin.y = newY
+        secondCard.frame.origin.y = newY.bound(min: 24, baseY)
     }
     
     private func updateTransform(for distance: CGFloat) {
@@ -169,10 +207,13 @@ final class BookingInfoController: UIViewController {
     }
     
     private func resetCards() {
-        firstCard.center.x = cardContainer.center.x
         secondCard.alpha = 0.8
         secondCard.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
         secondCard.frame.origin.y = 53.042
+        
+        firstCard.center.x = cardContainer.center.x
+        firstCard.transform = .identity
+        firstCard.alpha = 1
     }
     
     @objc
