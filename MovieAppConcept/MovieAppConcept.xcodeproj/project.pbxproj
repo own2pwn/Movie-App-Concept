@@ -34,6 +34,7 @@
 		B9A2D7AC209BC8F600214060 /* Model.json in Resources */ = {isa = PBXBuildFile; fileRef = B9A2D7AB209BC8F600214060 /* Model.json */; };
 		B9A2D7AE209BD43400214060 /* CAShapeLayer+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A2D7AD209BD43400214060 /* CAShapeLayer+Animation.swift */; };
 		B9A380E82098904B00F8CBB1 /* MediaPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A380E72098904B00F8CBB1 /* MediaPlayer.swift */; };
+		B9B905B120A258B5002EA7C7 /* EPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B905B020A258B5002EA7C7 /* EPNavigationController.swift */; };
 		B9C0343F209C922300859018 /* ApplePayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0343E209C922300859018 /* ApplePayer.swift */; };
 		B9C03442209CA1DC00859018 /* BookingInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C03441209CA1DC00859018 /* BookingInfoController.swift */; };
 		B9C0345C209CA49600859018 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C0345B209CA49600859018 /* Logger.swift */; };
@@ -89,6 +90,7 @@
 		B9A2D7AB209BC8F600214060 /* Model.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Model.json; sourceTree = "<group>"; };
 		B9A2D7AD209BD43400214060 /* CAShapeLayer+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAShapeLayer+Animation.swift"; sourceTree = "<group>"; };
 		B9A380E72098904B00F8CBB1 /* MediaPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayer.swift; sourceTree = "<group>"; };
+		B9B905B020A258B5002EA7C7 /* EPNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPNavigationController.swift; sourceTree = "<group>"; };
 		B9C0343E209C922300859018 /* ApplePayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayer.swift; sourceTree = "<group>"; };
 		B9C03441209CA1DC00859018 /* BookingInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingInfoController.swift; sourceTree = "<group>"; };
 		B9C0345B209CA49600859018 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				B9124F8F2099BCFB005EEA70 /* Booking */,
 				B9C03440209CA1CC00859018 /* Info */,
 				B978F3D320988FF200139CDC /* MoviePage */,
+				B9B905B020A258B5002EA7C7 /* EPNavigationController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				B984A32E20A242FF00544A8C /* Bool+Toggle.swift in Sources */,
 				B9C0345C209CA49600859018 /* Logger.swift in Sources */,
 				B9EAAF85209A814300374520 /* StageRenderEngine.swift in Sources */,
+				B9B905B120A258B5002EA7C7 /* EPNavigationController.swift in Sources */,
 				B984A35420A24D0900544A8C /* GoogleCloudDestination.swift in Sources */,
 				B984A35620A24D0900544A8C /* ConsoleDestination.swift in Sources */,
 				B9EAAF83209A7C4600374520 /* SeatProvider.swift in Sources */,

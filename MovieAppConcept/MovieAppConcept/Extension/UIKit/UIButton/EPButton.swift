@@ -186,11 +186,9 @@ open class EPButton: UIButton {
 
     @objc
     private func observeTouch(_ sender: EPButton) {
-        guard isSelectable else {
-            onPrimaryAction?(self)
-            return
-        }
+        defer { onPrimaryAction?(self) }
 
+        guard isSelectable else { return }
         isSelected.toggle()
     }
 }
