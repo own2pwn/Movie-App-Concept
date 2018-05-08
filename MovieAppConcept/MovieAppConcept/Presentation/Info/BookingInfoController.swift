@@ -190,6 +190,6 @@ final class BookingInfoController: UIViewController {
     // MARK: - Actions
     
     @IBAction func goBack(_ sender: UIButton) {
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }

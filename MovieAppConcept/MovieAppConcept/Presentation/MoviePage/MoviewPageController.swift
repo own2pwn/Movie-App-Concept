@@ -40,6 +40,7 @@ final class MoviewPageController: UIViewController {
     
     private func setupScreen() {
         setup()
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func setup() {

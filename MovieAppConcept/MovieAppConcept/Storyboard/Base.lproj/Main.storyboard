@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i3R-uF-RBz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -108,6 +108,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="wPl-qF-qks"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="bookmarkButton" destination="Fmg-7W-V04" id="iio-Ua-Vn3"/>
                         <outlet property="closeButton" destination="1xX-nU-FRb" id="3ov-Yg-YIT"/>
@@ -121,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="122"/>
+            <point key="canvasLocation" x="436" y="121.88905547226388"/>
         </scene>
         <!--Booking Controller-->
         <scene sceneID="V1J-he-aOL">
@@ -356,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Op6-Fb-zsA" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="911" y="122"/>
+            <point key="canvasLocation" x="1248.8" y="121.88905547226388"/>
         </scene>
         <!--Booking Info Controller-->
         <scene sceneID="JVZ-LV-fhn">
@@ -426,7 +428,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qu4-tB-sdr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1764" y="121.88905547226388"/>
+            <point key="canvasLocation" x="2103.1999999999998" y="121.88905547226388"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cuV-pG-Dwh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i3R-uF-RBz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tTH-ce-zLp">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Xag-FG-q5I"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eBu-uw-fJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-385" y="122"/>
         </scene>
     </scenes>
     <resources>
