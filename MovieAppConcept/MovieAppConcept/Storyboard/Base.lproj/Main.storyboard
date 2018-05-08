@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GIh-Is-jfX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i3R-uF-RBz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -85,28 +85,45 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="6kc-fQ-6jK" secondAttribute="trailing" constant="32" id="yqJ-3t-fDB"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9D-eT-kCB" customClass="EPButton" customModule="MovieAppConcept" customModuleProvider="target">
+                                <rect key="frame" x="56" y="587" width="262.5" height="48"/>
+                                <color key="backgroundColor" red="0.19376453760000001" green="0.50850099329999998" blue="0.85232251879999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="xl9-Q5-yfi"/>
+                                </constraints>
+                                <state key="normal" title="Next screen">
+                                    <color key="titleColor" red="0.92941176469999998" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="azu-74-2hU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CUX-i1-zmj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="azu-74-2hU" secondAttribute="trailing" id="GTU-Xe-iFv"/>
                             <constraint firstItem="azu-74-2hU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HrI-pS-Yhs"/>
+                            <constraint firstItem="G9D-eT-kCB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="U62-Zz-Y4d"/>
                             <constraint firstItem="azu-74-2hU" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.55" id="XNT-jn-Szb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="G9D-eT-kCB" secondAttribute="bottom" constant="32" id="faa-cU-Kx5"/>
+                            <constraint firstItem="G9D-eT-kCB" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.7" id="nMl-9Q-vrL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="wPl-qF-qks"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="bookmarkButton" destination="Fmg-7W-V04" id="iio-Ua-Vn3"/>
                         <outlet property="closeButton" destination="1xX-nU-FRb" id="3ov-Yg-YIT"/>
                         <outlet property="movieImage" destination="idq-YU-mWK" id="vRA-EH-EzU"/>
+                        <outlet property="nextScreenButton" destination="G9D-eT-kCB" id="CBx-jn-Jr2"/>
                         <outlet property="playButton" destination="6kc-fQ-6jK" id="Tc7-vx-myf"/>
                         <outlet property="topContainer" destination="azu-74-2hU" id="ZIL-NS-M8m"/>
                         <outlet property="videoContainer" destination="iIW-7Y-Nay" id="ksb-1l-gY6"/>
+                        <segue destination="XBx-JD-H6f" kind="show" identifier="showPicker" id="cpM-Mz-cV3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="122"/>
+            <point key="canvasLocation" x="436" y="121.88905547226388"/>
         </scene>
         <!--Booking Controller-->
         <scene sceneID="V1J-he-aOL">
@@ -147,13 +164,29 @@
                                             <constraint firstAttribute="width" constant="24" id="xPT-pi-ozO"/>
                                         </constraints>
                                         <state key="normal" image="icn_back"/>
+                                        <connections>
+                                            <action selector="goBack:" destination="XBx-JD-H6f" eventType="touchUpInside" id="hCg-CC-dtl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZw-02-rRq" userLabel="Back Button">
+                                        <rect key="frame" x="335" y="13" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="8CT-TW-EkQ"/>
+                                            <constraint firstAttribute="width" constant="24" id="tp5-D0-fov"/>
+                                        </constraints>
+                                        <state key="normal" image="icn_forward"/>
+                                        <connections>
+                                            <action selector="showNext:" destination="XBx-JD-H6f" eventType="touchUpInside" id="TcB-Cy-ZMf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="A8k-YB-Adf" firstAttribute="centerY" secondItem="L01-A6-evl" secondAttribute="centerY" id="4La-F6-FeN"/>
                                     <constraint firstItem="L01-A6-evl" firstAttribute="top" secondItem="bcZ-yU-8MQ" secondAttribute="top" constant="8" id="8yI-aL-13d"/>
                                     <constraint firstAttribute="height" constant="76" id="Jsn-fa-1Tw"/>
+                                    <constraint firstItem="wZw-02-rRq" firstAttribute="centerY" secondItem="L01-A6-evl" secondAttribute="centerY" id="M4T-Gy-W5E"/>
                                     <constraint firstItem="L01-A6-evl" firstAttribute="centerX" secondItem="bcZ-yU-8MQ" secondAttribute="centerX" id="QAC-0i-BZh"/>
+                                    <constraint firstAttribute="trailing" secondItem="wZw-02-rRq" secondAttribute="trailing" constant="16" id="dYt-pm-iaI"/>
                                     <constraint firstItem="A8k-YB-Adf" firstAttribute="leading" secondItem="bcZ-yU-8MQ" secondAttribute="leading" constant="16" id="gnQ-eA-nOd"/>
                                 </constraints>
                             </view>
@@ -282,7 +315,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0E5-ab-y48" customClass="EPButton" customModule="MovieAppConcept" customModuleProvider="target">
-                                <rect key="frame" x="56.5" y="587" width="262" height="48"/>
+                                <rect key="frame" x="56.5" y="587" width="262.5" height="48"/>
                                 <color key="backgroundColor" red="0.19376453760000001" green="0.50850099329999998" blue="0.85232251879999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Q55-xh-x3G"/>
@@ -319,11 +352,12 @@
                         <outletCollection property="legendSeats" destination="ppo-bu-hw5" collectionClass="NSMutableArray" id="Rdh-Og-DvS"/>
                         <outletCollection property="legendSeats" destination="gwK-ce-d6G" collectionClass="NSMutableArray" id="kLi-TL-Lej"/>
                         <outletCollection property="legendSeats" destination="F8c-a1-OSP" collectionClass="NSMutableArray" id="yze-pr-tvb"/>
+                        <segue destination="GIh-Is-jfX" kind="show" identifier="showBookingInfo" id="9b3-7w-fHu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Op6-Fb-zsA" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="911" y="122"/>
+            <point key="canvasLocation" x="1248.8" y="121.88905547226388"/>
         </scene>
         <!--Booking Info Controller-->
         <scene sceneID="JVZ-LV-fhn">
@@ -352,12 +386,37 @@
                                     <constraint firstItem="Isi-4r-xpN" firstAttribute="centerX" secondItem="Ubh-Am-Ygg" secondAttribute="centerX" id="wF3-IA-JCq"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncP-ZM-S2r">
+                                <rect key="frame" x="0.0" y="20" width="375" height="72"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOg-h4-nax" userLabel="Back Button">
+                                        <rect key="frame" x="16" y="24" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="COu-I1-tnG"/>
+                                            <constraint firstAttribute="height" constant="24" id="lkX-bY-Dzc"/>
+                                        </constraints>
+                                        <state key="normal" image="icn_back"/>
+                                        <connections>
+                                            <action selector="goBack:" destination="XBx-JD-H6f" eventType="touchUpInside" id="fKs-lq-DKk"/>
+                                            <action selector="goBack:" destination="GIh-Is-jfX" eventType="touchUpInside" id="rCc-Nx-B6d"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="Ief-ti-3b5"/>
+                                    <constraint firstItem="cOg-h4-nax" firstAttribute="leading" secondItem="ncP-ZM-S2r" secondAttribute="leading" constant="16" id="Xvl-VC-a7m"/>
+                                    <constraint firstItem="cOg-h4-nax" firstAttribute="centerY" secondItem="ncP-ZM-S2r" secondAttribute="centerY" id="h5r-Tt-4xu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="ncP-ZM-S2r" firstAttribute="top" secondItem="zhs-VY-axe" secondAttribute="top" id="0gE-dK-umm"/>
                             <constraint firstItem="Ubh-Am-Ygg" firstAttribute="leading" secondItem="zhs-VY-axe" secondAttribute="leading" id="DKP-Xm-IGc"/>
                             <constraint firstItem="zhs-VY-axe" firstAttribute="trailing" secondItem="Ubh-Am-Ygg" secondAttribute="trailing" id="jWY-UU-6wR"/>
                             <constraint firstItem="Ubh-Am-Ygg" firstAttribute="top" secondItem="zhs-VY-axe" secondAttribute="top" constant="72" id="p4R-9L-Mq0"/>
+                            <constraint firstItem="zhs-VY-axe" firstAttribute="trailing" secondItem="ncP-ZM-S2r" secondAttribute="trailing" id="u8m-Ax-55V"/>
+                            <constraint firstItem="ncP-ZM-S2r" firstAttribute="leading" secondItem="8Hp-ZU-0d2" secondAttribute="leading" id="uNh-Of-yxH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zhs-VY-axe"/>
                     </view>
@@ -368,7 +427,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qu4-tB-sdr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1764" y="121.88905547226388"/>
+            <point key="canvasLocation" x="2103.1999999999998" y="121.88905547226388"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cuV-pG-Dwh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i3R-uF-RBz" customClass="EPNavigationController" customModule="MovieAppConcept" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tTH-ce-zLp">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Xag-FG-q5I"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eBu-uw-fJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-385" y="122"/>
         </scene>
     </scenes>
     <resources>
@@ -376,6 +453,7 @@
         <image name="ic_heart_normal" width="36" height="34"/>
         <image name="ic_play" width="48" height="48"/>
         <image name="icn_back" width="24" height="24"/>
+        <image name="icn_forward" width="24" height="24"/>
         <image name="img_back_to_the_future" width="1500" height="2304"/>
     </resources>
 </document>

@@ -127,6 +127,16 @@ final class BookingController: UIViewController {
         buyButton.titleLabel?.adjustsFontSizeToFitWidth = true
         buyButton.titleLabel?.minimumScaleFactor = 0.75
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func goBack(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func showNext(_ sender: UIButton) {
+        performSegue(withIdentifier: "showBookingInfo", sender: self)
+    }
 }
 
 extension BookingController: SeatPickerDelegate {

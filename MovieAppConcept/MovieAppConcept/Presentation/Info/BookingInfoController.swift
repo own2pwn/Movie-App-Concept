@@ -73,19 +73,16 @@ final class BookingInfoController: UIViewController {
         guard let card = r.view else { return }
         defer { r.setTranslation(.zero, in: cardContainer) }
         
-        // 1. move card along with finger
+        // TODO: use distance between card centers instead!
+        
         let moveDistance = r.translation(in: cardContainer)
-        // card.center.x = cardContainer.frame.size.center.x + moveDistance.x
         card.center.x += moveDistance.x
         
         let xDistance = card.center.x - cardContainer.center.x
         let absDistance = abs(xDistance)
         
-        var shouldCancel = true
-        
         if absDistance >= 200 {
             r.isEnabled = false
-            shouldCancel = false
             
             UIView.animate { [cardContainer = cardContainer!, secondCard = secondCard!] in
                 card.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
@@ -105,6 +102,9 @@ final class BookingInfoController: UIViewController {
                 r.isEnabled = true
             }
             
+            // reset view
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: resetCardContainer)
+            
             return
         }
         
@@ -112,10 +112,6 @@ final class BookingInfoController: UIViewController {
         var normalizedDistance = absDistance
         normalizedDistance /= secondCard.frame.width - transformLoss / 2
         normalizedDistance.rightBounded(to: 1)
-        
-        let xPercent = normalizedDistance * 100
-        // log.debug("moved by: \(xPercent.rounded())")
-        // log.debug(xDistance)
         
         let baseTransform = CGAffineTransform.identity
         let leftTransform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94) - card.transform
@@ -131,8 +127,19 @@ final class BookingInfoController: UIViewController {
         updates.forEach { $0(normalizedDistance) }
         
         if r.state == .ended || r.state == .cancelled {
-            guard shouldCancel else { return }
             onPanMoveEnd(r, card)
+        }
+    }
+    
+    private func resetCardContainer() {
+        guard let pan = secondCard.gestureRecognizers?.first as? UIPanGestureRecognizer else { return }
+        
+        firstCard.addGestureRecognizer(pan)
+        secondCard.removeGestureRecognizer(pan)
+        
+        UIView.animate { [secondCard = secondCard!, cardContainer = cardContainer!, resetCards = resetCards] in // didn't want to write selfs
+            cardContainer.sendSubview(toBack: secondCard)
+            resetCards()
         }
     }
     
@@ -166,59 +173,11 @@ final class BookingInfoController: UIViewController {
         secondCard.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
         secondCard.frame.origin.y = 53.042
         
-        firstCard.center.x = cardContainer.center.x
+        // firstCard.center.x = cardContainer.center.x
+        firstCard.center = cardContainer.frame.size.center
         firstCard.transform = .identity
         firstCard.alpha = 1
     }
-    
-    @objc
-    private func onPanMove(_ r: UIPanGestureRecognizer) {
-        guard let card = r.view else { return }
-        let velocity = r.velocity(in: card)
-        defer { r.setTranslation(.zero, in: card) }
-        
-        let swipeDelta = r.translation(in: card)
-        
-        if r.state == .ended || r.state == .cancelled {
-            let xDistance = card.center.x - cardContainer.center.x
-            if xDistance < 300 {
-                UIView.animate(withDuration: 0.25, animations: {
-                    card.center.x = self.cardContainer.center.x
-                })
-            }
-            
-            return
-        }
-        
-        // card.center += swipeDelta
-        card.center.x += swipeDelta.x
-        let xDistance = card.center.x - cardContainer.center.x
-        let normalizedDistance = xDistance / secondCard.frame.width
-        let xPercent = normalizedDistance * 100
-        
-        // secondCard.center.y -= 20 * normalizedDistance
-        
-        let firstCardDelta = distance(for: card, in: cardContainer)
-        // cardContainer.center - card.center
-        let secondCardDelta = distance(for: secondCard, in: cardContainer)
-        // cardContainer.center - secondCard.center
-        
-        let cardContainerCenter = cardContainer.frame.size.center
-        let c2CenterDist = distance(for: secondCard, in: cardContainer)
-        
-        let val = (c2CenterDist.y - cardContainerCenter.y) * normalizedDistance
-        secondCard.frame.origin.y = cardContainerCenter.y + val
-        
-        // let spaceLeftY =
-        
-        log.debug("d[1]: \(firstCardDelta)")
-        log.debug("d[2]: \(secondCardDelta)")
-        log.debug("p: \(xPercent.rounded())")
-        
-        // log.debug("x: \(xDistance) | d: \(swipeDelta)")
-    }
-    
-    // distance to center for: v, in: c
     
     /// Calculates distance of view's center to it's container center.
     private func distance(for subview: UIView, in container: UIView) -> CGPoint {
@@ -226,5 +185,11 @@ final class BookingInfoController: UIViewController {
         let containerCenter = CGPoint(x: containerFrame.width / 2, y: containerFrame.height / 2)
         
         return subview.frame.center - containerCenter
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func goBack(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
     }
 }
