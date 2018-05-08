@@ -16,12 +16,6 @@ public struct Line {
     let seatBlocks: [Block<SeatType>]
 }
 
-extension Line {
-    public static func empty() -> Line {
-        return Line(seatBlocks: [])
-    }
-}
-
 public struct Block<Element> {
     let items: [Element]
 }

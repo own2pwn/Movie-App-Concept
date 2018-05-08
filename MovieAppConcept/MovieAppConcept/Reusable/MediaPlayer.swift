@@ -40,7 +40,8 @@ public final class EPMediaPlayer {
     }
 
     public func stop() {
-        guard let player = player, let playerLayer = playerLayer else { return }
+        guard let player = player,
+            let playerLayer = playerLayer else { return }
 
         player.pause()
         UIView.animate(withDuration: 0.25) {

@@ -9,7 +9,7 @@
 import PassKit
 import UIKit
 
-public final class ApplePayer: NSObject, PKPaymentAuthorizationControllerDelegate {
+public final class ApplePayer: NSObject {
 
     // MARK: - Interface
     
@@ -56,9 +56,11 @@ public final class ApplePayer: NSObject, PKPaymentAuthorizationControllerDelegat
     private func processMultipleTicket(_ price: Int, count: Int, movie: String) -> PKPaymentSummaryItem {
         return PKPaymentSummaryItem(label: "\(movie.capitalized) Tickets (\(count)x)", amount: NSDecimalNumber(value: price * count), type: .final)
     }
-    
-    // MARK: - PKPaymentAuthorizationControllerDelegate
-    
+}
+
+// MARK: - PKPaymentAuthorizationControllerDelegate
+
+extension ApplePayer: PKPaymentAuthorizationControllerDelegate {
     public func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
         let result = PKPaymentAuthorizationResult(status: .success, errors: nil)
         completion(result)

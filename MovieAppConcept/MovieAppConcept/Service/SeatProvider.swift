@@ -55,11 +55,6 @@ public final class SeatProvider {
         
         let s1 = Stage(lineBlocks: [lb1, emptyLineBlock, lb2, emptyLineBlock, lb3])
         
-        let lineBlockB1 = Block<Line>(items: [Line(seatBlocks: [Block<SeatType>(items: [.regular, .regular])])])
-        let lineBlockB2 = Block<Line>(items: [Line(seatBlocks: [Block<SeatType>(items: [.regular, .regular])])])
-        
-        let s2 = Stage(lineBlocks: [lineBlockB1, emptyLineBlock, emptyLineBlock, lineBlockB2])
-        
         return s1
     }
     

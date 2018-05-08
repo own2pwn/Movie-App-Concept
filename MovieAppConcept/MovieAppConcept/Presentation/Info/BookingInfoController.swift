@@ -8,51 +8,6 @@
 
 import UIKit
 
-public extension UIView {
-    public func makeFlat(with radius: CGFloat = 8) {
-        layer.cornerRadius = radius
-        clipsToBounds = true
-    }
-}
-
-public extension CGPoint {
-    public static func +(_ lhs: CGPoint, _ rhs: CGPoint) -> CGPoint {
-        return CGPoint(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
-    }
-    
-    public static func -(_ lhs: CGPoint, _ rhs: CGPoint) -> CGPoint {
-        return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
-    }
-    
-    public static func +=(_ lhs: inout CGPoint, _ rhs: CGPoint) {
-        lhs.x += rhs.x
-        lhs.y += rhs.y
-    }
-}
-
-public extension CGAffineTransform {
-    public static func -(_ lhs: CGAffineTransform, _ rhs: CGAffineTransform) -> CGAffineTransform {
-        return CGAffineTransform(a: lhs.a - rhs.a, b: lhs.b - rhs.b, c: lhs.c - rhs.c,
-                                 d: lhs.d - rhs.d, tx: lhs.tx - rhs.tx, ty: lhs.ty - rhs.ty)
-    }
-    
-    public static func +(_ lhs: CGAffineTransform, _ rhs: CGAffineTransform) -> CGAffineTransform {
-        return CGAffineTransform(a: lhs.a + rhs.a, b: lhs.b + rhs.b, c: lhs.c + rhs.c,
-                                 d: lhs.d + rhs.d, tx: lhs.tx + rhs.tx, ty: lhs.ty + rhs.ty)
-    }
-    
-    public static func *(_ lhs: CGAffineTransform, _ rhs: CGFloat) -> CGAffineTransform {
-        return CGAffineTransform(a: lhs.a * rhs, b: lhs.b * rhs, c: lhs.c * rhs,
-                                 d: lhs.d * rhs, tx: lhs.tx * rhs, ty: lhs.ty * rhs)
-    }
-    
-    public func rightBound(to value: CGAffineTransform) -> CGAffineTransform {
-        return CGAffineTransform(a: a.rightBound(to: value.a), b: b.rightBound(to: value.b),
-                                 c: c.rightBound(to: value.c), d: d.rightBound(to: value.d),
-                                 tx: tx.rightBound(to: value.tx), ty: ty.rightBound(to: value.ty))
-    }
-}
-
 final class BookingInfoController: UIViewController {
 
     // MARK: - Outlets
@@ -271,32 +226,5 @@ final class BookingInfoController: UIViewController {
         let containerCenter = CGPoint(x: containerFrame.width / 2, y: containerFrame.height / 2)
         
         return subview.frame.center - containerCenter
-    }
-}
-
-public extension CGSize {
-    public var center: CGPoint {
-        return CGPoint(x: width / 2, y: height / 2)
-    }
-    
-    public static func -(_ lhs: CGSize, _ rhs: CGSize) -> CGSize {
-        return CGSize(width: lhs.width - rhs.width, height: lhs.height - rhs.height)
-    }
-}
-
-public extension CGRect {
-//    public var center: CGPoint {
-//        return CGPoint(x: width / 2, y: height / 2)
-//    }
-    
-    public static func -(_ lhs: CGRect, _ rhs: CGRect) -> CGRect {
-        let newOrigin = lhs.origin - rhs.origin
-        let newSize = lhs.size - rhs.size
-        
-        return CGRect(origin: newOrigin, size: newSize)
-    }
-    
-    public var center: CGPoint {
-        return CGPoint(x: midX, y: midY)
     }
 }

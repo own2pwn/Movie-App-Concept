@@ -82,12 +82,7 @@ public final class StageRenderEngine {
         let seatLayer = makeSeatLayer(of: type, size: size, in: point)
         cinema.addSublayer(seatLayer)
         
-        let kp = "opacity"
-        let opacityAnimation = CABasicAnimation(keyPath: kp)
-        opacityAnimation.fromValue = 0
-        opacityAnimation.toValue = 1
-        opacityAnimation.duration = 0.3
-        seatLayer.add(opacityAnimation, forKey: kp)
+        seatLayer.animateOpacity(fromValue: 0, toValue: 1)
     }
     
     // MARK: - Internal
