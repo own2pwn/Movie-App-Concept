@@ -215,10 +215,10 @@
 		B984A33A20A245C700544A8C /* Operators */ = {
 			isa = PBXGroup;
 			children = (
-				B984A33B20A245D600544A8C /* CGPoint+Operators.swift */,
 				B984A33D20A245EB00544A8C /* CGAffineTransform+Operators.swift */,
-				B984A33F20A2463100544A8C /* CGSize+Operators.swift */,
+				B984A33B20A245D600544A8C /* CGPoint+Operators.swift */,
 				B984A34120A2464200544A8C /* CGRect+Operators.swift */,
+				B984A33F20A2463100544A8C /* CGSize+Operators.swift */,
 			);
 			path = Operators;
 			sourceTree = "<group>";
@@ -361,8 +361,8 @@
 			isa = PBXGroup;
 			children = (
 				B9364A7220987EED00029E89 /* UIView+Animation.swift */,
-				B951BD91209B954D009B452C /* UIView+Separator.swift */,
 				B984A33420A245B600544A8C /* UIView+Flat.swift */,
+				B951BD91209B954D009B452C /* UIView+Separator.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";

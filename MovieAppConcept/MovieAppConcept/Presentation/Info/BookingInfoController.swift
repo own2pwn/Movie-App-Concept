@@ -73,6 +73,8 @@ final class BookingInfoController: UIViewController {
         guard let card = r.view else { return }
         defer { r.setTranslation(.zero, in: cardContainer) }
         
+        // TODO: use distance between card centers instead!
+        
         // 1. move card along with finger
         let moveDistance = r.translation(in: cardContainer)
         // card.center.x = cardContainer.frame.size.center.x + moveDistance.x
@@ -81,11 +83,8 @@ final class BookingInfoController: UIViewController {
         let xDistance = card.center.x - cardContainer.center.x
         let absDistance = abs(xDistance)
         
-        var shouldCancel = true
-        
         if absDistance >= 200 {
             r.isEnabled = false
-            shouldCancel = false
             
             UIView.animate { [cardContainer = cardContainer!, secondCard = secondCard!] in
                 card.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
@@ -104,6 +103,9 @@ final class BookingInfoController: UIViewController {
                 secondCard.addGestureRecognizer(r)
                 r.isEnabled = true
             }
+            
+            // reset view
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: resetCardContainer)
             
             return
         }
@@ -131,8 +133,19 @@ final class BookingInfoController: UIViewController {
         updates.forEach { $0(normalizedDistance) }
         
         if r.state == .ended || r.state == .cancelled {
-            guard shouldCancel else { return }
             onPanMoveEnd(r, card)
+        }
+    }
+    
+    private func resetCardContainer() {
+        guard let pan = secondCard.gestureRecognizers?.first as? UIPanGestureRecognizer else { return }
+        
+        firstCard.addGestureRecognizer(pan)
+        secondCard.removeGestureRecognizer(pan)
+        
+        UIView.animate { [secondCard = secondCard!, cardContainer = cardContainer!, resetCards = resetCards] in // didn't want to write selfs
+            cardContainer.sendSubview(toBack: secondCard)
+            resetCards()
         }
     }
     
@@ -166,7 +179,8 @@ final class BookingInfoController: UIViewController {
         secondCard.transform = CGAffineTransform.identity.scaledBy(x: 0.94, y: 0.94)
         secondCard.frame.origin.y = 53.042
         
-        firstCard.center.x = cardContainer.center.x
+        // firstCard.center.x = cardContainer.center.x
+        firstCard.center = cardContainer.frame.size.center
         firstCard.transform = .identity
         firstCard.alpha = 1
     }
