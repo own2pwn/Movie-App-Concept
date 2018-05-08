@@ -133,6 +133,10 @@ final class BookingController: UIViewController {
     @IBAction func goBack(_ sender: UIButton) {
         dismiss(animated: true)
     }
+    
+    @IBAction func showNext(_ sender: UIButton) {
+        performSegue(withIdentifier: "showBookingInfo", sender: self)
+    }
 }
 
 extension BookingController: SeatPickerDelegate {

@@ -186,4 +186,10 @@ final class BookingInfoController: UIViewController {
         
         return subview.frame.center - containerCenter
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func goBack(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
 }
