@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B9124F912099BD07005EEA70 /* BookingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9124F902099BD07005EEA70 /* BookingController.swift */; };
-		B9364A6F20987E2800029E89 /* Bool+Toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9364A6E20987E2800029E89 /* Bool+Toggle.swift */; };
 		B9364A7120987ECB00029E89 /* EPButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9364A7020987ECB00029E89 /* EPButton.swift */; };
-		B9364A7320987EED00029E89 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9364A7220987EED00029E89 /* Animations.swift */; };
+		B9364A7320987EED00029E89 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9364A7220987EED00029E89 /* UIView+Animation.swift */; };
 		B9364A7520988EBB00029E89 /* EPType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9364A7420988EBB00029E89 /* EPType.swift */; };
 		B9364A7820988F9700029E89 /* vid_back_to_the_future.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B9364A7720988F9700029E89 /* vid_back_to_the_future.mp4 */; };
 		B951BD90209B94DF009B452C /* SeatLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951BD8F209B94DF009B452C /* SeatLayer.swift */; };
@@ -97,9 +96,8 @@
 
 /* Begin PBXFileReference section */
 		B9124F902099BD07005EEA70 /* BookingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingController.swift; sourceTree = "<group>"; };
-		B9364A6E20987E2800029E89 /* Bool+Toggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bool+Toggle.swift"; path = "../../../../../../../Mobile/iOS/Swift/EZTask-3.0/EZTask/EZTask/Extension/Foundation/Bool+Toggle.swift"; sourceTree = "<group>"; };
 		B9364A7020987ECB00029E89 /* EPButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPButton.swift; sourceTree = "<group>"; };
-		B9364A7220987EED00029E89 /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		B9364A7220987EED00029E89 /* UIView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
 		B9364A7420988EBB00029E89 /* EPType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPType.swift; sourceTree = "<group>"; };
 		B9364A7720988F9700029E89 /* vid_back_to_the_future.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = vid_back_to_the_future.mp4; sourceTree = "<group>"; };
 		B951BD8F209B94DF009B452C /* SeatLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatLayer.swift; sourceTree = "<group>"; };
@@ -124,6 +122,7 @@
 		B9EAAF82209A7C4600374520 /* SeatProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatProvider.swift; sourceTree = "<group>"; };
 		B9EAAF84209A814300374520 /* StageRenderEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageRenderEngine.swift; sourceTree = "<group>"; };
 		B9EAAF86209A85A100374520 /* SeatPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatPicker.swift; sourceTree = "<group>"; };
+		B9ECC1EB20A2424F007FB734 /* Bool+Toggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Toggle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,13 +151,10 @@
 		B9364A6C20987E0300029E89 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				B9C0345F209CCBF400859018 /* CGFloat+Bound.swift */,
-				B9364A7220987EED00029E89 /* Animations.swift */,
-				B9364A6E20987E2800029E89 /* Bool+Toggle.swift */,
-				B9A2D7AD209BD43400214060 /* CAShapeLayer+Animation.swift */,
-				B9364A7020987ECB00029E89 /* EPButton.swift */,
+				B9ECC1EA20A2424B007FB734 /* Foundation */,
+				B9ECC1E820A24229007FB734 /* UIKit */,
+				B9ECC1E320A2421A007FB734 /* CoreGraphics */,
 				B9364A7420988EBB00029E89 /* EPType.swift */,
-				B951BD91209B954D009B452C /* UIView+Separator.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -195,6 +191,14 @@
 				B9C4061420986B2B00B5AABF /* MoviewPageController.swift */,
 			);
 			path = MoviePage;
+			sourceTree = "<group>";
+		};
+		B984A32C20A242C900544A8C /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				B9364A7020987ECB00029E89 /* EPButton.swift */,
+			);
+			path = UIButton;
 			sourceTree = "<group>";
 		};
 		B9A380E62098904100F8CBB1 /* Reusable */ = {
@@ -310,6 +314,41 @@
 				B9EAAF84209A814300374520 /* StageRenderEngine.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		B9ECC1E320A2421A007FB734 /* CoreGraphics */ = {
+			isa = PBXGroup;
+			children = (
+				B9A2D7AD209BD43400214060 /* CAShapeLayer+Animation.swift */,
+				B9C0345F209CCBF400859018 /* CGFloat+Bound.swift */,
+			);
+			path = CoreGraphics;
+			sourceTree = "<group>";
+		};
+		B9ECC1E820A24229007FB734 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				B984A32C20A242C900544A8C /* UIButton */,
+				B9ECC1E920A24234007FB734 /* UIView */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		B9ECC1E920A24234007FB734 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				B951BD91209B954D009B452C /* UIView+Separator.swift */,
+				B9364A7220987EED00029E89 /* UIView+Animation.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		B9ECC1EA20A2424B007FB734 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				B9ECC1EB20A2424F007FB734 /* Bool+Toggle.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,8 +485,7 @@
 				B9A380E82098904B00F8CBB1 /* MediaPlayer.swift in Sources */,
 				B9364A7520988EBB00029E89 /* EPType.swift in Sources */,
 				B9C03460209CCBF500859018 /* CGFloat+Bound.swift in Sources */,
-				B9364A6F20987E2800029E89 /* Bool+Toggle.swift in Sources */,
-				B9364A7320987EED00029E89 /* Animations.swift in Sources */,
+				B9364A7320987EED00029E89 /* UIView+Animation.swift in Sources */,
 				B9364A7120987ECB00029E89 /* EPButton.swift in Sources */,
 				B9C4061320986B2B00B5AABF /* AppDelegate.swift in Sources */,
 				B9EAAF87209A85A100374520 /* SeatPicker.swift in Sources */,
