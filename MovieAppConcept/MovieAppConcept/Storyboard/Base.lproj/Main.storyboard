@@ -176,7 +176,6 @@
                                         </constraints>
                                         <state key="normal" image="icn_forward"/>
                                         <connections>
-                                            <action selector="goBack:" destination="XBx-JD-H6f" eventType="touchUpInside" id="rgc-19-aEn"/>
                                             <action selector="showNext:" destination="XBx-JD-H6f" eventType="touchUpInside" id="TcB-Cy-ZMf"/>
                                         </connections>
                                     </button>

@@ -115,6 +115,12 @@ open class EPButton: UIButton {
         }
     }
 
+    open override var isSelected: Bool {
+        didSet {
+            setSelected(isSelected)
+        }
+    }
+
     // MARK: - Selected
 
     private func setChecked(_ checked: Bool) {
@@ -124,14 +130,17 @@ open class EPButton: UIButton {
         UIView.animate(baseAnimationDuration, animation)
     }
 
+    private func setSelected(_ selected: Bool) {
+        let image = selected ? selectedImage : normalImage
+        setImage(image, for: .normal)
+    }
+
     private func onSelection() {
         imageView?.image = selectedImage
-        setImage(selectedImage, for: .normal)
     }
 
     private func onDeselection() {
         imageView?.image = normalImage
-        setImage(normalImage, for: .normal)
     }
 
     // MARK: - Highlight
@@ -177,9 +186,11 @@ open class EPButton: UIButton {
 
     @objc
     private func observeTouch(_ sender: EPButton) {
-        defer { onPrimaryAction?(self) }
+        guard isSelectable else {
+            onPrimaryAction?(self)
+            return
+        }
 
-        guard isSelected else { return }
         isSelected.toggle()
     }
 }

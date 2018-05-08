@@ -76,6 +76,7 @@ final class MoviewPageController: UIViewController {
         
         bookmarkButton.normalImage = #imageLiteral(resourceName: "ic_heart_normal")
         bookmarkButton.selectedImage = #imageLiteral(resourceName: "ic_heart_selected")
+        bookmarkButton.onPrimaryAction = bookmarkMovie
         
         playButton.isCheckable = false
         playButton.onPrimaryAction = playVideo
@@ -91,7 +92,7 @@ final class MoviewPageController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func bookmarkMovie(_ sender: UIButton) {
+    private func bookmarkMovie(_ sender: EPButton) {
         sender.isSelected.toggle()
     }
     
