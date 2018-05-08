@@ -30,6 +30,8 @@ public final class SeatPicker: UIView {
     
     private var selectedSeats = Set<SeatLayer>()
     
+    private var widthLoss: CGFloat = 0
+    
     // MARK: - Behavior
     
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -37,6 +39,12 @@ public final class SeatPicker: UIView {
         
         guard let location = touches.first?.location(in: self) else { return }
         animateLayer(at: location)
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        frame.origin.x = widthLoss / 2
     }
     
     // MARK: - Interface
@@ -62,14 +70,18 @@ public final class SeatPicker: UIView {
         let blocksCount: CGFloat = 2
         
         let availableWidth = frame.width - contentInsets.left - contentInsets.right - blocksCount * blockSpacing - (maxInLine - 1) * seatSpacing
-        let availableHeight = frame.height - contentInsets.top - contentInsets.bottom - linesCount * lineSpacing
+        let availableHeight = frame.height - contentInsets.top - contentInsets.bottom - (linesCount - 1) * lineSpacing
         
         let mult: CGFloat = 0.7
         var maxWidth = availableWidth / maxInLine
         let maxHeight = availableHeight / linesCount
         
         if maxWidth * mult > maxHeight {
-            //maxWidth = maxHeight
+            widthLoss = (maxInLine - 1) * (maxWidth - maxHeight)
+            // just a quick hack to center container.
+            // for best experience run on iPhone X
+            
+            maxWidth = maxHeight
         }
         
         let seatSize = CGSize(width: maxWidth, height: maxWidth * mult)
