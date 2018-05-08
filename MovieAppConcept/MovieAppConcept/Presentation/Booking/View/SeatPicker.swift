@@ -32,13 +32,6 @@ public final class SeatPicker: UIView {
     
     // MARK: - Behavior
     
-    public override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        defer { super.touchesMoved(touches, with: event) }
-        
-        // TODO: do light selection animation
-        // i.e. we can just let it reverse after all
-    }
-    
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         defer { super.touchesEnded(touches, with: event) }
         
@@ -50,7 +43,7 @@ public final class SeatPicker: UIView {
     
     public func add(_ stage: Stage, starting at: CGPoint) {
         let startPoint = at
-        let itemSize = calculateSeatSize()
+        let itemSize = calculateSeatSize(for: stage)
         let config = StageRenderEngineConfig(itemSize: itemSize, itemSpacing: seatSpacing, blockSpacing: blockSpacing, lineSpacing: lineSpacing, startPoint: startPoint)
         
         engine.render(stage, in: self, config: config)
@@ -62,14 +55,45 @@ public final class SeatPicker: UIView {
     
     // MARK: - Internal
     
-    private func calculateSeatSize() -> CGSize {
-        let maxInLine: CGFloat = 12
-        let availableWidth = frame.width - contentInsets.left - contentInsets.right - 2 * blockSpacing - (maxInLine - 1) * seatSpacing
+    private func calculateSeatSize(for stage: Stage) -> CGSize {
+        // let's say we have this in our model
+        let maxInLine: CGFloat = 12 // maxSeatsInLineBlock(in: suitableLineBlocks)
+        let linesCount: CGFloat = 12 // linesInBlock(in: suitableLineBlocks)
+        let blocksCount: CGFloat = 2
         
-        let itemWidth = availableWidth / maxInLine
-        let seatSize = CGSize(width: itemWidth, height: itemWidth * 0.7)
+        let availableWidth = frame.width - contentInsets.left - contentInsets.right - blocksCount * blockSpacing - (maxInLine - 1) * seatSpacing
+        let availableHeight = frame.height - contentInsets.top - contentInsets.bottom - linesCount * lineSpacing
+        
+        let mult: CGFloat = 0.7
+        var maxWidth = availableWidth / maxInLine
+        let maxHeight = availableHeight / linesCount
+        
+        if maxWidth * mult > maxHeight {
+            //maxWidth = maxHeight
+        }
+        
+        let seatSize = CGSize(width: maxWidth, height: maxWidth * mult)
         
         return seatSize
+    }
+    
+    private func linesInBlock(in blocks: [Block<Line>]) -> Int {
+        return blocks.map { $0.items.count }.reduce(0, +)
+    }
+    
+    private func maxSeatsInLineBlock(in blocks: [Block<Line>]) -> Int {
+        let seatsPerLineArr = blocks.flatMap {
+            $0.items.map {
+                $0.seatBlocks.map({ block -> Int in
+                    let suitable = block.items.filter { $0.shouldRender }
+                    return suitable.count
+                })
+            }
+        }
+        
+        let seatsPerLine = seatsPerLineArr.map { $0.reduce(0, +) }
+        
+        return seatsPerLine.max()!
     }
     
     private func animateLayer(at location: CGPoint) {
