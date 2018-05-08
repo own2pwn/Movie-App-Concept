@@ -24,6 +24,8 @@ final class MoviewPageController: UIViewController {
     
     @IBOutlet var videoContainer: UIView!
     
+    @IBOutlet var nextScreenButton: EPButton!
+    
     // MARK: - Overrides
     
     override func viewDidLoad() {
@@ -76,13 +78,24 @@ final class MoviewPageController: UIViewController {
         
         playButton.isCheckable = false
         playButton.onPrimaryAction = playVideo
-        playButton.frame.size.width += 128
+        
+        nextScreenButton.makeFlat()
+        nextScreenButton.normalColor = nextScreenButton.backgroundColor
+        nextScreenButton.highlightColor = nextScreenButton.normalColor?.withAlphaComponent(0.8)
+        
+        nextScreenButton.isCheckable = false
+        nextScreenButton.isSelectable = false
+        nextScreenButton.onPrimaryAction = showPicker
     }
     
     // MARK: - Actions
     
     @IBAction func bookmarkMovie(_ sender: UIButton) {
         sender.isSelected.toggle()
+    }
+    
+    private func showPicker(_ sender: EPButton) {
+        performSegue(withIdentifier: "showPicker", sender: self)
     }
     
     private func playVideo(_ sender: EPButton) {
