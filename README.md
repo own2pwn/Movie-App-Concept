@@ -2,7 +2,7 @@ Movie App Concept
 
 Inspired by [dribbble concept](https://dribbble.com/shots/4271924-Movie-App-Concet).
 
-<details>
+
   <summary>Screenshots</summary>
   https://imgur.com/a/Zte4bPn
   
@@ -11,4 +11,4 @@ Inspired by [dribbble concept](https://dribbble.com/shots/4271924-Movie-App-Conc
   ![3](https://i.imgur.com/13kCGCf.png)
   ![4](https://i.imgur.com/6Ganyoh.png)
   
-</details>
+
